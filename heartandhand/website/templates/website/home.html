@@ -1,0 +1,68 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Heart&Hand - Charleston Concierge Services{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'website/css/pages/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>Welcome to <span>Hearth&Hand</span> Concierge</h1>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe tempore error officia rem minima ratione aliquid
+    adipisci deserunt, explicabo accusantium illo sunt ipsum nulla modi perferendis quod vel. At, quas!</p>
+  <section style="margin-top: 4vh;"> <a class="nav-cta btn" href="/consultation/">Request Consultation</a></section>
+</section>
+
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem quas minima inventore aut aspernatur deleniti
+    numquam ea recusandae molestiae eius. Deserunt amet placeat quos impedit provident ipsam sequi sint ratione?</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni necessitatibus quam unde in eligendi inventore amet,
+    quo molestiae recusandae sequi qui deserunt at! Repudiandae iste dignissimos atque, iusto deserunt et.</p>
+</section>
+
+<section class="featured-services">
+  <h2>Our Services</h2>
+  <div class="grid grid-3">
+    <div class="service-card">
+      <h3>Household Management</h3>
+      <p>Comprehensive management of your home, from staff coordination to maintenance oversight and organization
+        systems that work for you.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Event Planning</h3>
+      <p>Full-service planning and coordination for gatherings of all sizes, from intimate dinners to formal
+        celebrations.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Personal Chef Services</h3>
+      <p>Custom meal planning and preparation tailored to your family's dietary preferences and entertaining needs.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Travel Coordination</h3>
+      <p>End-to-end travel planning and logistics management for seamless vacations and business trips.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Shopping & Errands</h3>
+      <p>Personal shopping and errand services handled with attention to detail and your preferences.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Custom Solutions</h3>
+      <p>Specialized services tailored specifically to your unique needs and lifestyle requirements.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Ready to Simplify Your Life?</h2>
+  <p>Let's discuss how Heart&Hand can support you and your family. Schedule a consultation today.</p>
+  <a class="nav-cta btn" href="/consultation/">Request Consultation</a>
+</section>
+{% endblock %}

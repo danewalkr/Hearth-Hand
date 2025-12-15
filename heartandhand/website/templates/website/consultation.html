@@ -1,0 +1,110 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Book a Consultation - Heart&Hand{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'website/css/pages/consultation.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="consultation-header">
+  <h1>Book a Consultation</h1>
+  <p>Tell us about your needs and we'll be in touch shortly to discuss how we can help you.</p>
+</section>
+
+<form method="post" class="consultation-form">
+  {% csrf_token %}
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="first-name">First Name <span class="required">*</span></label>
+      <input type="text" id="first-name" name="first_name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="last-name">Last Name <span class="required">*</span></label>
+      <input type="text" id="last-name" name="last_name" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="email">Email <span class="required">*</span></label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone Number <span class="required">*</span></label>
+      <input type="tel" id="phone" name="phone" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="service">Service of Interest <span class="required">*</span></label>
+    <select id="service" name="service" required>
+      <option value="">Select a service...</option>
+      <option value="household">Household Management</option>
+      <option value="culinary">Personal Chef Services</option>
+      <option value="events">Event Planning</option>
+      <option value="travel">Travel Coordination</option>
+      <option value="shopping">Shopping & Errands</option>
+      <option value="other">Other/Custom</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Services of Interest</label>
+    <div class="checkbox-group">
+      <label class="checkbox-label">
+        <input type="checkbox" name="interests" value="household">
+        Household Management
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" name="interests" value="culinary">
+        Personal Chef Services
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" name="interests" value="events">
+        Event Planning
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" name="interests" value="travel">
+        Travel Coordination
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="budget">Budget Range</label>
+    <select id="budget" name="budget">
+      <option value="">No preference</option>
+      <option value="5k">Under $5,000</option>
+      <option value="5k-10k">$5,000 - $10,000</option>
+      <option value="10k-25k">$10,000 - $25,000</option>
+      <option value="25k+">$25,000+</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Tell us more about your needs <span class="required">*</span></label>
+    <textarea id="message" name="message" required></textarea>
+    <div class="form-help">Please provide details about what you're looking for and your timeline.</div>
+  </div>
+
+  <div class="form-group">
+    <label class="checkbox-label">
+      <input type="checkbox" name="preferences" value="email">
+      I prefer to be contacted via email
+    </label>
+  </div>
+
+  <button type="submit" class="form-submit">Request Consultation</button>
+</form>
+
+<section class="consultation-info">
+  <h3>Can't wait for a form submission?</h3>
+  <p><strong>Call or text us directly:</strong> (843) 555-0123</p>
+  <p>We're available Monday through Friday, 9am - 6pm EST, and weekends by appointment.</p>
+</section>
+{% endblock %}

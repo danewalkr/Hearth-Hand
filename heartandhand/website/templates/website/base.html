@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="{% static 'website/css/variables.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/layout.css' %}">
+  <link rel="stylesheet" href="{% static 'website/css/components.css' %}">
+
+  <!-- Page-specific CSS -->
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+  {% include "website/components/header.html" %}
+
+  <main class="content">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  {% include "website/components/footer.html" %}
+
+  <!-- Scripts -->
+  <script src="{% static 'website/js/main.js' %}"></script>
+</body>
+
+</html>

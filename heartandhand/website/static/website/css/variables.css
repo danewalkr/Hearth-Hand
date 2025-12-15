@@ -1,0 +1,69 @@
+:root {
+  /* === BRAND CORE (LOCKED) === */
+  --primary-1: #39442a;
+  /* deep forest green */
+  --primary-2: #465732;
+  /* secondary green */
+
+  --secondary-1: #8b3b29;
+  /* warm brown (accent only) */
+  --secondary-2: #463029;
+  /* deep brown (rare use) */
+
+  /* === NEW: DARK NEUTRALS (CRITICAL) === */
+  --dark-base: #141812;
+  /* near-black, warm green tint */
+  --dark-surface: #1e241b;
+  /* cards/nav/hero overlays */
+  --dark-border: rgba(255, 255, 255, 0.08);
+
+  /* === LIGHT SURFACES (DE-EMPHASIZED) === */
+  --bg-light: #ebe7db;
+  /* slightly darker, less bright */
+  --bg-white: #fdfcf9;
+  /* softened white for cards */
+
+  /* === TEXT === */
+  --text-dark: #2a2a2a;
+  --text-muted: #6f6f6f;
+  --text-on-dark: #f5f4ef;
+  --text-muted-on-dark: rgba(245, 244, 239, 0.65);
+
+  /* === ACCENTS (RESTRAINED) === */
+  --accent-gold: #bc9c22;
+  /* optional micro-accent */
+  --accent-warm: var(--secondary-1);
+
+  /* === UI === */
+  --border-color: rgba(0, 0, 0, 0.06);
+  --transition: all 0.2s ease-in-out;
+
+  /* === ALIASES (SAFE) === */
+  --accent-1: var(--primary-1);
+  --accent-2: var(--secondary-1);
+  --accent-3: var(--accent-gold);
+  --text: var(--text-dark);
+  --muted: var(--text-muted);
+  --bg: var(--bg-light);
+
+  /* === RGBs === */
+  --primary-1-rgb: 57, 68, 42;
+  --primary-2-rgb: 70, 87, 50;
+  --secondary-1-rgb: 139, 59, 41;
+  --accent-gold-rgb: 188, 156, 34;
+  --bg-light-rgb: 235, 231, 219;
+  --bg-white-rgb: 253, 252, 249;
+
+  /* === HERO GRADIENT LAYERS === */
+  /* Deep layered background for dimensional feel */
+  --hero-base: #1a2015;
+  /* slightly warmer than dark-base for coziness */
+  --hero-depth: #0f1410;
+  /* ultra-deep accent for layering */
+  --hero-warm-accent: rgba(139, 59, 41, 0.15);
+  /* subtle warm brown overlay */
+  --hero-gold-glow: rgba(188, 156, 34, 0.08);
+  /* ultra-subtle gold highlight */
+
+  --header-height: 65px;
+}

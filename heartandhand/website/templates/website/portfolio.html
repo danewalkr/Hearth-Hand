@@ -1,0 +1,123 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Portfolio - Heart&Hand{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'website/css/pages/portfolio.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="portfolio-header">
+  <h1>Our Portfolio</h1>
+  <p>Explore our recent projects and see the quality of work we deliver for our clients.</p>
+</section>
+
+<section class="portfolio-filters">
+  <button class="filter-btn active" data-filter="all">All Projects</button>
+  <button class="filter-btn" data-filter="household">Household</button>
+  <button class="filter-btn" data-filter="events">Events</button>
+  <button class="filter-btn" data-filter="travel">Travel</button>
+</section>
+
+<section class="portfolio-grid">
+  <!-- Portfolio Item 1 -->
+  <div class="portfolio-item" data-category="household">
+    <div class="portfolio-image">
+      <div
+        style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+        🏠
+      </div>
+    </div>
+    <div class="portfolio-info">
+      <div class="portfolio-category">Household</div>
+      <h3>Estate Reorganization</h3>
+      <p>Complete organization and management overhaul for a large Charleston estate, including staff coordination and
+        system implementation.</p>
+      <a href="#" class="portfolio-link">View Project →</a>
+    </div>
+  </div>
+
+  <!-- Portfolio Item 2 -->
+  <div class="portfolio-item" data-category="events">
+    <div class="portfolio-image">
+      <div
+        style="width: 100%; height: 100%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+        🎉
+      </div>
+    </div>
+    <div class="portfolio-info">
+      <div class="portfolio-category">Events</div>
+      <h3>Gala Coordination</h3>
+      <p>Coordinated a high-profile charity gala for 200+ guests with full catering, décor, and entertainment
+        management.</p>
+      <a href="#" class="portfolio-link">View Project →</a>
+    </div>
+  </div>
+
+  <!-- Portfolio Item 3 -->
+  <div class="portfolio-item" data-category="travel">
+    <div class="portfolio-image">
+      <div
+        style="width: 100%; height: 100%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+        ✈️
+      </div>
+    </div>
+    <div class="portfolio-info">
+      <div class="portfolio-category">Travel</div>
+      <h3>European Tour Planning</h3>
+      <p>Organized a two-week European tour for a family of six, including accommodations, activities, and logistics.
+      </p>
+      <a href="#" class="portfolio-link">View Project →</a>
+    </div>
+  </div>
+
+  <!-- Portfolio Item 4 -->
+  <div class="portfolio-item" data-category="household">
+    <div class="portfolio-image">
+      <div
+        style="width: 100%; height: 100%; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+        ✨
+      </div>
+    </div>
+    <div class="portfolio-info">
+      <div class="portfolio-category">Household</div>
+      <h3>Home Staging</h3>
+      <p>Complete home staging and maintenance coordination for a luxury property sale.</p>
+      <a href="#" class="portfolio-link">View Project →</a>
+    </div>
+  </div>
+
+  <!-- Portfolio Item 5 -->
+  <div class="portfolio-item" data-category="events">
+    <div class="portfolio-image">
+      <div
+        style="width: 100%; height: 100%; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+        🎂
+      </div>
+    </div>
+    <div class="portfolio-info">
+      <div class="portfolio-category">Events</div>
+      <h3>Wedding Planning</h3>
+      <p>Full-service wedding coordination for an outdoor celebration with 150 guests in Charleston.</p>
+      <a href="#" class="portfolio-link">View Project →</a>
+    </div>
+  </div>
+
+  <!-- Portfolio Item 6 -->
+  <div class="portfolio-item" data-category="travel">
+    <div class="portfolio-image">
+      <div
+        style="width: 100%; height: 100%; background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+        🌴
+      </div>
+    </div>
+    <div class="portfolio-info">
+      <div class="portfolio-category">Travel</div>
+      <h3>Beach Retreat</h3>
+      <p>Coordinated a family beach retreat with private villa, activities, and dining arrangements.</p>
+      <a href="#" class="portfolio-link">View Project →</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
