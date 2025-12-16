@@ -5,5 +5,10 @@ app_name = 'website'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('portfolio/', views.portfolio, name='portfolio'),
+    path('shop/', views.shop, name='shop'),
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
+    path('consultation/', views.consultation, name='consultation'),
     # add more pages here
 ]

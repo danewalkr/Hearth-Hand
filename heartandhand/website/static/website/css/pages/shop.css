@@ -1,16 +1,16 @@
 /* ===========================
-   PORTFOLIO PAGE STYLESHEET
+   SHOP PAGE STYLESHEET
    =========================== */
 
 /* Shop Content Section */
-.portfolio-content {
+.shop-content {
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: var(--space-6) var(--space-4);
   text-align: center;
 }
 
-.portfolio-content h2 {
+.shop-content h2 {
   font-size: 2rem;
   color: var(--accent-1);
   margin-top: 0;
@@ -18,7 +18,7 @@
   letter-spacing: -0.5px;
 }
 
-.portfolio-content p {
+.shop-content p {
   font-size: 1.1rem;
   color: var(--text);
   line-height: 1.8;
@@ -26,15 +26,15 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .portfolio-content {
+  .shop-content {
     padding: var(--space-4) var(--space-2);
   }
 
-  .portfolio-content h2 {
+  .shop-content h2 {
     font-size: 1.5rem;
   }
 
-  .portfolio-content p {
+  .shop-content p {
     font-size: 1rem;
   }
 }

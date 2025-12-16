@@ -1,7 +1,7 @@
 {% extends "website/base.html" %}
 {% load static %}
 
-{% block title %}Heart&Hand - Charleston Concierge Services{% endblock %}
+{% block title %}Hearth&Hand - Charleston Concierge Services{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'website/css/pages/home.css' %}">
@@ -9,18 +9,53 @@
 
 {% block content %}
 <section class="hero">
-  <h1>Welcome to <span>Hearth&Hand</span> Concierge</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe tempore error officia rem minima ratione aliquid
-    adipisci deserunt, explicabo accusantium illo sunt ipsum nulla modi perferendis quod vel. At, quas!</p>
-  <section style="margin-top: 4vh;"> <a class="nav-cta btn" href="/consultation/">Request Consultation</a></section>
+  <div class="hero-content">
+    <h1>Household management that feels like family</h1>
+    <p>Reliable household and event services for Charleston families — organization, calm, and trusted care when you
+      need it most.</p>
+    <div class="hero-cta-wrapper">
+      <a class="hero-cta" href="/consultation/">Start a Conversation</a>
+      <p class="hero-subtext">Local support for families and small businesses</p>
+    </div>
+  </div>
 </section>
 
 <section id="about" class="about">
-  <h2>About Us</h2>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem quas minima inventore aut aspernatur deleniti
-    numquam ea recusandae molestiae eius. Deserunt amet placeat quos impedit provident ipsam sequi sint ratione?</p>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni necessitatibus quam unde in eligendi inventore amet,
-    quo molestiae recusandae sequi qui deserunt at! Repudiandae iste dignissimos atque, iusto deserunt et.</p>
+  <div class="about-inner">
+    <div class="about-grid">
+      <div class="about-copy">
+        <h2>About Hearth&Hand</h2>
+        <p>We help busy households run smoothly — coordinating staff, managing events, and building simple systems so
+          your
+          home feels calm and cared for.</p>
+        <p>Rooted in Charleston, we tailor services for families and local businesses with discretion and thoughtful
+          attention.</p>
+
+        <!-- Visual anchor callout: grounded narrative element -->
+        <div class="about-callout">
+          <p><strong>We believe your home should feel like a sanctuary,</strong> not a source of stress. Hearth&Hand is
+            here to handle the details so you can focus on what matters.</p>
+        </div>
+      </div>
+
+      <aside class="about-values" aria-hidden="false">
+        <ul class="values-list">
+          <li>
+            <strong>Personalized Service</strong>
+            <span>Plans shaped around your family's rhythms and needs.</span>
+          </li>
+          <li>
+            <strong>Trusted Care</strong>
+            <span>Vetted, discreet professionals who respect your home.</span>
+          </li>
+          <li>
+            <strong>Calm & Organized</strong>
+            <span>Systems and routines that restore time and ease.</span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </div>
 </section>
 
 <section class="featured-services">
@@ -62,7 +97,7 @@
 
 <section class="cta-section">
   <h2>Ready to Simplify Your Life?</h2>
-  <p>Let's discuss how Heart&Hand can support you and your family. Schedule a consultation today.</p>
-  <a class="nav-cta btn" href="/consultation/">Request Consultation</a>
+  <p>Let's discuss how Hearth&Hand can support you and your family. Schedule a consultation today.</p>
+  <a class="nav-cta btn" href="/consultation/">Start a Conversation</a>
 </section>
 {% endblock %}

@@ -46,6 +46,18 @@
   --muted: var(--text-muted);
   --bg: var(--bg-light);
 
+  /* === SPACING / LAYOUT TOKENS === */
+  /* Use a small, consistent spacing system for vertical rhythm */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 20px;
+  --space-4: 28px;
+  --space-5: 40px;
+  --space-6: 64px;
+
+  /* Content max width used across hero and sections for horizontal alignment */
+  --content-max-width: 1100px;
+
   /* === RGBs === */
   --primary-1-rgb: 57, 68, 42;
   --primary-2-rgb: 70, 87, 50;
@@ -64,6 +76,11 @@
   /* subtle warm brown overlay */
   --hero-gold-glow: rgba(188, 156, 34, 0.08);
   /* ultra-subtle gold highlight */
+  --hero-light-bloom: rgba(255, 255, 255, 0.03);
+  /* soft white bloom for depth */
+  --hero-transition-overlay: linear-gradient(180deg, transparent 0%, transparent 70%, rgba(235, 231, 219, 0.4) 95%, rgba(235, 231, 219, 1) 100%);
+  /* gradient to ease into light section */
 
-  --header-height: 65px;
+  /* slightly taller header to feel more grounded */
+  --header-height: 72px;
 }
