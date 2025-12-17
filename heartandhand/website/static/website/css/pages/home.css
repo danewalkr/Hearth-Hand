@@ -1,5 +1,10 @@
 /* ===========================
    HOME PAGE STYLESHEET
+   
+   Z-Index Hierarchy:
+   - 0: Organic shapes (background decoration)
+   - 1: Hero texture overlay, hero content text, section headings
+   - 2: About inner container, CTA buttons
    =========================== */
 
 /* Hero Section — Dimensional gradient with multiple layers */
@@ -22,14 +27,32 @@
   border-radius: 0 0 8px 8px;
   min-height: 60vh;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   margin-top: calc(-1 * var(--header-height) + var(--space-2));
   /* Use flexbox to vertically center content within the hero section */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   /* Padding for horizontal spacing and breathing room */
-  padding: var(--space-4) var(--space-2);
+  padding: var(--space-4) var(--space-2) 0;
+}
+
+/* Hero transition shape — eases into about section */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 10%;
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(ellipse 180px 120px at 30% 40%, var(--primary-1) 0%, transparent 70%);
+  border-radius: 50% 40% 60% 50% / 60% 50% 40% 50%;
+  filter: blur(40px);
+  opacity: 0.08;
+  transform: rotate(-15deg);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Subtle texture layer for premium, refined feel */
@@ -47,21 +70,6 @@
   z-index: 1;
 }
 
-/* Organic soft shape behind content to reduce empty feeling (no image required) */
-.hero::after {
-  content: '';
-  position: absolute;
-  left: -10vw;
-  top: 10vh;
-  width: 60vw;
-  height: 60vh;
-  background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(139, 59, 41, 0.06) 0%, transparent 30%);
-  filter: blur(48px);
-  transform: rotate(-6deg);
-  pointer-events: none;
-  z-index: 0;
-}
-
 /* Container for hero content — centered within hero flexbox */
 .hero-content {
   position: relative;
@@ -72,6 +80,8 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-3);
+  flex: 1;
+  justify-content: center;
 }
 
 .hero h1 {
@@ -135,25 +145,159 @@
   letter-spacing: 0.2px;
 }
 
-/* About Section — visually distinct and intentional */
-.about {
-  padding: var(--space-6) 16px;
-  margin: 0 auto;
-  background: transparent;
+/* ===========================
+   ORGANIC SHAPE MOTIFS
+   ========================== */
+
+/* Reusable organic shape patterns for visual continuity */
+.organic-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Inner container creates a unified, elevated block for About
-   Strong visual containment: solid background, elevated shadow, rounded corners */
+/* Soft arc / leaf-inspired shape */
+.organic-shape.accent-primary {
+  opacity: 0.08;
+}
+
+.organic-shape.accent-secondary {
+  opacity: 0.06;
+}
+
+.organic-shape.accent-warm {
+  opacity: 0.07;
+}
+
+/* Bridge-to-about transition shape */
+.shape-bridge-about {
+  position: relative;
+  width: 250px;
+  height: 180px;
+  margin: var(--space-3) 0 0 auto;
+  background: radial-gradient(ellipse 140px 90px at 40% 50%, var(--secondary-1) 0%, transparent 65%);
+  border-radius: 60% 40% 50% 60% / 40% 60% 50% 40%;
+  filter: blur(35px);
+  opacity: 0.07;
+  transform: rotate(25deg);
+}
+
+/* About section background accent */
+.shape-about-accent {
+  position: absolute;
+  top: 50px;
+  right: -80px;
+  width: 280px;
+  height: 220px;
+  background: radial-gradient(ellipse 160px 110px at 50% 50%, var(--primary-1) 0%, transparent 68%);
+  border-radius: 45% 55% 65% 35% / 35% 65% 55% 45%;
+  filter: blur(45px);
+  opacity: 0.06;
+  transform: rotate(-20deg);
+}
+
+/* Featured Services section accent shape */
+.shape-services-accent {
+  position: absolute;
+  top: -60px;
+  left: 5%;
+  width: 320px;
+  height: 240px;
+  background: radial-gradient(ellipse 170px 115px at 30% 40%, var(--secondary-1) 0%, transparent 70%);
+  border-radius: 50% 40% 55% 45% / 45% 55% 40% 50%;
+  filter: blur(48px);
+  opacity: 0.07;
+  transform: rotate(12deg);
+}
+
+/* Divider shape for CTA section */
+.shape-cta-divider {
+  position: absolute;
+  bottom: -50px;
+  left: 15%;
+  width: 290px;
+  height: 200px;
+  background: radial-gradient(ellipse 155px 105px at 45% 45%, var(--primary-1) 0%, transparent 72%);
+  border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
+  filter: blur(42px);
+  opacity: 0.08;
+  transform: rotate(-25deg);
+}
+
+/* Hero Bridge — values bridge into about (uses same background as hero) */
+.hero-bridge {
+  width: 100%;
+  background: transparent;
+  padding: var(--space-5) 16px var(--space-4);
+  position: relative;
+  z-index: 1;
+}
+
+.bridge-values {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.bridge-value {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.bridge-value strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(235, 231, 219, 0.9);
+  letter-spacing: 0.2px;
+}
+
+.bridge-value span {
+  font-size: 0.9rem;
+  color: rgba(235, 231, 219, 0.7);
+  line-height: 1.5;
+}
+
+/* About Section — natural continuation using neutral background */
+.about {
+  padding: var(--space-5) 16px var(--space-6);
+  margin: 0 auto;
+  background: var(--bg);
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle organic shape accent in about section */
+.about::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  right: -100px;
+  width: 280px;
+  height: 220px;
+  background: radial-gradient(ellipse 160px 110px at 50% 50%, var(--primary-1) 0%, transparent 68%);
+  border-radius: 45% 55% 65% 35% / 35% 65% 55% 45%;
+  filter: blur(45px);
+  opacity: 0.06;
+  transform: rotate(-20deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Inner container creates a unified, elevated block for About */
 .about-inner {
   max-width: var(--content-max-width);
   margin: 0 auto;
   background: var(--bg);
   padding: var(--space-5) var(--space-4);
-  border-radius: 16px;
-
-  /* Stronger shadow for clear elevation and visual separation */
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
-  border: 5px solid rgba(57, 68, 42, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  border: none;
+  position: relative;
+  z-index: 2;
 }
 
 /* Two-column About layout: left text, right values/visuals */
@@ -208,14 +352,17 @@
   margin-bottom: var(--space-4);
   letter-spacing: -0.5px;
   text-align: left;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 .about p {
   color: var(--text);
-  line-height: 1.8;
-  font-size: 1rem;
+  line-height: 1.85;
+  font-size: 1.02rem;
   text-align: left;
-  margin: 0 0 var(--space-2) 0;
+  margin: 0 0 var(--space-3) 0;
+  max-width: 650px;
 }
 
 .about p:last-child {
@@ -244,77 +391,161 @@
   font-weight: 700;
 }
 
+
 /* Featured Services Section */
 .featured-services {
-  margin-top: 60px;
-  padding: 60px 16px;
-  background: var(--bg-light);
+  margin-top: 20px;
+  padding: 40px 16px 60px;
+  /* Transparent so the page-level gradient shows through */
+  background: transparent;
+  position: relative;
+  overflow: visible;
+}
+
+/* Subtle organic shape accent */
+.featured-services::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  width: 350px;
+  height: 280px;
+  background: radial-gradient(ellipse 180px 120px at 50% 50%, rgba(188, 156, 34, 0.02) 0%, transparent 70%);
+  border-radius: 50% 40% 55% 45% / 45% 55% 40% 50%;
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 0;
+  transform: rotate(-15deg);
 }
 
 .featured-services h2 {
   font-size: 2rem;
   color: var(--accent-1);
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   margin-top: 0;
   letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
 }
 
-/* CTA Section */
+/* CTA Section - Premium, intentional pause moment */
 .cta-section {
-  background: var(--accent-1);
-  color: white;
-  padding: 60px 16px;
+  /* CTA now uses warm terracotta palette (not green) */
+  background: var(--cta-terra-gradient);
+  color: var(--text-on-cta);
+  padding: 80px 16px;
   text-align: center;
-  margin-top: 0;
-  border-radius: 8px;
+  margin-top: 60px;
+  border-radius: 16px;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(57, 68, 42, 0.08);
+}
+
+/* PAGE-LEVEL GRADIENT: Use a pseudo-element on the `.content` wrapper
+   The pseudo-element starts at the top of the featured-services section
+   (value for `--services-offset` is set by JS at runtime) and ends
+   at the bottom of the main content (immediately before the footer). */
+.content {
+  position: relative;
+  z-index: 0;
+}
+
+.content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--services-offset, 9999px);
+  /* default off-screen until JS sets it */
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(180deg, var(--services-green-dark) 0%, var(--services-green-mid) 65%, var(--services-green-light) 100%);
+}
+
+/* Ensure the sections and cards render above the pseudo-element */
+.hero,
+.about,
+.featured-services,
+.cta-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle organic shape accent in CTA section */
+.cta-section::before {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 10%;
+  width: 350px;
+  height: 280px;
+  background: radial-gradient(ellipse 180px 130px at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  border-radius: 45% 55% 60% 40% / 50% 45% 55% 45%;
+  filter: blur(50px);
+  opacity: 1;
+  transform: rotate(-20deg);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .cta-section h2 {
   font-size: 2rem;
   margin: 0 0 24px 0;
   letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 .cta-section p {
   font-size: 1.1rem;
-  margin: 0 0 30px 0;
-  max-width: 600px;
+  margin: 0 0 40px 0;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  z-index: 1;
+  opacity: 0.95;
+  line-height: 1.7;
 }
 
-/* CTA Section Button — styled like hero CTA but with white background */
+/* CTA Section Button - elevated, soft, premium */
 .cta-section .nav-cta {
   display: inline-block;
   background: var(--bg-white);
   color: var(--primary-1);
-  padding: 16px 40px;
+  padding: 16px 48px;
   border-radius: 9999px;
   font-weight: 700;
   font-size: 1.05rem;
   border: 2px solid var(--bg-white);
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
   letter-spacing: 0.5px;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
 .cta-section .nav-cta:hover {
-  transform: translateY(-3px);
-  background: var(--secondary-1);
-  color: var(--text-on-dark);
-  border-color: var(--secondary-1);
-  box-shadow: 0 12px 32px rgba(139, 59, 41, 0.3);
+  transform: translateY(-4px);
+  background: rgba(235, 231, 219, 0.95);
+  color: var(--primary-1);
+  border-color: rgba(235, 231, 219, 0.95);
+  box-shadow: 0 20px 48px rgba(255, 255, 255, 0.25);
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 16px 80px;
+    padding: 60px 16px 0;
     min-height: auto;
     margin-top: calc(-1 * var(--header-height) + 16px);
   }
@@ -337,8 +568,30 @@
     font-size: 0.85rem;
   }
 
+  .hero-bridge {
+    padding: var(--space-3) 16px;
+  }
+
+  .bridge-values {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .bridge-value strong {
+    font-size: 0.95rem;
+  }
+
+  .bridge-value span {
+    font-size: 0.85rem;
+  }
+
   .about {
-    padding: 60px 16px;
+    padding: var(--space-4) 16px var(--space-5);
+  }
+
+  .about-inner {
+    padding: var(--space-4) var(--space-2);
+    border-radius: 8px;
   }
 
   .about h2 {
@@ -346,7 +599,8 @@
   }
 
   .about p {
-    text-align: left;
+    font-size: 1rem;
+    line-height: 1.8;
   }
 
   /* Stack About grid on small screens */
@@ -373,5 +627,359 @@
 
   .featured-services h2 {
     font-size: 1.5rem;
+  }
+
+  .services-carousel-container {
+    margin: 0 -16px;
+  }
+
+  .services-carousel {
+    padding: 0 16px;
+  }
+}
+
+/* ===========================
+   SERVICES CAROUSEL STYLES
+   ========================== */
+
+.services-carousel-container {
+  position: relative;
+  margin: 0;
+  padding: var(--space-4) 0;
+  background: linear-gradient(180deg, rgba(57, 68, 42, 0.02) 0%, rgba(188, 156, 34, 0.01) 100%);
+  overflow: visible;
+
+  /* Subtle organic shape backdrop */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    width: 350px;
+    height: 300px;
+    background: radial-gradient(ellipse 180px 130px at 50% 50%, rgba(188, 156, 34, 0.02) 0%, transparent 70%);
+    border-radius: 50% 40% 60% 50% / 60% 50% 40% 50%;
+    filter: blur(48px);
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(20deg);
+  }
+}
+
+.services-carousel {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: none;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--space-3) var(--space-4) var(--space-2);
+  position: relative;
+  z-index: 1;
+
+  /* Hide scrollbar completely - will be handled by wheel listener */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.services-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.service-card {
+  flex: 0 0 300px;
+  scroll-snap-align: none;
+  scroll-snap-stop: none;
+  height: 320px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+
+  /* Cards sit on top of the page-level gradient — no gradients on cards */
+  background: var(--bg-white);
+  border: 1px solid rgba(188, 156, 34, 0.10);
+  box-shadow: 0 6px 18px rgba(57, 68, 42, 0.08);
+}
+
+/* Radial accent layer - only on hover */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 15% 30%, rgba(188, 156, 34, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(139, 59, 41, 0.04) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Text elevation layer with subtle fade */
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(180deg, rgba(57, 68, 42, 0) 0%, rgba(57, 68, 42, 0.15) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.service-card:hover {
+  border-color: var(--secondary-1);
+  box-shadow: 0 12px 28px rgba(57, 68, 42, 0.15);
+  transform: translateY(-2px);
+  /* Keep hover elevation only — do not apply gradients to cards */
+  background: var(--bg-white);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: 2px;
+}
+
+.service-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-4);
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.service-card h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.15rem;
+  color: rgba(235, 231, 219, 0.95);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+}
+
+.service-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(235, 231, 219, 0.85);
+  line-height: 1.5;
+}
+
+/* Scroll Hint */
+.carousel-scroll-hint {
+  text-align: center;
+  margin-top: var(--space-3);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+  animation: fadeHint 3s ease-in-out infinite;
+}
+
+@keyframes fadeHint {
+
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ===========================
+   SERVICE MODAL STYLES
+   ========================== */
+
+/* Modal Backdrop */
+.service-modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(57, 68, 42, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1005;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-modal-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Modal Dialog */
+.service-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh;
+  background: var(--bg);
+  border: 1px solid rgba(188, 156, 34, 0.1);
+  border-radius: 12px;
+  padding: 0;
+  z-index: 1006;
+  box-shadow: 0 12px 32px rgba(57, 68, 42, 0.08);
+  opacity: 0;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+  margin: 0;
+}
+
+.service-modal[open] {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.service-modal::backdrop {
+  background: transparent;
+}
+
+.modal-content {
+  position: relative;
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: transparent;
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: transparent;
+  border: 1px solid rgba(188, 156, 34, 0.1);
+  border-radius: 6px;
+  font-size: 1.4rem;
+  color: rgba(57, 68, 42, 0.6);
+  cursor: pointer;
+  padding: 8px 12px;
+  line-height: 1;
+  transition: all 0.2s ease;
+  z-index: 10;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  background: rgba(188, 156, 34, 0.08);
+  color: var(--accent-1);
+  border-color: rgba(188, 156, 34, 0.2);
+}
+
+.modal-close:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: -2px;
+}
+
+.modal-body {
+  padding-top: 0;
+}
+
+.modal-title {
+  margin: 0 0 var(--space-3) 0;
+  font-size: 1.6rem;
+  color: var(--accent-1);
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+  font-weight: 600;
+}
+
+.modal-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(57, 68, 42, 0.85);
+  margin-bottom: var(--space-4);
+  font-weight: 400;
+}
+
+.service-details {
+  margin: var(--space-4) 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(188, 156, 34, 0.1);
+}
+
+.service-details ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.service-details li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: 0.9rem;
+  color: rgba(57, 68, 42, 0.8);
+  line-height: 1.6;
+}
+
+.service-details li::before {
+  content: '–';
+  color: var(--accent-1);
+  flex-shrink: 0;
+  font-weight: 400;
+  font-size: 1rem;
+  opacity: 0.6;
+}
+
+.modal-cta {
+  margin-top: var(--space-3);
+}
+
+.modal-cta .nav-cta {
+  display: inline-block;
+}
+
+/* Modal mobile responsiveness */
+@media (max-width: 768px) {
+  .service-modal {
+    width: 95%;
+    max-width: none;
+    max-height: 90vh;
+  }
+
+  .modal-content {
+    padding: var(--space-4);
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-description {
+    font-size: 0.95rem;
   }
 }

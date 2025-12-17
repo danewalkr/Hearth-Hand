@@ -1,4 +1,8 @@
 :root {
+  /* === TYPOGRAPHY === */
+  --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-accent: "Alex Brush", cursive;
+
   /* === BRAND CORE (LOCKED) === */
   --primary-1: #39442a;
   /* deep forest green */
@@ -19,6 +23,7 @@
 
   /* === LIGHT SURFACES (DE-EMPHASIZED) === */
   --bg-light: #ebe7db;
+
   /* slightly darker, less bright */
   --bg-white: #fdfcf9;
   /* softened white for cards */
@@ -83,4 +88,29 @@
 
   /* slightly taller header to feel more grounded */
   --header-height: 72px;
+
+  /* === NEW: Services / CTA palettes === */
+  /* Muted, warm earthy green used behind Services and Footer */
+  --services-green-light: #eff3ea;
+  /* very soft green-cream */
+  --services-green-mid: #bfcfbc;
+  /* muted sage */
+  --services-green-dark: #7f9778;
+  /* warm, muted forest */
+  --services-gradient: linear-gradient(180deg, var(--services-green-light) 0%, var(--services-green-mid) 50%, var(--services-green-dark) 100%);
+
+  /* Terracotta / muted warm accent for CTA and cards */
+  --cta-terra-light: #f6e9e4;
+  /* pale warm cream */
+  --cta-terra-mid: #d8a892;
+  /* soft terracotta */
+  --cta-terra-dark: #b56a4f;
+  /* deeper muted terracotta */
+  --cta-terra-gradient: linear-gradient(135deg, var(--cta-terra-light) 0%, var(--cta-terra-mid) 55%, var(--cta-terra-dark) 100%);
+  --text-on-cta: var(--bg-white);
+
+  /* Provide red-tone variables referenced elsewhere for consistency */
+  --secondary-red-light: #f1d9d4;
+  --secondary-red-mid: #d9a691;
+  --secondary-red-dark: #b56a4f;
 }

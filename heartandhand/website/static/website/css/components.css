@@ -1,5 +1,14 @@
 /* ===========================
    COMPONENTS STYLESHEET
+   
+   Z-Index Hierarchy:
+   - 0: Background shapes/decorative elements
+   - 1: Secondary content/shapes
+   - 2: Main text content
+   - 999: Mobile menu backdrop overlay
+   - 1000: Mobile navigation menu
+   - 1001: Hamburger menu button
+   - 1002: Sticky header
    =========================== */
 
 /* Header / Navigation Styles */
@@ -37,8 +46,9 @@
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
+  font-family: var(--font-accent);
   color: var(--text-on-dark);
   text-decoration: none;
 }
@@ -141,12 +151,13 @@
 
 /* Footer Styles */
 .site-footer {
-  background: #f8f8f8;
-  border-top: 1px solid #e0e0e0;
+  background: linear-gradient(180deg, rgba(57, 68, 42, 0.02) 0%, rgba(57, 68, 42, 0.04) 100%);
+  border-top: 1px solid rgba(188, 156, 34, 0.08);
   margin-top: 80px;
-  padding: 40px 0;
-  color: var(--muted);
+  padding: 64px 16px;
+  color: var(--text-muted);
   text-align: center;
+  position: relative;
 }
 
 .site-footer .container {
@@ -156,19 +167,23 @@
 }
 
 .site-footer p {
-  margin: 8px 0;
+  margin: 12px 0;
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .site-footer p:first-of-type {
   font-weight: 600;
   color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 16px;
 }
 
 /* Service Card Component */
 .service-card {
-  background: var(--bg);
-  border: 1px solid #e0e0e0;
+  /* Cards should not contain gradients; sit on top of page-level background */
+  background: var(--bg-white);
+  border: 1px solid rgba(188, 156, 34, 0.10);
   border-radius: 8px;
   padding: 24px;
   transition: all 0.3s ease;
@@ -176,8 +191,8 @@
 }
 
 .service-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  border-color: var(--accent-1);
+  box-shadow: 0 12px 28px rgba(57, 68, 42, 0.15);
+  border-color: rgba(188, 156, 34, 0.25);
   transform: translateY(-4px);
 }
 
@@ -190,6 +205,46 @@
 .service-card p {
   color: var(--muted);
   line-height: 1.6;
+}
+
+/* Carousel-specific overrides */
+.services-carousel .service-card {
+  border: 1px solid rgba(188, 156, 34, 0.10);
+  border-radius: 12px;
+  padding: 24px;
+  height: auto;
+  background: var(--bg-white);
+}
+
+.services-carousel .service-card:hover {
+  border-color: rgba(188, 156, 34, 0.25);
+  box-shadow: 0 12px 28px rgba(57, 68, 42, 0.15);
+  transform: translateY(-2px);
+  background:
+    /* Subtle diagonal texture overlay */
+    linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%, rgba(188, 156, 34, 0.015) 100%),
+    /* Radial glow from top-center (increased bloom) */
+    radial-gradient(ellipse 250px 120px at 50% 20%, rgba(255, 255, 255, 0.07) 0%, transparent 50%),
+    /* Radial glow from top-left (warm red accent - deepened on hover) */
+    radial-gradient(ellipse 200px 150px at 15% 10%, var(--secondary-red-dark) 0%, transparent 40%),
+    /* Radial glow from bottom-right (warm gold accent) */
+    radial-gradient(ellipse 250px 180px at 85% 95%, rgba(188, 156, 34, 0.1) 0%, transparent 45%),
+    /* Primary gradient: even more red saturation on hover */
+    linear-gradient(135deg, color-mix(in srgb, var(--secondary-1) 55%, white) 0%, color-mix(in srgb, var(--secondary-1) 75%, white) 50%, var(--secondary-1) 100%);
+}
+
+.services-carousel .service-card h3 {
+  color: var(--accent-1);
+  font-size: 1.2rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.services-carousel .service-description {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 /* Hero Component — Handled in page-specific home.css */

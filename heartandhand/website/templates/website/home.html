@@ -11,11 +11,29 @@
 <section class="hero">
   <div class="hero-content">
     <h1>Household management that feels like family</h1>
-    <p>Reliable household and event services for Charleston families — organization, calm, and trusted care when you
-      need it most.</p>
+    <p>Reliable household and event services for Charleston families organization, calm, and trusted care when you need
+      it most.</p>
     <div class="hero-cta-wrapper">
       <a class="hero-cta" href="/consultation/">Start a Conversation</a>
       <p class="hero-subtext">Local support for families and small businesses</p>
+    </div>
+  </div>
+
+  <!-- Hero Bridge: Values bridge into about -->
+  <div class="hero-bridge">
+    <div class="bridge-values">
+      <div class="bridge-value">
+        <strong>Personalized Service</strong>
+        <span>Plans shaped around your family.</span>
+      </div>
+      <div class="bridge-value">
+        <strong>Trusted Care</strong>
+        <span>Vetted professionals you can rely on.</span>
+      </div>
+      <div class="bridge-value">
+        <strong>Calm & Organized</strong>
+        <span>Systems that restore ease.</span>
+      </div>
     </div>
   </div>
 </section>
@@ -24,9 +42,8 @@
   <div class="about-inner">
     <div class="about-grid">
       <div class="about-copy">
-        <h2>About Hearth&Hand</h2>
-        <p>We help busy households run smoothly — coordinating staff, managing events, and building simple systems so
-          your
+        <h2>Here's how we make it feel like family</h2>
+        <p>We help busy households run smoothly coordinating staff, managing events, and building simple systems so your
           home feels calm and cared for.</p>
         <p>Rooted in Charleston, we tailor services for families and local businesses with discretion and thoughtful
           attention.</p>
@@ -58,46 +75,101 @@
   </div>
 </section>
 
-<section class="featured-services">
-  <h2>Our Services</h2>
-  <div class="grid grid-3">
-    <div class="service-card">
-      <h3>Household Management</h3>
-      <p>Comprehensive management of your home, from staff coordination to maintenance oversight and organization
-        systems that work for you.</p>
+<div class="body-gradient">
+  <section class="featured-services" id="services">
+    <h2>Our Services</h2>
+
+    <!-- Services Carousel Container -->
+    <div class="services-carousel-container">
+      <div class="services-carousel" id="servicesCarousel">
+        <!-- Household Management -->
+        <div class="service-card" data-service="household-management" role="button" tabindex="0">
+          <div class="service-card-content">
+            <h3>Household Management</h3>
+            <p class="service-description">Staff coordination & home organization</p>
+          </div>
+        </div>
+
+        <!-- Event Planning -->
+        <div class="service-card" data-service="event-planning" role="button" tabindex="0">
+          <div class="service-card-content">
+            <h3>Event Planning</h3>
+            <p class="service-description">Planning & coordination for all occasions</p>
+          </div>
+        </div>
+
+        <!-- Personal Chef Services -->
+        <div class="service-card" data-service="personal-chef" role="button" tabindex="0">
+          <div class="service-card-content">
+            <h3>Personal Chef Services</h3>
+            <p class="service-description">Custom meal planning & preparation</p>
+          </div>
+        </div>
+
+        <!-- Travel Coordination -->
+        <div class="service-card" data-service="travel-coordination" role="button" tabindex="0">
+          <div class="service-card-content">
+            <h3>Travel Coordination</h3>
+            <p class="service-description">End-to-end travel planning & logistics</p>
+          </div>
+        </div>
+
+        <!-- Shopping & Errands -->
+        <div class="service-card" data-service="shopping-errands" role="button" tabindex="0">
+          <div class="service-card-content">
+            <h3>Shopping & Errands</h3>
+            <p class="service-description">Personal shopping with attention to detail</p>
+          </div>
+        </div>
+
+        <!-- Custom Solutions -->
+        <div class="service-card" data-service="custom-solutions" role="button" tabindex="0">
+          <div class="service-card-content">
+            <h3>Custom Solutions</h3>
+            <p class="service-description">Specialized services tailored to you</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="service-card">
-      <h3>Event Planning</h3>
-      <p>Full-service planning and coordination for gatherings of all sizes, from intimate dinners to formal
-        celebrations.</p>
+    <!-- Scroll Hint (appears on mobile/first load) -->
+    <div class="carousel-scroll-hint" id="scrollHint">
+      <span>Scroll to explore</span>
     </div>
+  </section>
 
-    <div class="service-card">
-      <h3>Personal Chef Services</h3>
-      <p>Custom meal planning and preparation tailored to your family's dietary preferences and entertaining needs.</p>
+  <!-- Service Detail Modal -->
+  <div class="service-modal-backdrop" id="serviceModalBackdrop" role="presentation"></div>
+  <dialog class="service-modal" id="serviceModal" aria-labelledby="serviceModalTitle"
+    aria-describedby="serviceModalDescription">
+    <div class="modal-content">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close service details">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <div class="modal-body">
+        <h2 id="serviceModalTitle" class="modal-title">Service Title</h2>
+
+        <div id="serviceModalDescription" class="modal-description">
+          <!-- Description populated by JS -->
+        </div>
+
+        <!-- Service Details (optional bullet list) -->
+        <div id="serviceDetails" class="service-details">
+          <!-- Details populated by JS -->
+        </div>
+
+        <div class="modal-cta">
+          <a href="/consultation/" class="nav-cta btn">Schedule a Consultation</a>
+        </div>
+      </div>
     </div>
+  </dialog>
 
-    <div class="service-card">
-      <h3>Travel Coordination</h3>
-      <p>End-to-end travel planning and logistics management for seamless vacations and business trips.</p>
-    </div>
-
-    <div class="service-card">
-      <h3>Shopping & Errands</h3>
-      <p>Personal shopping and errand services handled with attention to detail and your preferences.</p>
-    </div>
-
-    <div class="service-card">
-      <h3>Custom Solutions</h3>
-      <p>Specialized services tailored specifically to your unique needs and lifestyle requirements.</p>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <h2>Ready to Simplify Your Life?</h2>
-  <p>Let's discuss how Hearth&Hand can support you and your family. Schedule a consultation today.</p>
-  <a class="nav-cta btn" href="/consultation/">Start a Conversation</a>
-</section>
+  <section class="cta-section">
+    <h2>Ready to Simplify Your Life?</h2>
+    <p>Let's discuss how Hearth&Hand can support you and your family. Schedule a consultation today.</p>
+    <a class="nav-cta btn" href="/consultation/">Start a Conversation</a>
+  </section>
+</div>
 {% endblock %}
