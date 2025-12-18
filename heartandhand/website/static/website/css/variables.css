@@ -90,22 +90,22 @@
   --header-height: 72px;
 
   /* === NEW: Services / CTA palettes === */
-  /* Muted, warm earthy green used behind Services and Footer */
-  --services-green-light: #eff3ea;
-  /* very soft green-cream */
-  --services-green-mid: #bfcfbc;
-  /* muted sage */
-  --services-green-dark: #7f9778;
-  /* warm, muted forest */
-  --services-gradient: linear-gradient(180deg, var(--services-green-light) 0%, var(--services-green-mid) 50%, var(--services-green-dark) 100%);
+  /* Deep, grounded forest greens matching hero vibe */
+  --services-green-light: #3d5239;
+  /* deep olive-green */
+  --services-green-mid: #2d3d27;
+  /* darker forest green */
+  --services-green-dark: #1a2415;
+  /* ultra-deep forest (near-black) */
+  --services-gradient: linear-gradient(180deg, var(--services-green-dark) 0%, var(--services-green-mid) 50%, var(--services-green-light) 100%);
 
-  /* Terracotta / muted warm accent for CTA and cards */
-  --cta-terra-light: #f6e9e4;
-  /* pale warm cream */
-  --cta-terra-mid: #d8a892;
-  /* soft terracotta */
-  --cta-terra-dark: #b56a4f;
-  /* deeper muted terracotta */
+  /* Richer, warmer terracotta with deeper clay tones */
+  --cta-terra-light: #a0512d;
+  /* warm terracotta */
+  --cta-terra-mid: #8b3b29;
+  /* deeper warm terracotta */
+  --cta-terra-dark: #6b2817;
+  /* deep clay/oxide tone */
   --cta-terra-gradient: linear-gradient(135deg, var(--cta-terra-light) 0%, var(--cta-terra-mid) 55%, var(--cta-terra-dark) 100%);
   --text-on-cta: var(--bg-white);
 

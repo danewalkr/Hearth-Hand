@@ -297,7 +297,7 @@
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
   border: none;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 /* Two-column About layout: left text, right values/visuals */
@@ -437,35 +437,40 @@
   padding: 80px 16px;
   text-align: center;
   margin-top: 60px;
-  border-radius: 16px;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-bottom: 60px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 16px 48px rgba(57, 68, 42, 0.08);
+  box-shadow: none;
+  border-radius: 0;
 }
 
-/* PAGE-LEVEL GRADIENT: Use a pseudo-element on the `.content` wrapper
-   The pseudo-element starts at the top of the featured-services section
-   (value for `--services-offset` is set by JS at runtime) and ends
-   at the bottom of the main content (immediately before the footer). */
+/* PAGE-LEVEL GRADIENT: Use a pseudo-element on the `.body-gradient` wrapper
+   Creates a full-width background gradient behind services and CTA sections */
+.body-gradient {
+  position: relative;
+  z-index: 0;
+  margin-bottom: 0;
+  padding-bottom: 120px;
+}
+
+.body-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(180deg, var(--services-green-dark) 0%, var(--services-green-mid) 65%, var(--services-green-light) 100%);
+}
+
 .content {
   position: relative;
   z-index: 0;
-}
-
-.content::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: var(--services-offset, 9999px);
-  /* default off-screen until JS sets it */
-  bottom: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: linear-gradient(180deg, var(--services-green-dark) 0%, var(--services-green-mid) 65%, var(--services-green-light) 100%);
 }
 
 /* Ensure the sections and cards render above the pseudo-element */
@@ -474,7 +479,7 @@
 .featured-services,
 .cta-section {
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 /* Subtle organic shape accent in CTA section */
@@ -817,7 +822,7 @@
   height: 100%;
   background: rgba(57, 68, 42, 0.5);
   backdrop-filter: blur(4px);
-  z-index: 1005;
+  z-index: 1500;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -841,7 +846,7 @@
   border: 1px solid rgba(188, 156, 34, 0.1);
   border-radius: 12px;
   padding: 0;
-  z-index: 1006;
+  z-index: 1501;
   box-shadow: 0 12px 32px rgba(57, 68, 42, 0.08);
   opacity: 0;
   transition: all 0.3s ease;
