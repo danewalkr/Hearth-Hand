@@ -71,7 +71,6 @@ export function initHome() {
   const serviceDetails = document.getElementById('serviceDetails');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
   const carousel = document.getElementById('servicesCarousel');
-  const scrollHint = document.getElementById('scrollHint');
   const serviceCards = document.querySelectorAll('.service-card');
 
   if (!carousel || !modal) return;
@@ -91,6 +90,14 @@ export function initHome() {
         openServiceModal(serviceKey);
       }
     });
+
+    // Prevent "Learn More" buttons from navigating
+    const learnMoreBtn = card.querySelector('.service-card-link');
+    if (learnMoreBtn) {
+      learnMoreBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+      });
+    }
   });
 
   function openServiceModal(serviceKey) {
@@ -134,10 +141,45 @@ export function initHome() {
     }
   });
 
+  // Progress indicator for carousel
+  const progressBar = document.getElementById('carouselProgressBar');
+  if (progressBar) {
+    function updateProgressBar() {
+      const scrollLeft = carousel.scrollLeft;
+      const scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+      const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    }
+
+    carousel.addEventListener('scroll', updateProgressBar);
+    updateProgressBar();
+    window.addEventListener('resize', updateProgressBar);
+  }
+
   // Carousel behavior
+  // Simpler smooth wheel handling using native smooth behavior for reliability.
+  function canScrollHorizontally() {
+    return carousel.scrollWidth > carousel.clientWidth + 1;
+  }
+
   carousel.addEventListener('wheel', function(e) {
-    e.preventDefault();
-    carousel.scrollLeft += e.deltaY;
+    const delta = e.deltaX || e.deltaY || 0;
+    if (!canScrollHorizontally()) return; // nothing to do
+
+    const atStart = carousel.scrollLeft <= 0;
+    const atEnd = Math.ceil(carousel.scrollLeft + carousel.clientWidth) >= carousel.scrollWidth - 1;
+    const scrollingRight = delta > 0;
+    const scrollingLeft = delta < 0;
+
+    if ((scrollingRight && !atEnd) || (scrollingLeft && !atStart)) {
+      e.preventDefault();
+      const target = Math.max(0, Math.min(carousel.scrollWidth - carousel.clientWidth, carousel.scrollLeft + delta * 2));
+      if ('scrollBehavior' in document.documentElement.style) {
+        carousel.scrollTo({ left: target, behavior: 'smooth' });
+      } else {
+        carousel.scrollLeft = target;
+      }
+    }
   }, { passive: false });
 
   // Drag to scroll
@@ -163,21 +205,9 @@ export function initHome() {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - carousel.offsetLeft;
-    const walk = (x - startX) * 2;
+    const walk = (x - startX) * 0.9; // gentle
     carousel.scrollLeft = scrollLeft - walk;
   });
-
-  // Hide scroll hint after first scroll
-  let hasScrolled = false;
-  carousel.addEventListener('scroll', function() {
-    if (!hasScrolled && carousel.scrollLeft > 0) {
-      hasScrolled = true;
-      if (scrollHint) {
-        scrollHint.style.opacity = '0';
-        setTimeout(() => { scrollHint.style.display = 'none'; }, 300);
-      }
-    }
-  }, { once: false });
 
   // update services offset for page-level gradient
   function updateServicesOffset() {
@@ -191,23 +221,4 @@ export function initHome() {
   updateServicesOffset();
   window.addEventListener('resize', updateServicesOffset);
   setTimeout(updateServicesOffset, 250);
-
-  // Scrollbar indicator (if present)
-  const carouselIndicator = document.querySelector('.services-carousel');
-  const scrollbarThumb = document.querySelector('.carousel-scrollbar-thumb');
-
-  if (carouselIndicator && scrollbarThumb) {
-    function updateScrollbar() {
-      const scrollLeft = carouselIndicator.scrollLeft;
-      const scrollWidth = carouselIndicator.scrollWidth - carouselIndicator.clientWidth;
-      const percentage = (scrollLeft / scrollWidth) * 100;
-      const thumbWidth = (carouselIndicator.clientWidth / carouselIndicator.scrollWidth) * 100;
-      scrollbarThumb.style.left = percentage + '%';
-      scrollbarThumb.style.width = Math.max(thumbWidth, 20) + '%';
-    }
-
-    carouselIndicator.addEventListener('scroll', updateScrollbar);
-    updateScrollbar();
-    window.addEventListener('resize', updateScrollbar);
-  }
 }

@@ -76,65 +76,89 @@
 </section>
 
 <div class="body-gradient">
-  <section class="featured-services" id="services">
-    <h2>Our Services</h2>
+  <section class="services-hero" id="servicesHero">
+    <div class="services-hero-overlay"></div>
+    <div class="services-hero-content">
+      <h1>Our Services</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </section>
 
-    <!-- Services Carousel Container -->
+  <section class="featured-services" id="services">
+    <!-- Services Carousel Container with Overlap -->
     <div class="services-carousel-container">
       <div class="services-carousel" id="servicesCarousel">
         <!-- Household Management -->
         <div class="service-card" data-service="household-management" role="button" tabindex="0">
+          <div class="service-card-image"
+            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
           <div class="service-card-content">
             <h3>Household Management</h3>
             <p class="service-description">Staff coordination & home organization</p>
+            <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
         <!-- Event Planning -->
         <div class="service-card" data-service="event-planning" role="button" tabindex="0">
+          <div class="service-card-image"
+            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
           <div class="service-card-content">
             <h3>Event Planning</h3>
             <p class="service-description">Planning & coordination for all occasions</p>
+            <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
         <!-- Personal Chef Services -->
         <div class="service-card" data-service="personal-chef" role="button" tabindex="0">
+          <div class="service-card-image"
+            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
           <div class="service-card-content">
             <h3>Personal Chef Services</h3>
             <p class="service-description">Custom meal planning & preparation</p>
+            <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
         <!-- Travel Coordination -->
         <div class="service-card" data-service="travel-coordination" role="button" tabindex="0">
+          <div class="service-card-image"
+            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
           <div class="service-card-content">
             <h3>Travel Coordination</h3>
             <p class="service-description">End-to-end travel planning & logistics</p>
+            <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
         <!-- Shopping & Errands -->
         <div class="service-card" data-service="shopping-errands" role="button" tabindex="0">
+          <div class="service-card-image"
+            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
           <div class="service-card-content">
             <h3>Shopping & Errands</h3>
             <p class="service-description">Personal shopping with attention to detail</p>
+            <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
         <!-- Custom Solutions -->
         <div class="service-card" data-service="custom-solutions" role="button" tabindex="0">
+          <div class="service-card-image"
+            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
           <div class="service-card-content">
             <h3>Custom Solutions</h3>
             <p class="service-description">Specialized services tailored to you</p>
+            <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Scroll Hint (appears on mobile/first load) -->
-    <div class="carousel-scroll-hint" id="scrollHint">
-      <span>Scroll to explore</span>
+    <!-- Progress Indicator -->
+    <div class="carousel-progress-indicator">
+      <div class="carousel-progress-bar" id="carouselProgressBar"></div>
     </div>
   </section>
 
