@@ -1,3 +1,7 @@
-fix body gradiants
-ask copilot to review everything about our home page, and verify the files
-fix it so that the our services popup blur isint hidden behind the about container at the top
+- update service cards
+- add our services hero
+- add yellow subtle scrollbar at the bottom, additionally make mouse scrolling work
+
+- add testimonial header
+- create banner container
+- create shape top left corner

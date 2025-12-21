@@ -20,7 +20,7 @@
   height: var(--header-height);
   position: sticky;
   top: 0;
-  z-index: 1002;
+  z-index: 1010;
   /* slightly stronger shadow to anchor the nav visually */
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
@@ -51,6 +51,8 @@
   font-family: var(--font-accent);
   color: var(--text-on-dark);
   text-decoration: none;
+  position: relative;
+  z-index: 1012;
 }
 
 .logo:hover {
@@ -286,38 +288,54 @@
 /* Mobile Menu Button */
 .mobile-menu-btn {
   display: none;
-  flex-direction: column;
-  gap: 6px;
+  position: relative;
+  width: 36px;
+  height: 28px;
   background: none;
   border: none;
+  padding: 6px;
   cursor: pointer;
-  padding: 8px 12px;
   z-index: 1001;
 }
 
 .mobile-menu-btn span {
-  display: block;
-  width: 24px;
+  position: absolute;
+  left: 6px;
+  right: 6px;
   height: 3px;
   background: var(--text-on-dark);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transform-origin: center;
+  transition: transform 260ms cubic-bezier(.2, .9, .2, 1), opacity 200ms ease, top 260ms cubic-bezier(.2, .9, .2, 1);
+}
+
+.mobile-menu-btn span:nth-child(1) {
+  top: 6px;
+}
+
+.mobile-menu-btn span:nth-child(2) {
+  top: calc(50% - 1.5px);
+}
+
+.mobile-menu-btn span:nth-child(3) {
+  top: 22px;
 }
 
 /* Mobile Navigation Menu */
 .mobile-nav-menu {
   display: none;
   position: fixed;
-  top: var(--header-height);
+  /* anchor to very top but pad for header so there is no visual gap */
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  padding-top: var(--header-height);
   background: var(--primary-1);
   z-index: 1000;
+  /* place under header so hamburger stays visible */
   overflow-y: auto;
-  animation: slideDown 0.3s ease forwards;
   margin-top: 0;
-  padding-top: 0;
 }
 
 @keyframes slideDown {
@@ -345,7 +363,7 @@
 }
 
 .mobile-nav-menu.closing {
-  animation: slideUp 0.3s ease forwards;
+  animation: slideUp 0.28s ease forwards;
 }
 
 .mobile-nav-menu nav ul {
@@ -357,7 +375,12 @@
 }
 
 .mobile-nav-menu nav li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  /* prepare animated entrance */
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform 300ms cubic-bezier(.2, .9, .2, 1), opacity 260ms ease;
+  transition-delay: var(--menu-delay, 0ms);
 }
 
 .mobile-nav-menu nav li:last-child {
@@ -371,6 +394,12 @@
   text-decoration: none;
   font-size: 1.05rem;
   transition: all 0.2s ease;
+}
+
+/* When the item should animate in, this class is added via JS */
+.mobile-nav-menu nav li.animate-in {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .mobile-nav-menu nav a:hover {
@@ -392,17 +421,26 @@
   color: var(--text-dark);
 }
 
+.menu-open .site-header {
+  /* hide the header seam while the menu is open */
+  border-bottom-color: transparent;
+}
+
 /* Mobile Menu Button Active State */
 .mobile-menu-btn.active span:nth-child(1) {
-  transform: rotate(45deg) translate(10px, 10px);
+  top: calc(50% - 1.5px);
+  transform: rotate(45deg);
 }
 
 .mobile-menu-btn.active span:nth-child(2) {
   opacity: 0;
+  transform: scaleX(0.2);
 }
 
 .mobile-menu-btn.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(8px, -8px);
+  bottom: auto;
+  top: calc(50% - 1.5px);
+  transform: rotate(-45deg);
 }
 
 /* Show mobile menu button and menu on mobile */
@@ -415,6 +453,8 @@
     display: block;
   }
 }
+
+/* mobile in-menu close button removed — using animated hamburger X instead */
 
 .content {
   min-height: calc(100vh - 200px);
