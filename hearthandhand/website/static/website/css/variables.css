@@ -113,4 +113,13 @@
   --secondary-red-light: #f1d9d4;
   --secondary-red-mid: #d9a691;
   --secondary-red-dark: #b56a4f;
+
+  /* === FOOTER === */
+  --footer-bg: #2b2f25;
+  /* warm olive-charcoal */
+  --footer-border: rgba(255, 255, 255, 0.08);
+  --footer-text: var(--text-on-dark);
+  --footer-muted: var(--text-muted-on-dark);
+  --footer-link-hover: var(--accent-gold);
+
 }
