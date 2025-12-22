@@ -221,4 +221,120 @@ export function initHome() {
   updateServicesOffset();
   window.addEventListener('resize', updateServicesOffset);
   setTimeout(updateServicesOffset, 250);
+
+  // Testimonials (single-card, SaaS style)
+(function () {
+  const testimonials = [
+    {
+      name: 'Alex Morgan',
+      role: 'Charleston, Homeowner',
+      quote:
+        "Hearth & Hand took the weight off our shoulders — thoughtful, reliable, and discreet service."
+    },
+    {
+      name: 'Jordan Lee',
+      role: 'Small Business Owner',
+      quote:
+        "Their planning and attention to detail made our event effortless. Highly recommended."
+    },
+    {
+      name: 'Casey Nguyen',
+      role: 'Working Parent',
+      quote:
+        "Consistently professional and calm — they helped restore order and time to our household."
+    }
+  ];
+
+  // Elements
+  const card = document.querySelector('.testimonial-card');
+  if (!card) return;
+
+  const quoteEl = card.querySelector('.testimonial-quote');
+  const nameEl = card.querySelector('.testimonial-name');
+  const roleEl = card.querySelector('.testimonial-role');
+
+  const prevBtn = card.querySelector('.test-arrow.prev');
+  const nextBtn = card.querySelector('.test-arrow.next');
+  const dotsWrap = card.querySelector('.test-dots');
+
+  let idx = 0;
+  let isAnimating = false;
+
+  /* ---------------------------
+     Helpers
+  ---------------------------- */
+
+  function renderDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+
+    testimonials.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.setAttribute('aria-label', `Show testimonial ${i + 1}`);
+      if (i === idx) dot.classList.add('active');
+
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+  }
+
+  function updateDots() {
+    if (!dotsWrap) return;
+    [...dotsWrap.children].forEach((dot, i) => {
+      dot.classList.toggle('active', i === idx);
+    });
+  }
+
+  function updateContent(newIndex) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const t = testimonials[newIndex];
+
+    card.classList.add('is-fading');
+
+    setTimeout(() => {
+      quoteEl.textContent = `“${t.quote}”`;
+      nameEl.textContent = t.name;
+      roleEl.textContent = t.role;
+
+      card.classList.remove('is-fading');
+      updateDots();
+      isAnimating = false;
+    }, 250);
+  }
+
+  function goTo(i) {
+    idx = (i + testimonials.length) % testimonials.length;
+    updateContent(idx);
+  }
+
+  function next() {
+    goTo(idx + 1);
+  }
+
+  function prev() {
+    goTo(idx - 1);
+  }
+
+  /* ---------------------------
+     Events
+  ---------------------------- */
+
+  prevBtn?.addEventListener('click', prev);
+  nextBtn?.addEventListener('click', next);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+
+  /* ---------------------------
+     Init
+  ---------------------------- */
+
+  renderDots();
+  updateContent(0);
+})();
+
 }

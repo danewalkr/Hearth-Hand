@@ -476,20 +476,24 @@
 
 /* CTA Section - Premium, intentional pause moment */
 .cta-section {
-  /* CTA now uses warm terracotta palette (not green) */
   background: var(--cta-terra-gradient);
   color: var(--text-on-cta);
-  padding: 80px 16px;
+
+  max-width: 900px;
+  margin: 0 auto 0;
+  padding: 80px 72px 72px;
+
   text-align: center;
-  margin-top: 60px;
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 0;
   position: relative;
   overflow: hidden;
-  box-shadow: none;
+
   border-radius: 25% 10%;
+
+  box-shadow:
+    0 32px 70px rgba(0, 0, 0, .12),
+    0 8px 20px rgba(0, 0, 0, .06);
 }
+
 
 /* PAGE-LEVEL GRADIENT: Use a pseudo-element on the `.body-gradient` wrapper
    Creates a full-width background gradient behind services and CTA sections */
@@ -1134,5 +1138,262 @@
     top: 16px;
     right: 16px;
     padding: 8px 12px;
+  }
+}
+
+/* ===========================
+   SAAS TESTIMONIALS SECTION
+   =========================== */
+
+.testimonials-section {
+  padding: 4rem 16px;
+  background: linear-gradient(180deg,
+      var(--bg, #f7f6f2) 0%,
+      rgba(235, 231, 219, 0.25) 100%);
+}
+
+.saas-testimonials .testimonials-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Heading */
+.testimonials-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-1, #2e2e2e);
+  margin-bottom: 2rem;
+  margin-top: 0;
+  letter-spacing: -0.3px;
+}
+
+/* ===========================
+   TESTIMONIAL SECTION
+   =========================== */
+
+.saas-testimonials {
+  padding: 5rem 16px 6rem;
+  padding-bottom: 3rem;
+}
+
+.testimonial-card {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  margin-bottom: 2.5rem;
+  background: #fff;
+  border-radius: 26px;
+  padding: 72px 72px 64px;
+  min-height: 360px;
+  padding: 80px 72px 72px;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  box-shadow:
+    0 32px 70px rgba(0, 0, 0, .1),
+    0 8px 20px rgba(0, 0, 0, .05);
+
+  overflow: hidden;
+}
+
+.saas-testimonials .testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.12),
+    0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* ===========================
+   ACCENT SHAPE (NEW)
+   =========================== */
+
+.card-accent {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    /* curved cut */
+    radial-gradient(120% 100% at -20% 50%,
+      var(--secondary-1) 0%,
+      var(--secondary-1) 40%,
+      transparent 60%),
+    /* soft blend */
+    linear-gradient(90deg,
+      rgba(0, 0, 0, 0.04),
+      transparent 50%);
+
+  opacity: 0.25;
+}
+
+
+
+/* ===========================
+   CONTENT
+   =========================== */
+
+.card-content {
+  margin-left: 48px;
+  max-width: 600px;
+}
+
+
+.testimonial-quote {
+  font-size: 1.35rem;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-meta {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+
+.testimonial-name {
+  font-weight: 700;
+}
+
+.testimonial-role {
+  opacity: 0.6;
+}
+
+/* ===========================
+   ARROWS (INSIDE CARD)
+   =========================== */
+
+.test-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+  cursor: pointer;
+  font-size: 22px;
+  z-index: 3;
+  transition: background .25s, color .25s, transform .15s;
+  opacity: 0.85;
+
+}
+
+.test-arrow.prev {
+  left: 20px;
+}
+
+.test-arrow.next {
+  right: 20px;
+}
+
+.test-arrow:hover {
+  background: var(--secondary-1);
+  color: #fff;
+  opacity: 1;
+}
+
+.test-arrow:active {
+  transform: translateY(-50%) scale(.95);
+}
+
+.testimonial-card.is-fading .card-content {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.card-content {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+
+/* ===========================
+   DOTS
+   =========================== */
+
+.test-dots {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.test-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, .25);
+}
+
+.test-dots button.active {
+  background: rgba(0, 0, 0, .75);
+  transform: scale(1.3);
+}
+
+/* ===========================
+   MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 48px 28px 64px;
+    min-height: unset;
+    text-align: center;
+  }
+
+  .card-accent {
+    background:
+      radial-gradient(140% 90% at 50% -20%,
+        var(--secondary-1),
+        transparent 65%);
+  }
+
+  .testimonial-meta {
+    justify-content: center;
+  }
+
+  .card-content {
+    margin-left: 0;
+  }
+
+  .card-accent {
+    background:
+      radial-gradient(140% 80% at 50% -20%,
+        var(--secondary-1) 0%,
+        transparent 65%);
+    opacity: 0.2;
+  }
+
+  .test-arrow {
+    top: auto;
+    bottom: 20px;
+    transform: none;
+  }
+
+  .test-arrow.prev {
+    left: 24px;
+  }
+
+  .test-arrow.next {
+    right: 24px;
+  }
+
+  .test-dots {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 20px;
+  }
+
+  .cta-section {
+    padding: 56px 28px;
+    margin-bottom: 4rem;
+    min-height: unset;
   }
 }
