@@ -1,5 +1,4 @@
 -- END OF PAGE WORK --
-- adjust testimonial shape instead of glow
 - Re-adjust wording
   - adjust denises words
 - adjust stock photos

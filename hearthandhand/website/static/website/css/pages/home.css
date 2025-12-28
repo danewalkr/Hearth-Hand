@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: center;
   /* Padding for horizontal spacing and breathing room */
-  padding: var(--space-4) var(--space-2) 0;
+  padding: var(--space-5) var(--space-2) var(--space-4);
 }
 
 /* Hero transition shape — eases into about section */
@@ -79,14 +79,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
   flex: 1;
   justify-content: center;
 }
 
 .hero h1 {
   font-size: clamp(2rem, 6vw, 3.2rem);
-  margin: 0;
+  margin: 0 0 var(--space-2) 0;
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.5px;
@@ -228,7 +228,7 @@
 .hero-bridge {
   width: 100%;
   background: transparent;
-  padding: var(--space-5) 16px var(--space-4);
+  padding: var(--space-6) 24px var(--space-4);
   position: relative;
   z-index: 1;
 }
@@ -237,15 +237,16 @@
   max-width: var(--content-max-width);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-4);
   text-align: center;
+  align-items: center;
 }
 
 .bridge-value {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .bridge-value strong {
@@ -263,7 +264,7 @@
 
 /* About Section — natural continuation using neutral background */
 .about {
-  padding: 10vh 16px 10vh;
+  padding: var(--space-6) 16px;
   margin: 0 auto;
   background: var(--bg);
   position: relative;
@@ -292,7 +293,7 @@
   max-width: var(--content-max-width);
   margin: 0 auto;
   background: var(--bg);
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-6) var(--space-5);
   border-radius: 12px;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
   border: none;
@@ -304,15 +305,18 @@
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-5);
+  grid-template-areas: 'copy values';
+  gap: var(--space-6);
   align-items: start;
 }
 
 .about-copy {
+  grid-area: copy;
   padding: 0;
 }
 
 .about-values {
+  grid-area: values;
   /* Make values visually part of the same block — no separate card */
   background: transparent;
   padding: 0;
@@ -326,7 +330,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .values-list li {
@@ -408,8 +412,10 @@
   align-items: center;
   justify-content: center;
   margin-top: calc(-1 * var(--header-height) + var(--space-2));
+  padding-bottom: var(--space-1);
   border-radius: 0 0 8px 8px;
   overflow: hidden;
+  margin-top: 16px;
 }
 
 /* Dark gradient overlay for text readability */
@@ -419,7 +425,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, rgba(57, 68, 42, 0.4) 0%, rgba(57, 68, 42, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(57, 68, 42, 0.5) 0%, rgba(57, 68, 42, 0.7) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -450,11 +456,11 @@
 
 .featured-services {
   margin-top: -80px;
-  padding: 140px 0 80px;
+  padding: var(--space-6) 0 var(--space-5);
   /* Transparent so the page-level gradient shows through */
   background: transparent;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   z-index: 2;
 }
 
@@ -480,8 +486,8 @@
   color: var(--text-on-cta);
 
   max-width: 900px;
-  margin: 0 auto 0;
-  padding: 80px 72px 72px;
+  margin: var(--space-6) auto 0;
+  padding: var(--space-6) var(--space-5);
 
   text-align: center;
   position: relative;
@@ -596,38 +602,49 @@
   box-shadow: 0 20px 48px rgba(255, 255, 255, 0.25);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 908px) {
   .hero {
-    padding: 60px 16px 0;
+    padding: var(--space-5) 16px var(--space-4);
     min-height: auto;
     margin-top: calc(-1 * var(--header-height) + 16px);
   }
 
+  .hero-content {
+    gap: var(--space-3);
+  }
+
   .hero h1 {
     font-size: 1.8rem;
+    margin: 0 0 var(--space-1) 0;
     letter-spacing: -0.3px;
   }
 
   .hero p {
     font-size: 1rem;
+    line-height: 1.6;
   }
 
   .hero-cta {
-    padding: 14px 32px;
-    font-size: 1rem;
+    padding: 12px 28px;
+    font-size: 0.95rem;
   }
 
   .hero-subtext {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .hero-bridge {
-    padding: var(--space-3) 16px;
+    position: relative;
+    padding: var(--space-4) 16px var(--space-5);
   }
 
   .bridge-values {
     grid-template-columns: 1fr;
-    gap: var(--space-3);
+    gap: var(--space-4);
+  }
+
+  .bridge-value {
+    gap: var(--space-2);
   }
 
   .bridge-value strong {
@@ -639,27 +656,32 @@
   }
 
   .about {
-    padding: var(--space-4) 16px var(--space-5);
+    padding: var(--space-5) 16px;
   }
 
   .about-inner {
-    padding: var(--space-4) var(--space-2);
+    padding: var(--space-4) var(--space-3);
     border-radius: 8px;
   }
 
   .about h2 {
     font-size: 1.5rem;
+    margin-bottom: var(--space-3);
   }
 
   .about p {
     font-size: 1rem;
     line-height: 1.8;
+    margin-bottom: var(--space-2);
   }
 
   /* Stack About grid on small screens */
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-areas:
+      'copy'
+      'values';
+    gap: var(--space-4);
   }
 
   .about-values {
@@ -668,41 +690,74 @@
     padding: 0;
   }
 
-  .about-inner {
-    padding: var(--space-3);
-    box-shadow: none;
-    border-radius: 8px;
+  .values-list {
+    gap: var(--space-3);
   }
 
   .featured-services {
-    padding: 120px 0 60px;
+    padding: var(--space-5) 0 var(--space-4);
   }
 
   .featured-services h2 {
     font-size: 1.5rem;
   }
 
-  .services-carousel-container {
-    margin: 0;
-  }
-
-  .services-carousel {
-    gap: var(--space-3);
-    padding: 0 16px var(--space-4);
-  }
-
   .service-card {
-    flex: 0 0 280px;
-    height: 380px;
+    flex: 0 0 270px;
+    height: 360px;
+  }
+
+  .service-card.featured-service::after {
+    font-size: 0.7rem;
+    width: 85px;
+    height: 85px;
+    top: -12px;
+    left: -12px;
+  }
+
+  .service-card-content {
+    padding: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
   }
 
   .service-card-image {
-    height: 180px;
+    height: 160px;
+  }
+
+  .services-carousel-container {
+    position: relative;
+    padding: 0 24px;
+    margin: 0;
+    margin-top: 8vh;
+  }
+
+  .services-carousel {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .services-carousel-container::after {
+    content: '→ Swipe to explore →';
+    position: absolute;
+    bottom: 0;
+    right: 16px;
+    left: 16px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+    animation: fadeHint 2s ease-in-out infinite;
+    letter-spacing: 0.5px;
+    margin-top: 12px;
   }
 
   .services-hero {
     min-height: 320px;
-    margin-top: calc(-1 * var(--header-height) + 16px);
+    margin-top: calc(-1 * var(--header-height) + 60px);
   }
 
   .services-hero-content h1 {
@@ -722,6 +777,7 @@
   position: relative;
   margin: 0;
   padding: 0 16px;
+  padding-top: 5vh;
   background: transparent;
   overflow: visible;
   width: 100%;
@@ -730,7 +786,7 @@
 
 .services-carousel {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-5);
   overflow-x: auto;
   overflow-y: visible;
   scroll-behavior: smooth;
@@ -767,6 +823,42 @@
   background: var(--bg-white);
   border: 1px solid rgba(188, 156, 34, 0.12);
   box-shadow: 0 8px 24px rgba(57, 68, 42, 0.12);
+}
+
+/* Featured/Best Seller Badge */
+.service-card.featured-service {
+  border-color: rgba(188, 156, 34, 0.3);
+  box-shadow:
+    0 8px 24px rgba(57, 68, 42, 0.12),
+    0 0 20px rgba(188, 156, 34, 0.15);
+}
+
+.service-card.featured-service::after {
+  content: 'Best\aSeller!';
+  white-space: pre;
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle at 30% 30%, #ffd700 0%, var(--accent-gold) 40%, rgba(188, 156, 34, 0.95) 100%);
+  color: var(--text-dark);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.80rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  z-index: 10;
+  box-shadow:
+    0 6px 16px rgba(188, 156, 34, 0.4),
+    inset -2px -2px 8px rgba(0, 0, 0, 0.1),
+    inset 2px 2px 8px rgba(255, 255, 255, 0.4);
+  transform: rotate(-12deg);
+  animation: stickerBounce 3s ease-in-out infinite;
+  line-height: 1.1;
 }
 
 /* Card image container */
@@ -902,9 +994,17 @@
   }
 }
 
-/* ===========================
-   SERVICE MODAL STYLES
-   ========================== */
+@keyframes stickerBounce {
+
+  0%,
+  100% {
+    transform: rotate(-12deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(-12deg) scale(1.08);
+  }
+}
 
 /* Modal Backdrop */
 .service-modal-backdrop {
@@ -1113,7 +1213,7 @@
 }
 
 /* Modal mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 908px) {
   .service-modal {
     width: 95%;
     max-width: none;
@@ -1163,7 +1263,7 @@
   font-size: 2rem;
   font-weight: 700;
   color: var(--accent-1, #2e2e2e);
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-6);
   margin-top: 0;
   letter-spacing: -0.3px;
 }
@@ -1173,20 +1273,17 @@
    =========================== */
 
 .saas-testimonials {
-  padding: 5rem 16px 6rem;
-  padding-bottom: 3rem;
+  padding: var(--space-6) 16px;
 }
 
 .testimonial-card {
   position: relative;
   max-width: 900px;
-  margin: 0 auto 4rem;
-  margin-bottom: 2.5rem;
+  margin: 0 auto var(--space-5);
   background: #fff;
   border-radius: 26px;
-  padding: 72px 72px 64px;
-  min-height: 360px;
-  padding: 80px 72px 72px;
+  padding: var(--space-6) var(--space-5);
+  min-height: auto;
 
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 
@@ -1214,17 +1311,18 @@
   pointer-events: none;
 
   background:
-    /* curved cut */
+    /* curved accent on the left */
     radial-gradient(120% 100% at -20% 50%,
-      var(--secondary-1) 0%,
-      var(--secondary-1) 40%,
+      rgba(188, 156, 34, 0.15) 0%,
+      rgba(188, 156, 34, 0.08) 30%,
       transparent 60%),
-    /* soft blend */
-    linear-gradient(90deg,
-      rgba(0, 0, 0, 0.04),
+    /* subtle top accent */
+    radial-gradient(150% 80% at 50% 0%,
+      rgba(139, 59, 41, 0.08) 0%,
       transparent 50%);
 
-  opacity: 0.25;
+  opacity: 1;
+  z-index: 0;
 }
 
 
@@ -1236,6 +1334,8 @@
 .card-content {
   margin-left: 48px;
   max-width: 600px;
+  position: relative;
+  z-index: 1;
 }
 
 
@@ -1244,6 +1344,7 @@
   line-height: 1.6;
   font-weight: 500;
   margin-bottom: 1.5rem;
+  color: var(--text);
 }
 
 .testimonial-meta {
@@ -1254,10 +1355,12 @@
 
 .testimonial-name {
   font-weight: 700;
+  color: var(--accent-1);
 }
 
 .testimonial-role {
   opacity: 0.6;
+  color: var(--text-muted);
 }
 
 /* ===========================
@@ -1340,7 +1443,7 @@
    MOBILE
    =========================== */
 
-@media (max-width: 768px) {
+@media (max-width: 908px) {
   .testimonial-card {
     padding: 48px 28px 64px;
     min-height: unset;
@@ -1349,9 +1452,11 @@
 
   .card-accent {
     background:
-      radial-gradient(140% 90% at 50% -20%,
-        var(--secondary-1),
+      radial-gradient(140% 80% at 50% -20%,
+        rgba(188, 156, 34, 0.12) 0%,
+        rgba(139, 59, 41, 0.06) 40%,
         transparent 65%);
+    opacity: 1;
   }
 
   .testimonial-meta {
@@ -1360,14 +1465,8 @@
 
   .card-content {
     margin-left: 0;
-  }
-
-  .card-accent {
-    background:
-      radial-gradient(140% 80% at 50% -20%,
-        var(--secondary-1) 0%,
-        transparent 65%);
-    opacity: 0.2;
+    position: relative;
+    z-index: 1;
   }
 
   .test-arrow {
@@ -1392,8 +1491,17 @@
   }
 
   .cta-section {
-    padding: 56px 28px;
-    margin-bottom: 4rem;
-    min-height: unset;
+    margin: var(--space-5) auto 0;
+    padding: var(--space-5) var(--space-3);
+  }
+
+  .cta-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .cta-section p {
+    font-size: 1rem;
+    margin-bottom: var(--space-4);
   }
 }
