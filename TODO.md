@@ -6,3 +6,8 @@
 - Re-adjust OurService Hero
 - Re-adjust mobile spacing
 - Correctly create components, and use them instead of over relying on home.html / css
+
+
+
+
+- Sit down with denise to verify wording, and photos

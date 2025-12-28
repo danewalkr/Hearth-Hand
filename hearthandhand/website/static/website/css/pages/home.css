@@ -203,11 +203,9 @@
   left: 5%;
   width: 320px;
   height: 240px;
-  background: radial-gradient(ellipse 170px 115px at 30% 40%, var(--secondary-1) 0%, transparent 70%);
+  background: radial-gradient(ellipse 170px 115px at 30% 40%, var(--primary-1) 0%, transparent 70%);
   border-radius: 50% 40% 55% 45% / 45% 55% 40% 50%;
   filter: blur(48px);
-  opacity: 0.07;
-  transform: rotate(12deg);
 }
 
 /* Divider shape for CTA section */
@@ -462,6 +460,9 @@
   position: relative;
   overflow: visible;
   z-index: 2;
+  /* Scope: neutralize warm accent variables inside services area */
+  --secondary-1: var(--primary-1);
+  --accent-warm: var(--primary-1);
 }
 
 /* Subtle organic shape accent */
@@ -472,7 +473,7 @@
   right: -100px;
   width: 350px;
   height: 280px;
-  background: radial-gradient(ellipse 180px 120px at 50% 50%, rgba(188, 156, 34, 0.02) 0%, transparent 70%);
+  background: radial-gradient(ellipse 180px 120px at 50% 50%, rgba(57, 68, 42, 0.05) 0%, transparent 70%);
   border-radius: 50% 40% 55% 45% / 45% 55% 40% 50%;
   filter: blur(48px);
   pointer-events: none;
@@ -607,6 +608,10 @@
     padding: var(--space-5) 16px var(--space-4);
     min-height: auto;
     margin-top: calc(-1 * var(--header-height) + 16px);
+    /* Fixed backgrounds are costly on mobile */
+    background-attachment: scroll;
+    /* Soften the hero-to-about fade on mobile (push it lower) */
+    --hero-transition-overlay: linear-gradient(180deg, transparent 0%, transparent 88%, rgba(235, 231, 219, 0.35) 97%, rgba(235, 231, 219, 0.95) 100%);
   }
 
   .hero-content {
@@ -821,16 +826,16 @@
   flex-direction: column;
   overflow: hidden;
   background: var(--bg-white);
-  border: 1px solid rgba(188, 156, 34, 0.12);
+  border: 1px solid rgba(57, 68, 42, 0.12);
   box-shadow: 0 8px 24px rgba(57, 68, 42, 0.12);
-}
-
-/* Featured/Best Seller Badge */
-.service-card.featured-service {
-  border-color: rgba(188, 156, 34, 0.3);
+  /* Render only when near viewport to reduce work */
+  content-visibility: auto;
+  contain-intrinsic-size: 420px 340px;
+  contain: layout paint;
+  background: linear-gradient(180deg, rgba(235, 231, 219, 0.25) 0%, rgba(253, 252, 249, 1) 40%, rgba(253, 252, 249, 1) 100%);
   box-shadow:
     0 8px 24px rgba(57, 68, 42, 0.12),
-    0 0 20px rgba(188, 156, 34, 0.15);
+    0 0 16px rgba(57, 68, 42, 0.10);
 }
 
 .service-card.featured-service::after {
@@ -841,7 +846,10 @@
   left: -18px;
   width: 110px;
   height: 110px;
-  background: radial-gradient(circle at 30% 30%, #ffd700 0%, var(--accent-gold) 40%, rgba(188, 156, 34, 0.95) 100%);
+  /* Solid sticker base to avoid transparency; micro-gold shimmer under 8% */
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.95) 0%, rgba(253, 252, 249, 0.95) 60%, rgba(253, 252, 249, 0.9) 100%),
+    conic-gradient(from 0deg, transparent 0 86%, rgba(188, 156, 34, 0.08) 88%, transparent 90%);
   color: var(--text-dark);
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   display: flex;
@@ -853,27 +861,65 @@
   letter-spacing: 0.5px;
   z-index: 10;
   box-shadow:
-    0 6px 16px rgba(188, 156, 34, 0.4),
-    inset -2px -2px 8px rgba(0, 0, 0, 0.1),
-    inset 2px 2px 8px rgba(255, 255, 255, 0.4);
+    0 6px 14px rgba(57, 68, 42, 0.18),
+    inset -2px -2px 8px rgba(0, 0, 0, 0.08),
+    inset 2px 2px 8px rgba(255, 255, 255, 0.28);
   transform: rotate(-12deg);
-  animation: stickerBounce 3s ease-in-out infinite;
+  /* Eye-catching but premium: slow shimmer around star edges */
+  animation: stickerShine 6s linear infinite;
   line-height: 1.1;
+}
+
+@keyframes stickerShine {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Card image container */
 .service-card-image {
   width: 100%;
   height: 220px;
-  background-size: cover;
-  background-position: center;
   position: relative;
   flex-shrink: 0;
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  background: #f3f1ea;
+  /* neutral placeholder */
 }
 
+.service-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card bullet list styles */
+.service-card-content ul {
+  margin: 8px 0 12px;
+  padding-left: 18px;
+  list-style-type: disc;
+}
+
+.service-card-content li {
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* (Removed CSS background-image mappings to avoid eager fetching) */
+
 .service-card:hover .service-card-image {
-  transform: scale(1.05);
+  /* Performance: avoid repaints on hover by removing image scale */
+  transform: none;
 }
 
 /* Radial accent layer - only on hover */
@@ -885,22 +931,30 @@
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(circle at 15% 30%, rgba(188, 156, 34, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 70%, rgba(139, 59, 41, 0.05) 0%, transparent 40%);
+    /* Subtle forest overlays: dimension without full-surface fill */
+    radial-gradient(circle at 22% 28%,
+      rgba(57, 68, 42, 0.08) 0%,
+      transparent 50%),
+    radial-gradient(circle at 78% 74%,
+      rgba(26, 36, 21, 0.18) 0%,
+      transparent 55%);
+
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
   pointer-events: none;
   z-index: 2;
 }
 
 .service-card:hover::before {
-  opacity: 1;
+  /* Low-opacity darken on hover for premium feel */
+  opacity: 0.35;
 }
 
 .service-card:hover {
-  border-color: var(--secondary-1);
-  box-shadow: 0 16px 40px rgba(57, 68, 42, 0.18);
-  transform: translateY(-8px);
+  border-color: rgba(70, 87, 50, 0.28);
+  /* Elevation: deeper shadow without heavy color fill */
+  box-shadow: 0 14px 32px rgba(57, 68, 42, 0.18);
+  transform: translateY(-4px);
 }
 
 .service-card:focus-visible {
@@ -941,7 +995,8 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--bg-white);
-  background: var(--secondary-1);
+  background: var(--primary-1);
+  border: 2px solid var(--primary-1);
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
@@ -949,7 +1004,6 @@
   letter-spacing: 0.3px;
   border-radius: 24px;
   cursor: pointer;
-  border: 2px solid var(--secondary-1);
   display: inline-block;
 }
 
@@ -958,8 +1012,8 @@
 }
 
 .service-card:hover .service-card-link {
-  background: var(--accent-1);
-  border-color: var(--accent-1);
+  background: var(--primary-2);
+  border-color: var(--primary-2);
   transform: translateY(-2px);
 }
 
@@ -968,7 +1022,8 @@
   position: relative;
   width: 100%;
   height: 3px;
-  background: rgba(188, 156, 34, 0.15);
+  /* Track: muted neutral so it visually recedes */
+  background: rgba(57, 68, 42, 0.12);
   border-radius: 2px;
   margin-top: var(--space-4);
   overflow: hidden;
@@ -976,10 +1031,25 @@
 
 .carousel-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent-gold) 0%, var(--secondary-red-dark) 100%);
+  /* Bar: restrained near-black green, no gradient */
+  background: rgba(26, 36, 21, 0.6);
+
+
   border-radius: 2px;
   width: 0%;
   transition: width 0.3s ease;
+}
+
+.service-description {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(57, 68, 42, 0.75);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 3.1rem;
 }
 
 @keyframes fadeHint {
@@ -1132,7 +1202,7 @@
   line-height: 1.25;
   letter-spacing: -0.5px;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--accent-1) 0%, var(--secondary-1) 100%);
+  background: linear-gradient(135deg, var(--primary-2) 0%, var(--primary-1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1150,7 +1220,7 @@
 .service-details {
   margin: 24px 0 0 0;
   padding-top: 24px;
-  border-top: 2px solid rgba(188, 156, 34, 0.12);
+  border-top: 2px solid rgba(57, 68, 42, 0.12);
 }
 
 .service-details ul {
@@ -1174,7 +1244,7 @@
 
 .service-details li::before {
   content: '✓';
-  color: var(--secondary-1);
+  color: var(--primary-1);
   flex-shrink: 0;
   font-weight: 600;
   font-size: 0.95rem;
@@ -1184,12 +1254,12 @@
 .modal-cta {
   margin-top: 28px;
   padding-top: 24px;
-  border-top: 1px solid rgba(188, 156, 34, 0.1);
+  border-top: 1px solid rgba(57, 68, 42, 0.10);
 }
 
 .modal-cta .nav-cta {
   display: inline-block;
-  background: linear-gradient(135deg, var(--secondary-1) 0%, var(--accent-1) 100%);
+  background: linear-gradient(135deg, var(--primary-2) 0%, var(--primary-1) 100%);
   color: var(--bg-white);
   padding: 16px 40px;
   border-radius: 12px;
@@ -1198,14 +1268,14 @@
   border: none;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 24px rgba(188, 156, 34, 0.25);
+  box-shadow: 0 8px 24px rgba(57, 68, 42, 0.25);
   letter-spacing: 0.4px;
   cursor: pointer;
 }
 
 .modal-cta .nav-cta:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 36px rgba(188, 156, 34, 0.35);
+  box-shadow: 0 12px 36px rgba(57, 68, 42, 0.35);
 }
 
 .modal-cta .nav-cta:active {
@@ -1313,12 +1383,12 @@
   background:
     /* curved accent on the left */
     radial-gradient(120% 100% at -20% 50%,
-      rgba(188, 156, 34, 0.15) 0%,
-      rgba(188, 156, 34, 0.08) 30%,
+      rgba(57, 68, 42, 0.12) 0%,
+      rgba(57, 68, 42, 0.08) 30%,
       transparent 60%),
     /* subtle top accent */
     radial-gradient(150% 80% at 50% 0%,
-      rgba(139, 59, 41, 0.08) 0%,
+      rgba(235, 231, 219, 0.12) 0%,
       transparent 50%);
 
   opacity: 1;
@@ -1453,8 +1523,8 @@
   .card-accent {
     background:
       radial-gradient(140% 80% at 50% -20%,
-        rgba(188, 156, 34, 0.12) 0%,
-        rgba(139, 59, 41, 0.06) 40%,
+        rgba(57, 68, 42, 0.12) 0%,
+        rgba(235, 231, 219, 0.12) 40%,
         transparent 65%);
     opacity: 1;
   }
@@ -1503,5 +1573,16 @@
   .cta-section p {
     font-size: 1rem;
     margin-bottom: var(--space-4);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .services-carousel {
+    scroll-behavior: auto;
+  }
+
+  .service-card.featured-service::after {
+    animation: none;
   }
 }

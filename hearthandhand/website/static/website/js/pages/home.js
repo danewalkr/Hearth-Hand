@@ -1,64 +1,85 @@
 // Home page module: carousel and service modal
 export function initHome() {
   const serviceData = {
-    'household-management': {
-      title: 'Household Management',
-      description: 'Comprehensive management of your home, from staff coordination to maintenance oversight and organization systems that work for you.',
+    'catering-events': {
+      title: 'Catering & Events',
+      description: 'Full-service planning and staffing for seamless gatherings.',
       details: [
-        'Staff coordination and scheduling',
-        'Maintenance and vendor oversight',
-        'Home organization and systems',
-        'Household operations management'
+        'Menu planning and vendor coordination',
+        'On-site setup and attentive service',
+        'Cleanup and next-day reset'
       ]
     },
-    'event-planning': {
-      title: 'Event Planning',
-      description: 'Full-service planning and coordination for gatherings of all sizes, from intimate dinners to formal celebrations.',
+    'baking': {
+      title: 'Baking',
+      description: 'Custom cakes, pastries, and seasonal treats.',
       details: [
-        'Event design and conceptualization',
-        'Vendor management and coordination',
-        'Timeline and logistics planning',
-        'Day-of event coordination'
+        'Custom cakes, pastries, and desserts',
+        'Gluten-free and vegan options',
+        'Delivery and display styling'
       ]
     },
-    'personal-chef': {
-      title: 'Personal Chef Services',
-      description: 'Custom meal planning and preparation tailored to your family\'s dietary preferences and entertaining needs.',
+    'dog-kid-sitting': {
+      title: 'Dog & Kid Sitting',
+      description: 'Trusted care at home with routines maintained.',
       details: [
-        'Custom menu planning',
-        'Dietary preference management',
-        'Grocery shopping and sourcing',
-        'Meal preparation and presentation'
+        'Background-checked, caring sitters',
+        'Activity plans and flexible scheduling',
+        'Home routines maintained'
       ]
     },
-    'travel-coordination': {
-      title: 'Travel Coordination',
-      description: 'End-to-end travel planning and logistics management for seamless vacations and business trips.',
+    'bartending': {
+      title: 'Bartending',
+      description: 'Signature cocktails, professional service, complete bar setup.',
       details: [
-        'Itinerary planning',
-        'Accommodation and transportation booking',
-        'Activity and restaurant reservations',
-        'On-trip support and logistics'
+        'Signature cocktail and bar menu design',
+        'Professional setup and service',
+        'Responsible serving and cleanup'
       ]
     },
-    'shopping-errands': {
-      title: 'Shopping & Errands',
-      description: 'Personal shopping and errand services handled with attention to detail and your preferences.',
+    'holiday-services': {
+      title: 'Holiday Services',
+      description: 'Decor, gifting, and hosting support for the season.',
       details: [
-        'Personal shopping services',
-        'Errand management',
-        'Preference-based selections',
-        'Delivery coordination'
+        'Decor setup and takedown',
+        'Seasonal shopping and gift prep',
+        'Hosting support and staffing'
       ]
     },
-    'custom-solutions': {
-      title: 'Custom Solutions',
-      description: 'Specialized services tailored specifically to your unique needs and lifestyle requirements.',
+    'small-moving': {
+      title: 'Small Moving',
+      description: 'Packing, local moves, and home setup made simple.',
       details: [
-        'Personalized service design',
-        'Unique problem-solving',
-        'Lifestyle management',
-        'Bespoke support services'
+        'Packing, labeling, and protection',
+        'Local and apartment moves',
+        'Unpacking and home setup'
+      ]
+    },
+    'home-support': {
+      title: 'Home Support',
+      description: 'Weekly management, organization, and vendor coordination.',
+      details: [
+        'Weekly household management',
+        'Home organization and decluttering',
+        'Vendor scheduling and supervision'
+      ]
+    },
+    'present-wrapping': {
+      title: 'Present Wrapping',
+      description: 'Premium wrapping, custom tags, and delivery options.',
+      details: [
+        'Premium wrapping and ribbons',
+        'Custom tags and cards',
+        'Pickup and drop-off available'
+      ]
+    },
+    'custom-services': {
+      title: 'Custom Services',
+      description: 'Tailored solutions for unique needs and schedules.',
+      details: [
+        'Tailored solutions for unique needs',
+        'One-time or ongoing support',
+        'Discreet, professional service'
       ]
     }
   };
@@ -72,8 +93,12 @@ export function initHome() {
   const modalCloseBtn = document.getElementById('modalCloseBtn');
   const carousel = document.getElementById('servicesCarousel');
   const serviceCards = document.querySelectorAll('.service-card');
+  const serviceImages = document.querySelectorAll('.service-card-image img');
 
   if (!carousel || !modal) return;
+
+  // Lazy load card images only when near viewport (except first)
+  lazyLoadServiceImages(serviceImages, carousel);
 
   // Open modal when service card is clicked
   serviceCards.forEach(card => {
@@ -141,86 +166,107 @@ export function initHome() {
     }
   });
 
-  // Progress indicator for carousel
-  const progressBar = document.getElementById('carouselProgressBar');
-  if (progressBar) {
-    function updateProgressBar() {
-      const scrollLeft = carousel.scrollLeft;
-      const scrollWidth = carousel.scrollWidth - carousel.clientWidth;
-      const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
-      progressBar.style.width = progress + '%';
-    }
+  // Defer carousel wiring until it is close to view
+  let carouselInitialized = false;
 
-    carousel.addEventListener('scroll', updateProgressBar);
-    updateProgressBar();
-    window.addEventListener('resize', updateProgressBar);
-  }
+  function initCarousel() {
+    if (carouselInitialized) return;
+    carouselInitialized = true;
 
-  // Carousel behavior
-  // Simpler smooth wheel handling using native smooth behavior for reliability.
-  function canScrollHorizontally() {
-    return carousel.scrollWidth > carousel.clientWidth + 1;
-  }
-
-  carousel.addEventListener('wheel', function(e) {
-    const delta = e.deltaX || e.deltaY || 0;
-    if (!canScrollHorizontally()) return; // nothing to do
-
-    const atStart = carousel.scrollLeft <= 0;
-    const atEnd = Math.ceil(carousel.scrollLeft + carousel.clientWidth) >= carousel.scrollWidth - 1;
-    const scrollingRight = delta > 0;
-    const scrollingLeft = delta < 0;
-
-    if ((scrollingRight && !atEnd) || (scrollingLeft && !atStart)) {
-      e.preventDefault();
-      const target = Math.max(0, Math.min(carousel.scrollWidth - carousel.clientWidth, carousel.scrollLeft + delta * 2));
-      if ('scrollBehavior' in document.documentElement.style) {
-        carousel.scrollTo({ left: target, behavior: 'smooth' });
-      } else {
-        carousel.scrollLeft = target;
+    // Progress indicator for carousel
+    const progressBar = document.getElementById('carouselProgressBar');
+    if (progressBar) {
+      function updateProgressBar() {
+        const scrollLeft = carousel.scrollLeft;
+        const scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+        const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
+        progressBar.style.width = progress + '%';
       }
+
+      carousel.addEventListener('scroll', updateProgressBar);
+      updateProgressBar();
+      window.addEventListener('resize', updateProgressBar);
     }
-  }, { passive: false });
 
-  // Drag to scroll
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+    // Carousel behavior
+    function canScrollHorizontally() {
+      return carousel.scrollWidth > carousel.clientWidth + 1;
+    }
 
-  carousel.addEventListener('mousedown', function(e) {
-    isDown = true;
-    startX = e.pageX - carousel.offsetLeft;
-    scrollLeft = carousel.scrollLeft;
-  });
+    carousel.addEventListener('wheel', function(e) {
+      const delta = e.deltaX || e.deltaY || 0;
+      if (!canScrollHorizontally()) return;
 
-  carousel.addEventListener('mouseleave', function() {
-    isDown = false;
-  });
+      const atStart = carousel.scrollLeft <= 0;
+      const atEnd = Math.ceil(carousel.scrollLeft + carousel.clientWidth) >= carousel.scrollWidth - 1;
+      const scrollingRight = delta > 0;
+      const scrollingLeft = delta < 0;
 
-  carousel.addEventListener('mouseup', function() {
-    isDown = false;
-  });
+      if ((scrollingRight && !atEnd) || (scrollingLeft && !atStart)) {
+        e.preventDefault();
+        const target = Math.max(0, Math.min(carousel.scrollWidth - carousel.clientWidth, carousel.scrollLeft + delta * 2));
+        if ('scrollBehavior' in document.documentElement.style) {
+          carousel.scrollTo({ left: target, behavior: 'smooth' });
+        } else {
+          carousel.scrollLeft = target;
+        }
+      }
+    }, { passive: false });
 
-  carousel.addEventListener('mousemove', function(e) {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - carousel.offsetLeft;
-    const walk = (x - startX) * 0.9; // gentle
-    carousel.scrollLeft = scrollLeft - walk;
-  });
+    // Drag to scroll
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-  // update services offset for page-level gradient
-  function updateServicesOffset() {
-    const content = document.querySelector('.content');
-    const services = document.querySelector('.featured-services');
-    if (!content || !services) return;
-    const offset = services.offsetTop;
-    content.style.setProperty('--services-offset', offset + 'px');
+    carousel.addEventListener('mousedown', function(e) {
+      isDown = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', function() {
+      isDown = false;
+    });
+
+    carousel.addEventListener('mouseup', function() {
+      isDown = false;
+    });
+
+    carousel.addEventListener('mousemove', function(e) {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 0.9; // gentle
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    // Update services offset for page-level gradient
+    function updateServicesOffset() {
+      const content = document.querySelector('.content');
+      const services = document.querySelector('.featured-services');
+      if (!content || !services) return;
+      const offset = services.offsetTop;
+      content.style.setProperty('--services-offset', offset + 'px');
+    }
+
+    updateServicesOffset();
+    window.addEventListener('resize', updateServicesOffset);
+    setTimeout(updateServicesOffset, 250);
   }
 
-  updateServicesOffset();
-  window.addEventListener('resize', updateServicesOffset);
-  setTimeout(updateServicesOffset, 250);
+  if ('IntersectionObserver' in window) {
+    const carouselObserver = new IntersectionObserver((entries, obs) => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        initCarousel();
+        obs.disconnect();
+      }
+    }, { root: null, rootMargin: '200px 0px' });
+
+    carouselObserver.observe(carousel);
+  } else {
+    // Fallback: init soon after load
+    setTimeout(initCarousel, 0);
+  }
 
   // Testimonials (single-card, SaaS style)
 (function () {
@@ -336,5 +382,56 @@ export function initHome() {
   renderDots();
   updateContent(0);
 })();
+
+  function lazyLoadServiceImages(images, rootEl) {
+    if (!images.length) return;
+
+    const loadImage = (img) => {
+      if (!img || img.dataset.loaded === 'true') return;
+      const dataSrc = img.getAttribute('data-src');
+      const pic = img.closest('picture');
+      // Hydrate <source> elements only when needed to avoid early 404s
+      if (pic) {
+        const sources = pic.querySelectorAll('source');
+        sources.forEach((source) => {
+          const ds = source.getAttribute('data-srcset');
+          if (ds) {
+            source.srcset = ds;
+            source.removeAttribute('data-srcset');
+          }
+          const sizes = source.getAttribute('data-sizes');
+          if (sizes) {
+            source.sizes = sizes;
+            source.removeAttribute('data-sizes');
+          }
+        });
+      }
+      if (!dataSrc) return;
+      img.src = dataSrc;
+      img.dataset.loaded = 'true';
+      img.removeAttribute('data-src');
+    };
+
+    if ('IntersectionObserver' in window) {
+      const imgObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            loadImage(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { root: rootEl || null, rootMargin: '200px 0px', threshold: 0.01 });
+
+      images.forEach((img, index) => {
+        if (index === 0 || img.dataset.loaded === 'true' || !img.getAttribute('data-src')) return;
+        imgObserver.observe(img);
+      });
+    } else {
+      images.forEach((img, index) => {
+        if (index === 0) return;
+        loadImage(img);
+      });
+    }
+  }
 
 }

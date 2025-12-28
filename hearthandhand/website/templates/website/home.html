@@ -4,7 +4,7 @@
 {% block title %}Hearth&Hand - Charleston Concierge Services{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'website/css/pages/home.css' %}?v=20251227a">
+<link rel="stylesheet" href="{% static 'website/css/pages/home.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -93,68 +93,184 @@
     <!-- Services Carousel Container with Overlap -->
     <div class="services-carousel-container">
       <div class="services-carousel" id="servicesCarousel">
-        <!-- Household Management -->
-        <div class="service-card featured-service" data-service="household-management" role="button" tabindex="0">
-          <div class="service-card-image"
-            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
+        <!-- Catering & Events (Best Seller) -->
+        <div class="service-card featured-service" data-service="catering-events" role="button" tabindex="0">
+          <div class="service-card-image">
+            <!-- Eager: keep JPG for reliability; add modern formats later if available -->
+            <img src="{% static 'website/images/services/cards/catering_events.jpg' %}" alt="Catering &amp; Events"
+              loading="eager" decoding="async" fetchpriority="high" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
+          </div>
           <div class="service-card-content">
-            <h3>Service A</h3>
-            <p class="service-description">sit amet, consectetur adipiscing elit</p>
+            <h3>Catering &amp; Events</h3>
+            <p class="service-description">Food & Event catering.</p>
             <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
-        <!-- Event Planning -->
-        <div class="service-card" data-service="event-planning" role="button" tabindex="0">
-          <div class="service-card-image"
-            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
+        <!-- Baking -->
+        <div class="service-card" data-service="baking" role="button" tabindex="0">
+          <div class="service-card-image">
+            <!-- Lazy: use <picture> and hydrate sources on intersection to avoid 404s until assets exist -->
+            <picture>
+              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/baking.avif' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/baking.webp' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                data-src="{% static 'website/images/services/cards/baking.jpg' %}" alt="Baking" loading="lazy"
+                fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
+            </picture>
+          </div>
           <div class="service-card-content">
-            <h3>Service B</h3>
-            <p class="service-description">sit amet, consectetur adipiscing elit</p>
+            <h3>Baking</h3>
+            <p class="service-description">Cakes, pastries, and treats.</p>
             <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
-        <!-- Personal Chef Services -->
-        <div class="service-card" data-service="personal-chef" role="button" tabindex="0">
-          <div class="service-card-image"
-            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
+        <!-- Dog & Kid Sitting -->
+        <div class="service-card" data-service="dog-kid-sitting" role="button" tabindex="0">
+          <div class="service-card-image">
+            <picture>
+              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/dog_kid_sitting.avif' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/dog_kid_sitting.webp' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                data-src="{% static 'website/images/services/cards/dog_kid_sitting.jpg' %}" alt="Dog and Kid Sitting"
+                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+                sizes="(max-width: 908px) 270px, 340px" />
+            </picture>
+          </div>
           <div class="service-card-content">
-            <h3>Service C</h3>
-            <p class="service-description">sit amet, consectetur adipiscing elit</p>
+            <h3>Kid &amp; Dog Sitting</h3>
+            <p class="service-description">Trusted care at home with routines maintained.</p>
             <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
-        <!-- Travel Coordination -->
-        <div class="service-card" data-service="travel-coordination" role="button" tabindex="0">
-          <div class="service-card-image"
-            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
+        <!-- Bartending -->
+        <div class="service-card" data-service="bartending" role="button" tabindex="0">
+          <div class="service-card-image">
+            <picture>
+              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/bartending.avif' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/bartending.webp' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                data-src="{% static 'website/images/services/cards/bartending.jpg' %}" alt="Bartending" loading="lazy"
+                fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
+            </picture>
+          </div>
           <div class="service-card-content">
-            <h3>Travel Coordination</h3>
-            <p class="service-description">End-to-end travel planning & logistics</p>
+            <h3>Bartending</h3>
+            <p class="service-description">Signature cocktails, with professional services.</p>
             <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
-        <!-- Shopping & Errands -->
-        <div class="service-card" data-service="shopping-errands" role="button" tabindex="0">
-          <div class="service-card-image"
-            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
+        <!-- Holiday Services -->
+        <div class="service-card" data-service="holiday-services" role="button" tabindex="0">
+          <div class="service-card-image">
+            <picture>
+              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/holiday_services.avif' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/holiday_services.webp' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                data-src="{% static 'website/images/services/cards/holiday_services.jpg' %}" alt="Holiday Services"
+                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+                sizes="(max-width: 908px) 270px, 340px" />
+            </picture>
+          </div>
           <div class="service-card-content">
-            <h3>Shopping & Errands</h3>
-            <p class="service-description">Personal shopping with attention to detail</p>
+            <h3>Holiday Services</h3>
+            <p class="service-description">Decor, gifting, and hosting support for the season.</p>
             <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>
 
-        <!-- Custom Solutions -->
-        <div class="service-card" data-service="custom-solutions" role="button" tabindex="0">
-          <div class="service-card-image"
-            style="background-image: url({% static 'website/images/services/service_card_test.png' %})"></div>
+        <!-- Small Moving -->
+        <div class="service-card" data-service="small-moving" role="button" tabindex="0">
+          <div class="service-card-image">
+            <picture>
+              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/small_moving.avif' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/small_moving.webp' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                data-src="{% static 'website/images/services/cards/small_moving.jpg' %}" alt="Small Moving"
+                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+                sizes="(max-width: 908px) 270px, 340px" />
+            </picture>
+          </div>
           <div class="service-card-content">
-            <h3>Custom Solutions</h3>
-            <p class="service-description">Specialized services tailored to you</p>
+            <h3>Small Moving</h3>
+            <p class="service-description">Packing, local moves, and home setup made simple.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Home Support -->
+        <div class="service-card" data-service="home-support" role="button" tabindex="0">
+          <div class="service-card-image">
+            <picture>
+              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/home_support.avif' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/home_support.webp' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                data-src="{% static 'website/images/services/cards/home_support.jpg' %}" alt="Home Support"
+                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+                sizes="(max-width: 908px) 270px, 340px" />
+            </picture>
+          </div>
+          <div class="service-card-content">
+            <h3>Home Support</h3>
+            <p class="service-description">Weekly management, organization, and vendor coordination.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Present Wrapping -->
+        <div class="service-card" data-service="present-wrapping" role="button" tabindex="0">
+          <div class="service-card-image">
+            <picture>
+              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/present_wrapping.avif' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/present_wrapping.webp' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                data-src="{% static 'website/images/services/cards/present_wrapping.jpg' %}" alt="Present Wrapping"
+                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+                sizes="(max-width: 908px) 270px, 340px" />
+            </picture>
+          </div>
+          <div class="service-card-content">
+            <h3>Present Wrapping</h3>
+            <p class="service-description">Premium wrapping, custom tags, and delivery options.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Custom Services -->
+        <div class="service-card" data-service="custom-services" role="button" tabindex="0">
+          <div class="service-card-image">
+            <picture>
+              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/custom_services.avif' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/custom_services.webp' %}"
+                data-sizes="(max-width: 908px) 270px, 340px">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                data-src="{% static 'website/images/services/cards/custom_services.jpg' %}" alt="Custom Services"
+                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+                sizes="(max-width: 908px) 270px, 340px" />
+            </picture>
+          </div>
+          <div class="service-card-content">
+            <h3>Custom Services</h3>
+            <p class="service-description">Tailored solutions for unique needs and schedules.</p>
             <a href="#" class="service-card-link">Learn More</a>
           </div>
         </div>

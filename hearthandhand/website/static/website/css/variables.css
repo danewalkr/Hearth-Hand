@@ -114,6 +114,11 @@
   --secondary-red-mid: #d9a691;
   --secondary-red-dark: #b56a4f;
 
+  /* === NEW: Neutral clay accents (less holiday, more cozy) === */
+  --accent-clay-light: #ceb897;
+  --accent-clay-mid: #a67c52;
+  --accent-clay-deep: #6b4a38;
+
   /* === FOOTER === */
   --footer-bg: #2b2f25;
   /* warm olive-charcoal */
