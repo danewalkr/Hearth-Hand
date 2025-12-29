@@ -97,7 +97,7 @@
         <div class="service-card featured-service" data-service="catering-events" role="button" tabindex="0">
           <div class="service-card-image">
             <!-- Eager: keep JPG for reliability; add modern formats later if available -->
-            <img src="{% static 'website/images/services/cards/catering_events.jpg' %}" alt="Catering &amp; Events"
+            <img src="{% static 'website/images/services/cards/catering_events.webp' %}" alt="Catering &amp; Events"
               loading="eager" decoding="async" fetchpriority="high" width="680" height="440"
               sizes="(max-width: 908px) 270px, 340px" />
           </div>
@@ -108,19 +108,24 @@
           </div>
         </div>
 
+        <!-- Banners -->
+        <div class="service-card" data-service="banner" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/banners.webp' %}" alt="Banner" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Custom Banners</h3>
+            <p class="service-description">Custom painted banners to your liking.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
         <!-- Baking -->
         <div class="service-card" data-service="baking" role="button" tabindex="0">
           <div class="service-card-image">
-            <!-- Lazy: use <picture> and hydrate sources on intersection to avoid 404s until assets exist -->
-            <picture>
-              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/baking.avif' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/baking.webp' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                data-src="{% static 'website/images/services/cards/baking.jpg' %}" alt="Baking" loading="lazy"
-                fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
-            </picture>
+            <img src="{% static 'website/images/services/cards/baking.webp' %}" alt="Baking" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
           </div>
           <div class="service-card-content">
             <h3>Baking</h3>
@@ -132,16 +137,9 @@
         <!-- Dog & Kid Sitting -->
         <div class="service-card" data-service="dog-kid-sitting" role="button" tabindex="0">
           <div class="service-card-image">
-            <picture>
-              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/dog_kid_sitting.avif' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/dog_kid_sitting.webp' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                data-src="{% static 'website/images/services/cards/dog_kid_sitting.jpg' %}" alt="Dog and Kid Sitting"
-                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
-                sizes="(max-width: 908px) 270px, 340px" />
-            </picture>
+            <img src="{% static 'website/images/services/cards/dog_kid_sitting.webp' %}" alt="Dog and Kid Sitting"
+              loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
           </div>
           <div class="service-card-content">
             <h3>Kid &amp; Dog Sitting</h3>
@@ -153,15 +151,8 @@
         <!-- Bartending -->
         <div class="service-card" data-service="bartending" role="button" tabindex="0">
           <div class="service-card-image">
-            <picture>
-              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/bartending.avif' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/bartending.webp' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                data-src="{% static 'website/images/services/cards/bartending.jpg' %}" alt="Bartending" loading="lazy"
-                fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
-            </picture>
+            <img src="{% static 'website/images/services/cards/bartending.webp' %}" alt="Bartending" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
           </div>
           <div class="service-card-content">
             <h3>Bartending</h3>
@@ -173,16 +164,9 @@
         <!-- Holiday Services -->
         <div class="service-card" data-service="holiday-services" role="button" tabindex="0">
           <div class="service-card-image">
-            <picture>
-              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/holiday_services.avif' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/holiday_services.webp' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                data-src="{% static 'website/images/services/cards/holiday_services.jpg' %}" alt="Holiday Services"
-                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
-                sizes="(max-width: 908px) 270px, 340px" />
-            </picture>
+            <img src="{% static 'website/images/services/cards/holiday_services.webp' %}" alt="Holiday Services"
+              loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
           </div>
           <div class="service-card-content">
             <h3>Holiday Services</h3>
@@ -194,16 +178,8 @@
         <!-- Small Moving -->
         <div class="service-card" data-service="small-moving" role="button" tabindex="0">
           <div class="service-card-image">
-            <picture>
-              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/small_moving.avif' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/small_moving.webp' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                data-src="{% static 'website/images/services/cards/small_moving.jpg' %}" alt="Small Moving"
-                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
-                sizes="(max-width: 908px) 270px, 340px" />
-            </picture>
+            <img src="{% static 'website/images/services/cards/small_moving.webp' %}" alt="Small Moving" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
           </div>
           <div class="service-card-content">
             <h3>Small Moving</h3>
@@ -215,16 +191,8 @@
         <!-- Home Support -->
         <div class="service-card" data-service="home-support" role="button" tabindex="0">
           <div class="service-card-image">
-            <picture>
-              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/home_support.avif' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/home_support.webp' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                data-src="{% static 'website/images/services/cards/home_support.jpg' %}" alt="Home Support"
-                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
-                sizes="(max-width: 908px) 270px, 340px" />
-            </picture>
+            <img src="{% static 'website/images/services/cards/home_support.webp' %}" alt="Home Support" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
           </div>
           <div class="service-card-content">
             <h3>Home Support</h3>
@@ -236,16 +204,9 @@
         <!-- Present Wrapping -->
         <div class="service-card" data-service="present-wrapping" role="button" tabindex="0">
           <div class="service-card-image">
-            <picture>
-              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/present_wrapping.avif' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/present_wrapping.webp' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                data-src="{% static 'website/images/services/cards/present_wrapping.jpg' %}" alt="Present Wrapping"
-                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
-                sizes="(max-width: 908px) 270px, 340px" />
-            </picture>
+            <img src="{% static 'website/images/services/cards/present_wrapping.webp' %}" alt="Present Wrapping"
+              loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
           </div>
           <div class="service-card-content">
             <h3>Present Wrapping</h3>
@@ -257,16 +218,9 @@
         <!-- Custom Services -->
         <div class="service-card" data-service="custom-services" role="button" tabindex="0">
           <div class="service-card-image">
-            <picture>
-              <source type="image/avif" data-srcset="{% static 'website/images/services/cards/custom_services.avif' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <source type="image/webp" data-srcset="{% static 'website/images/services/cards/custom_services.webp' %}"
-                data-sizes="(max-width: 908px) 270px, 340px">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                data-src="{% static 'website/images/services/cards/custom_services.jpg' %}" alt="Custom Services"
-                loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
-                sizes="(max-width: 908px) 270px, 340px" />
-            </picture>
+            <img src="{% static 'website/images/services/cards/custom_services.webp' %}" alt="Custom Services"
+              loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
           </div>
           <div class="service-card-content">
             <h3>Custom Services</h3>

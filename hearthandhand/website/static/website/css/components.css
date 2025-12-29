@@ -444,15 +444,15 @@
   transform: translateY(-2px);
   background:
     /* Subtle diagonal texture overlay */
-    linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%, rgba(188, 156, 34, 0.015) 100%),
-    /* Radial glow from top-center (increased bloom) */
-    radial-gradient(ellipse 250px 120px at 50% 20%, rgba(255, 255, 255, 0.07) 0%, transparent 50%),
-    /* Radial glow from top-left (warm red accent - deepened on hover) */
-    radial-gradient(ellipse 200px 150px at 15% 10%, var(--secondary-red-dark) 0%, transparent 40%),
-    /* Radial glow from bottom-right (warm gold accent) */
-    radial-gradient(ellipse 250px 180px at 85% 95%, rgba(188, 156, 34, 0.1) 0%, transparent 45%),
-    /* Primary gradient: even more red saturation on hover */
-    linear-gradient(135deg, color-mix(in srgb, var(--secondary-1) 55%, white) 0%, color-mix(in srgb, var(--secondary-1) 75%, white) 50%, var(--secondary-1) 100%);
+    linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0%, transparent 48%, rgba(235, 232, 226, 0.10) 100%),
+    /* Radial glow from top-center (soft bloom) */
+    radial-gradient(ellipse 240px 120px at 50% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 55%),
+    /* Radial glow from top-left (cool gray accent) */
+    radial-gradient(ellipse 190px 140px at 15% 10%, rgba(120, 120, 120, 0.12) 0%, transparent 45%),
+    /* Radial glow from bottom-right (muted charcoal) */
+    radial-gradient(ellipse 240px 180px at 85% 95%, rgba(80, 80, 80, 0.12) 0%, transparent 50%),
+    /* Primary gradient: darker white → soft gray sweep */
+    linear-gradient(135deg, #f2ede5 0%, #e5dfd4 50%, #d6cec0 100%);
 }
 
 .services-carousel .service-card h3 {

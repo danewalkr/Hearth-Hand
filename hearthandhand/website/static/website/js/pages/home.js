@@ -10,6 +10,15 @@ export function initHome() {
         'Cleanup and next-day reset'
       ]
     },
+    'banner': {
+      title: 'Custom Banners',
+      description: 'Custom painted banners to your liking.',
+      details: [
+        'Custom painted',
+        'Hand drawn',
+        'Delivery or pickup'
+      ]
+    },
     'baking': {
       title: 'Baking',
       description: 'Custom cakes, pastries, and seasonal treats.',
