@@ -1,10 +1,32 @@
 /* ===========================
    HOME PAGE STYLESHEET
    
+   This file contains all styling for the home page.
+   Imported by home.html via {% block extra_css %}
+   
+   STRUCTURE:
+   1. Hero Section (lines 10-149)
+   2. Organic Shape Motifs (lines 150-244)
+   3. Hero Bridge (lines 245-313)
+   4. About Section (lines 314-434)
+   5. Services Hero Section (lines 435-518)
+   6. Services Carousel (lines 519-890)
+   7. Modal Styles (lines 1217-1444)
+   8. Testimonials (lines 1445-1722)
+   9. Media Queries & Responsive Design (lines 622-896, 1096-1214, 1425-1730)
+   
    Z-Index Hierarchy:
    - 0: Organic shapes (background decoration)
    - 1: Hero texture overlay, hero content text, section headings
    - 2: About inner container, CTA buttons
+   - 1500: Modal backdrop
+   - 1501: Modal dialog
+   
+   Performance Notes:
+   - Uses CSS variables for theming (see /css/variables.css)
+   - Animations optimized with transform/opacity only
+   - content-visibility: auto applied where applicable
+   - Mobile-first responsive design
    =========================== */
 
 /* Hero Section — Dimensional gradient with multiple layers */
