@@ -3,7 +3,7 @@
    =========================== */
 
 /* Import base styles */
-@import 'variables.css';
+@import '../variables.css';
 
 /* CTA Button (used on home page) */
 .cta-button {
