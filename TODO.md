@@ -1,13 +1,9 @@
 -- END OF PAGE WORK --
 - Re-adjust wording
-  - adjust denises words
-- adjust stock photos
-- Re-adjust colors
-- Re-adjust OurService Hero
-- Re-adjust mobile spacing
+  - Ensure mobile spacing
+
 - Correctly create components, and use them instead of over relying on home.html / css
 
 
 
-
-- Sit down with denise to verify wording, and photos
+- Sit down with denise to verify: wording, photos, coloring

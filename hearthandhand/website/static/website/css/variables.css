@@ -87,7 +87,7 @@
   /* gradient to ease into light section */
 
   /* slightly taller header to feel more grounded */
-  --header-height: 72px;
+  --header-height: 6vh;
 
   /* === NEW: Services / CTA palettes === */
   /* Deep, grounded forest greens matching hero vibe */

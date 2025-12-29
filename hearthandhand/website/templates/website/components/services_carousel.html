@@ -1,0 +1,158 @@
+<!-- Services Carousel Section -->
+<div class="body-gradient">
+  <section class="services-hero" id="servicesHero">
+    <div class="services-hero-overlay"></div>
+    <div class="services-hero-content">
+      <h1>Our Services</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </section>
+
+  <section class="featured-services" id="services">
+    <!-- Services Carousel Container with Overlap -->
+    <div class="services-carousel-container">
+      <div class="services-carousel" id="servicesCarousel">
+        <!-- Catering & Events (Best Seller) -->
+        <div class="service-card featured-service" data-service="catering-events" role="button" tabindex="0">
+          <div class="service-card-image">
+            {% load static %}
+            <img src="{% static 'website/images/services/cards/catering_events.webp' %}" alt="Catering &amp; Events"
+              loading="eager" decoding="async" fetchpriority="high" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Catering &amp; Events</h3>
+            <p class="service-description">Food & Event catering.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Banners -->
+        <div class="service-card" data-service="banner" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/banners.webp' %}" alt="Banner" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Custom Banners</h3>
+            <p class="service-description">Custom painted banners to your liking.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Baking -->
+        <div class="service-card" data-service="baking" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/baking.webp' %}" alt="Baking" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Baking</h3>
+            <p class="service-description">Cakes, pastries, and treats.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Dog & Kid Sitting -->
+        <div class="service-card" data-service="dog-kid-sitting" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/dog_kid_sitting.webp' %}" alt="Dog and Kid Sitting"
+              loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Kid &amp; Dog Sitting</h3>
+            <p class="service-description">Trusted care at home with routines maintained.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Bartending -->
+        <div class="service-card" data-service="bartending" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/bartending.webp' %}" alt="Bartending" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Bartending</h3>
+            <p class="service-description">Signature cocktails, with professional services.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Holiday Services -->
+        <div class="service-card" data-service="holiday-services" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/holiday_services.webp' %}" alt="Holiday Services"
+              loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Holiday Services</h3>
+            <p class="service-description">Decor, gifting, and hosting support for the season.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Small Moving -->
+        <div class="service-card" data-service="small-moving" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/small_moving.webp' %}" alt="Small Moving" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Small Moving</h3>
+            <p class="service-description">Packing, local moves, and home setup made simple.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Home Support -->
+        <div class="service-card" data-service="home-support" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/home_support.webp' %}" alt="Home Support" loading="lazy"
+              fetchpriority="low" decoding="async" width="680" height="440" sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Home Support</h3>
+            <p class="service-description">Weekly management, organization, and vendor coordination.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Present Wrapping -->
+        <div class="service-card" data-service="present-wrapping" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/present_wrapping.webp' %}" alt="Present Wrapping"
+              loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Present Wrapping</h3>
+            <p class="service-description">Premium wrapping, custom tags, and delivery options.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Custom Services -->
+        <div class="service-card" data-service="custom-services" role="button" tabindex="0">
+          <div class="service-card-image">
+            <img src="{% static 'website/images/services/cards/custom_services.webp' %}" alt="Custom Services"
+              loading="lazy" fetchpriority="low" decoding="async" width="680" height="440"
+              sizes="(max-width: 908px) 270px, 340px" />
+          </div>
+          <div class="service-card-content">
+            <h3>Custom Services</h3>
+            <p class="service-description">Tailored solutions for unique needs and schedules.</p>
+            <a href="#" class="service-card-link">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="carousel-progress-indicator">
+      <div class="carousel-progress-bar" id="carouselProgressBar"></div>
+    </div>
+  </section>
+</div>

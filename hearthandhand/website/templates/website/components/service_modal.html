@@ -1,0 +1,27 @@
+<!-- Service Detail Modal -->
+<div class="service-modal-backdrop" id="serviceModalBackdrop" role="presentation"></div>
+<dialog class="service-modal" id="serviceModal" aria-labelledby="serviceModalTitle"
+  aria-describedby="serviceModalDescription">
+  <div class="modal-content">
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close service details">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div class="modal-body">
+      <h2 id="serviceModalTitle" class="modal-title">Service Title</h2>
+
+      <div id="serviceModalDescription" class="modal-description">
+        <!-- Description populated by JS -->
+      </div>
+
+      <!-- Service Details (optional bullet list) -->
+      <div id="serviceDetails" class="service-details">
+        <!-- Details populated by JS -->
+      </div>
+
+      <div class="modal-cta">
+        <a href="/consultation/" class="nav-cta btn">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+</dialog>

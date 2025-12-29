@@ -1,0 +1,854 @@
+/* ===========================
+   HOME PAGE STYLESHEET
+   Page-specific styles for home page
+   Component styles are in /css/components/
+   
+   Z-Index Hierarchy:
+   - 0: Organic shapes (background decoration)
+   - 1: Section content, shape accents
+   - 2: About inner container
+   =========================== */
+
+/* ===========================
+   ORGANIC SHAPE MOTIFS
+   ========================== */
+
+
+/* ===========================
+   ORGANIC SHAPE MOTIFS
+   ========================== */
+
+/* Reusable organic shape patterns for visual continuity */
+.organic-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Soft arc / leaf-inspired shape */
+.organic-shape.accent-primary {
+  opacity: 0.08;
+}
+
+.organic-shape.accent-secondary {
+  opacity: 0.06;
+}
+
+.organic-shape.accent-warm {
+  opacity: 0.07;
+}
+
+/* Bridge-to-about transition shape */
+.shape-bridge-about {
+  position: relative;
+  width: 250px;
+  height: 180px;
+  margin: var(--space-3) 0 0 auto;
+  background: radial-gradient(ellipse 140px 90px at 40% 50%, var(--secondary-1) 0%, transparent 65%);
+  border-radius: 60% 40% 50% 60% / 40% 60% 50% 40%;
+  filter: blur(35px);
+  opacity: 0.07;
+  transform: rotate(25deg);
+}
+
+/* About section background accent */
+.shape-about-accent {
+  position: absolute;
+  top: 50px;
+  right: -80px;
+  width: 280px;
+  height: 220px;
+  background: radial-gradient(ellipse 160px 110px at 50% 50%, var(--primary-1) 0%, transparent 68%);
+  border-radius: 45% 55% 65% 35% / 35% 65% 55% 45%;
+  filter: blur(45px);
+  opacity: 0.06;
+  transform: rotate(-20deg);
+}
+
+/* Featured Services section accent shape */
+.shape-services-accent {
+  position: absolute;
+  top: -60px;
+  left: 5%;
+  width: 320px;
+  height: 240px;
+  background: radial-gradient(ellipse 170px 115px at 30% 40%, var(--primary-1) 0%, transparent 70%);
+  border-radius: 50% 40% 55% 45% / 45% 55% 40% 50%;
+  filter: blur(48px);
+}
+
+/* Divider shape for CTA section */
+.shape-cta-divider {
+  position: absolute;
+  bottom: -50px;
+  left: 15%;
+  width: 290px;
+  height: 200px;
+  background: radial-gradient(ellipse 155px 105px at 45% 45%, var(--primary-1) 0%, transparent 72%);
+  border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
+  filter: blur(42px);
+  opacity: 0.08;
+  transform: rotate(-25deg);
+}
+
+
+
+/* About Section — natural continuation using neutral background */
+.about {
+  padding: var(--space-6) 16px;
+  margin: 0 auto;
+  background: var(--bg);
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle organic shape accent in about section */
+.about::before {
+  content: '';
+  position: absolute;
+  top: 120px;
+  right: -100px;
+  width: 280px;
+  height: 220px;
+  background: radial-gradient(ellipse 160px 110px at 50% 50%, var(--primary-1) 0%, transparent 68%);
+  border-radius: 45% 55% 65% 35% / 35% 65% 55% 45%;
+  filter: blur(45px);
+  opacity: 0.035;
+  transform: rotate(-20deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Inner container creates a unified, elevated block for About */
+.about-inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background: var(--bg);
+  padding: var(--space-6) var(--space-5);
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  border: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* Two-column About layout: left text, right values/visuals */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'copy values';
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.about-copy {
+  grid-area: copy;
+  padding: 0;
+}
+
+.about-values {
+  grid-area: values;
+  /* Make values visually part of the same block — no separate card */
+  background: transparent;
+  padding: 0;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.values-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.values-list li {
+  display: flex;
+  flex-direction: column;
+}
+
+.values-list li strong {
+  color: var(--primary-1);
+  font-size: 1.05rem;
+}
+
+.values-list li span {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.about h2 {
+  font-size: 2rem;
+  color: var(--accent-1);
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.5px;
+  text-align: left;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.about p {
+  color: var(--text);
+  line-height: 1.85;
+  font-size: 1.02rem;
+  text-align: left;
+  margin: 0 0 var(--space-3) 0;
+  max-width: 650px;
+}
+
+.about p:last-child {
+  margin-bottom: 0;
+}
+
+/* About Callout — visual anchor element that grounds the section narrative */
+.about-callout {
+  background: linear-gradient(135deg, rgba(235, 231, 219, 0.5) 0%, rgba(235, 231, 219, 0.3) 100%);
+  border-left: 4px solid var(--accent-1);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 8px;
+  margin: var(--space-4) 0 var(--space-4) 0;
+  position: relative;
+}
+
+.about-callout p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.about-callout strong {
+  color: var(--accent-1);
+  font-weight: 700;
+}
+
+
+/* Featured Services Section */
+/* ===========================
+   SERVICES HERO SECTION
+   ========================== */
+
+.services-hero {
+  background: linear-gradient(135deg, var(--hero-depth) 0%, var(--hero-base) 50%, #1d2418 100%);
+  background-image: url('../../images/hero/services_hero.webp');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: calc(-1 * var(--header-height) + var(--space-2));
+  padding-bottom: var(--space-1);
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+/* Dark gradient overlay for text readability */
+.services-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(57, 68, 42, 0.5) 0%, rgba(57, 68, 42, 0.7) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.services-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--text-on-dark);
+  max-width: 700px;
+  padding: var(--space-4);
+}
+
+.services-hero-content h1 {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  margin: 0 0 var(--space-5) 0;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.services-hero-content p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin: 0;
+  opacity: 0.95;
+  line-height: 1.7;
+}
+
+.featured-services {
+  margin-top: -80px;
+  padding: var(--space-6) 0 var(--space-5);
+  /* Transparent so the page-level gradient shows through */
+  background: transparent;
+  position: relative;
+  overflow: visible;
+  z-index: 11;
+  --accent-warm: var(--primary-1);
+}
+
+/* Subtle organic shape accent */
+.featured-services::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  width: 350px;
+  height: 280px;
+  background: radial-gradient(ellipse 180px 120px at 50% 50%, rgba(57, 68, 42, 0.05) 0%, transparent 70%);
+  border-radius: 50% 40% 55% 45% / 45% 55% 40% 50%;
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 0;
+  transform: rotate(-15deg);
+}
+
+/* CTA Section - Premium, intentional pause moment */
+
+
+@media (max-width: 908px) {
+  
+
+  .hero-bridge {
+    position: relative;
+    padding: var(--space-4) 16px var(--space-5);
+  }
+
+  .bridge-values {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .bridge-value {
+    gap: var(--space-2);
+  }
+
+  .bridge-value strong {
+    font-size: 0.95rem;
+  }
+
+  .bridge-value span {
+    font-size: 0.85rem;
+  }
+
+  .about {
+    padding: var(--space-5) 16px;
+  }
+
+  .about-inner {
+    padding: var(--space-4) var(--space-3);
+    border-radius: 8px;
+  }
+
+  .about h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .about p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Stack About grid on small screens */
+  .about-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'copy'
+      'values';
+    gap: var(--space-4);
+  }
+
+  .about-values {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .values-list {
+    gap: var(--space-3);
+  }
+
+  .featured-services {
+    padding: var(--space-5) 0 var(--space-4);
+  }
+
+  .featured-services h2 {
+    font-size: 1.5rem;
+  }
+
+  .service-card {
+    flex: 0 0 270px;
+    height: 360px;
+  }
+
+  .service-card.featured-service::after {
+    font-size: 0.7rem;
+    width: 88px;
+    height: 88px;
+    top: 8px;
+    left: 8px;
+  }
+
+  .service-card-content {
+    padding: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .service-card-image {
+    height: 160px;
+  }
+
+  .services-carousel-container {
+    position: relative;
+    padding: 0 24px;
+    margin: 0;
+    margin-top: 8vh;
+  }
+
+  .services-carousel {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .services-carousel-container::after {
+    content: '→ Swipe to explore →';
+    position: absolute;
+    bottom: 0;
+    right: 16px;
+    left: 16px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+    animation: fadeHint 2s ease-in-out infinite;
+    letter-spacing: 0.5px;
+    margin-top: 12px;
+  }
+
+  .services-hero {
+    min-height: 320px;
+    margin-top: calc(-1 * var(--header-height) + 60px);
+  }
+
+  .services-hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .services-hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-bridge::after {
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    height: 110px;
+    background: linear-gradient(180deg,
+        rgba(var(--bg-light-rgb), 0) 0%,
+        rgba(var(--bg-light-rgb), 0.92) 100%);
+  }
+}
+
+/* ===========================
+   SERVICES CAROUSEL STYLES
+   ========================== */
+
+.services-carousel-container {
+  position: relative;
+  margin: 0;
+  padding: 0 16px;
+  padding-top: 5vh;
+  background: transparent;
+  overflow: visible;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.services-carousel {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 0 var(--space-5) 0;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-start;
+
+  /* Hide scrollbar completely */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.services-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.service-card {
+  flex: 0 0 340px;
+  scroll-snap-align: center;
+  scroll-snap-stop: normal;
+  height: 420px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f5f0e7 0%, #ece3d4 55%, #e3d9c2 100%);
+  border: 1px solid rgba(57, 68, 42, 0.12);
+  box-shadow: 0 8px 24px rgba(57, 68, 42, 0.12);
+  /* Render only when near viewport to reduce work */
+  content-visibility: auto;
+  contain-intrinsic-size: 420px 340px;
+  contain: layout paint;
+  box-shadow:
+    0 8px 24px rgba(32, 32, 32, 0.14),
+    0 0 16px rgba(32, 32, 32, 0.10);
+}
+
+.service-card.featured-service::after {
+  content: 'Best\aSeller!';
+  white-space: pre;
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 104px;
+  height: 104px;
+  background: radial-gradient(circle at 30% 30%, #fbe7a2 0%, #f3d46a 45%, #d4af37 70%, #b58716 100%);
+  color: #201306;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.80rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  z-index: 12;
+  box-shadow:
+    0 10px 18px rgba(0, 0, 0, 0.18),
+    inset 0 2px 6px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.12);
+  border: 2px solid #a7750f;
+  transform: rotate(-12deg);
+  animation: stickerBounce 2.6s ease-in-out infinite;
+  pointer-events: none;
+  line-height: 1.1;
+}
+
+@keyframes stickerShine {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Card image container */
+.service-card-image {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  background: #f3f1ea;
+  /* neutral placeholder */
+}
+
+.service-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card bullet list styles */
+.service-card-content ul {
+  margin: 8px 0 12px;
+  padding-left: 18px;
+  list-style-type: disc;
+}
+
+.service-card-content li {
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* (Removed CSS background-image mappings to avoid eager fetching) */
+
+.service-card:hover .service-card-image {
+  /* Performance: avoid repaints on hover by removing image scale */
+  transform: none;
+}
+
+/* Radial accent layer - only on hover */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 22% 28%,
+      rgba(64, 64, 64, 0.08) 0%,
+      transparent 50%),
+    radial-gradient(circle at 78% 74%,
+      rgba(40, 40, 40, 0.16) 0%,
+      transparent 55%);
+
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.service-card:hover::before {
+  /* Low-opacity darken on hover for premium feel */
+  opacity: 0.35;
+}
+
+.service-card:hover {
+  border-color: rgba(0, 0, 0, 0.16);
+  /* Elevation: deeper shadow with neutral tone */
+  box-shadow: 0 14px 32px rgba(28, 28, 28, 0.18);
+  transform: translateY(-4px);
+}
+
+.service-card:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: 2px;
+}
+
+.service-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4);
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.service-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--accent-1);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.service-card-link {
+  align-self: flex-start;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--bg-white);
+  background: var(--secondary-1);
+  border: 2px solid var(--secondary-2);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 12px 24px;
+  letter-spacing: 0.3px;
+  border-radius: 24px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.service-card-link::after {
+  display: none;
+}
+
+.service-card:hover .service-card-link {
+  background: var(--secondary-2);
+  transform: translateY(-2px);
+}
+
+/* Progress Indicator */
+.carousel-progress-indicator {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  /* Track: muted neutral so it visually recedes */
+  background: var(--secondary-2);
+  border-radius: 2px;
+  margin-top: var(--space-4);
+  overflow: hidden;
+}
+
+.carousel-progress-bar {
+  height: 100%;
+  /* Bar: restrained near-black green, no gradient */
+  background: var(--accent-gold);
+
+
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.service-description {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(57, 68, 42, 0.75);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 3.1rem;
+}
+
+@keyframes fadeHint {
+
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes stickerBounce {
+
+  0%,
+  100% {
+    transform: rotate(-12deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(-12deg) scale(1.08);
+  }
+}
+
+/* ===========================
+   Desktop Tightening Overrides
+   =========================== */
+@media (min-width: 1024px) {
+  
+
+  .bridge-values {
+    gap: var(--space-3);
+  }
+
+  .about {
+    padding: var(--space-5) 16px;
+  }
+
+  .about-inner {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .about h2 {
+    margin-bottom: var(--space-3);
+  }
+
+  /* Featured Services & Carousel tightening */
+  .featured-services {
+    padding: var(--space-5) 0 var(--space-4);
+  }
+
+  .services-carousel {
+    gap: var(--space-4);
+    padding: 0 0 var(--space-4) 0;
+  }
+
+  .service-card {
+    flex: 0 0 320px;
+    height: 380px;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(28, 28, 28, 0.16);
+  }
+
+  .service-card-image {
+    height: 200px;
+  }
+
+  .service-card-content {
+    padding: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .service-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .service-description {
+    line-height: 1.55;
+  }
+
+  /* CTA section rhythm */
+  .cta-section {
+    max-width: 860px;
+    padding: var(--space-5) var(--space-4);
+    box-shadow:
+      0 28px 60px rgba(0, 0, 0, .10),
+      0 6px 16px rgba(0, 0, 0, .06);
+  }
+
+  /* Testimonials tightening */
+  .testimonials-section {
+    padding: 3rem 16px;
+  }
+
+  .saas-testimonials {
+    padding: var(--space-5) 16px;
+  }
+
+  .testimonials-heading {
+    margin-bottom: var(--space-4);
+  }
+
+  .testimonial-card {
+    padding: var(--space-5) var(--space-4);
+    margin: 0 auto var(--space-4);
+    box-shadow:
+      0 28px 60px rgba(0, 0, 0, .09),
+      0 6px 16px rgba(0, 0, 0, .05);
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .services-carousel {
+    scroll-behavior: auto;
+  }
+
+  .service-card.featured-service::after {
+    animation: none;
+  }
+}

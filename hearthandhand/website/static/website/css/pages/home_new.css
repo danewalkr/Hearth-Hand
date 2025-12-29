@@ -1,10 +1,12 @@
 /* ===========================
    HOME PAGE STYLESHEET
+   Page-specific styles for home page
+   Component styles are in /css/components/
    
    Z-Index Hierarchy:
    - 0: Organic shapes (background decoration)
-   - 1: Hero texture overlay, hero content text, section headings
-   - 2: About inner container, CTA buttons
+   - 1: Section content, shape accents
+   - 2: About inner container
    =========================== */
 
 /* Hero Section — Dimensional gradient with multiple layers */
