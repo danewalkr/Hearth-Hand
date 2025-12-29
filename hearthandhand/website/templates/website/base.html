@@ -29,14 +29,14 @@
 
 <body>
 
-  {% include "website/components/header.html" %}
+  {% include "website/components/global/header.html" %}
 
   <main class="content">
     {% block content %}
     {% endblock %}
   </main>
 
-  {% include "website/components/footer.html" %}
+  {% include "website/components/global/footer.html" %}
 
   <!-- Scripts -->
   <script type="module" src="{% static 'website/js/main.js' %}"></script>
