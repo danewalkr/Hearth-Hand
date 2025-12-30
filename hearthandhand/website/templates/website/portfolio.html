@@ -8,8 +8,200 @@
 {% endblock %}
 
 {% block content %}
-<section class="portfolio-content">
-  <h2>Coming Soon</h2>
-  <p>We're preparing something special for you. Check back soon</p>
+
+<!-- Outcome Modal -->
+<div class="outcome-modal" id="outcomeModal">
+  <div class="outcome-modal-content">
+    <button class="outcome-modal-close" aria-label="Close modal">&times;</button>
+    <h2 id="outcomeModalTitle"></h2>
+    <p id="outcomeModalText"></p>
+  </div>
+</div>
+
+<!-- Portfolio Hero (Secondary-1 themed) -->
+<section class="portfolio-hero">
+  <div class="portfolio-hero-content">
+    <h1>Recent Work, Thoughtfully Handled</h1>
+    <p class="portfolio-hero-lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+    </p>
+    <div class="portfolio-hero-cta-wrapper">
+      <a class="portfolio-cta-button" href="#portfolio">View Our Work</a>
+    </div>
+  </div>
+
+  <!-- Hero Bridge: Values bridge into portfolio -->
+  <div class="portfolio-hero-bridge">
+    <div class="portfolio-bridge-values">
+      <div class="portfolio-bridge-value">
+        <strong>Outcomes Over Images</strong>
+        <span>Real results, not highlight reels.</span>
+      </div>
+      <div class="portfolio-bridge-value">
+        <strong>Quiet Execution</strong>
+        <span>Details handled so you can focus.</span>
+      </div>
+      <div class="portfolio-bridge-value">
+        <strong>Organized & Reliable</strong>
+        <span>Systems that work every time.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Framing / Expectation Setter (embedded in hero) -->
+  <div class="portfolio-framing hero-embed">
+    <div class="portfolio-framing-inner">
+      <p>We share outcomes, not highlight reels. Each project below represents real coordination—vendor schedules,
+        dietary
+        notes, timing windows—handled quietly so clients could stay present.</p>
+    </div>
+  </div>
 </section>
+
+<!-- Tag Filter System -->
+<section class="portfolio-filters-section">
+  <div class="portfolio-filters-inner">
+    <div class="portfolio-filters" role="navigation" aria-label="Portfolio categories">
+      <button class="filter-tag active" data-filter="all">All Work</button>
+      <button class="filter-tag" data-filter="catering-events">Catering &amp; Events</button>
+      <button class="filter-tag" data-filter="home-support">Home Support</button>
+      <button class="filter-tag" data-filter="celebrations">Celebrations &amp; Gifting</button>
+      <button class="filter-tag" data-filter="custom-services">Custom Services</button>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Cards Grid -->
+<section id="portfolio" class="portfolio-cards-section">
+  <div class="portfolio-cards-inner">
+    <div class="portfolio-grid">
+      <!-- Catering & Events cards -->
+      <article class="portfolio-card" data-tags="catering-events">
+        <div class="portfolio-card__image"></div>
+        <div class="portfolio-card__content">
+          <p class="portfolio-card__category">Catering &amp; Events</p>
+          <h3>Backyard Dinner for 30</h3>
+          <p class="portfolio-card__summary">Seasonal family-style meal, coordinated rentals, and seamless service flow.
+          </p>
+          <button class="portfolio-card__outcome-btn" data-outcome-title="Backyard Dinner for 30"
+            data-outcome-text="Host stayed present; courses on time; easy close-out. Guests felt cared for.">View
+            Outcome</button>
+        </div>
+      </article>
+
+      <article class="portfolio-card" data-tags="catering-events">
+        <div class="portfolio-card__image"></div>
+        <div class="portfolio-card__content">
+          <p class="portfolio-card__category">Catering &amp; Events</p>
+          <h3>Signature Cocktail Hour</h3>
+          <p class="portfolio-card__summary">Custom bar menu, prep, and glassware coordination for special gatherings.
+          </p>
+          <button class="portfolio-card__outcome-btn" data-outcome-title="Signature Cocktail Hour"
+            data-outcome-text="No bar lines; photo-ready pours; clean breakdown. Everyone enjoyed the moment.">View
+            Outcome</button>
+        </div>
+      </article>
+
+      <!-- Home Support cards -->
+      <article class="portfolio-card" data-tags="home-support">
+        <div class="portfolio-card__image"></div>
+        <div class="portfolio-card__content">
+          <p class="portfolio-card__category">Home Support</p>
+          <h3>Weekly Household Rhythm</h3>
+          <p class="portfolio-card__summary">Laundry, pantry resets, and light tidying on a predictable cadence.</p>
+          <button class="portfolio-card__outcome-btn" data-outcome-title="Weekly Household Rhythm"
+            data-outcome-text="Calm baseline at home; fewer daily decisions; family routines maintained.">View
+            Outcome</button>
+        </div>
+      </article>
+
+      <article class="portfolio-card" data-tags="home-support">
+        <div class="portfolio-card__image"></div>
+        <div class="portfolio-card__content">
+          <p class="portfolio-card__category">Home Support</p>
+          <h3>Small Move &amp; Settle-In</h3>
+          <p class="portfolio-card__summary">Packing, labeling, and room setup for a local apartment move.</p>
+          <button class="portfolio-card__outcome-btn" data-outcome-title="Small Move &amp; Settle-In"
+            data-outcome-text="First night ready: beds made, kitchen usable, clutter gone. Family could settle.">View
+            Outcome</button>
+        </div>
+      </article>
+
+      <!-- Celebrations & Gifting cards -->
+      <article class="portfolio-card" data-tags="celebrations">
+        <div class="portfolio-card__image"></div>
+        <div class="portfolio-card__content">
+          <p class="portfolio-card__category">Celebrations &amp; Gifting</p>
+          <h3>Holiday Wrapping Suite</h3>
+          <p class="portfolio-card__summary">Gift sourcing, premium wrapping, tags, and coordinated delivery.</p>
+          <button class="portfolio-card__outcome-btn" data-outcome-title="Holiday Wrapping Suite"
+            data-outcome-text="Polished gifts arrived on time; each tailored to recipient; stress removed.">View
+            Outcome</button>
+        </div>
+      </article>
+
+      <article class="portfolio-card" data-tags="celebrations">
+        <div class="portfolio-card__image"></div>
+        <div class="portfolio-card__content">
+          <p class="portfolio-card__category">Celebrations &amp; Gifting</p>
+          <h3>Custom Banner &amp; Setup</h3>
+          <p class="portfolio-card__summary">Hand-painted banner with onsite install and styling for milestone events.
+          </p>
+          <button class="portfolio-card__outcome-btn" data-outcome-title="Custom Banner &amp; Setup"
+            data-outcome-text="Personal focal point that held up and photographed beautifully throughout the event.">View
+            Outcome</button>
+        </div>
+      </article>
+
+      <!-- Custom Services cards -->
+      <article class="portfolio-card" data-tags="custom-services">
+        <div class="portfolio-card__image"></div>
+        <div class="portfolio-card__content">
+          <p class="portfolio-card__category">Custom Services</p>
+          <h3>Seasonal Reset</h3>
+          <p class="portfolio-card__summary">Entry decor, pantry refresh, and errand loop ahead of guest arrivals.</p>
+          <button class="portfolio-card__outcome-btn" data-outcome-title="Seasonal Reset"
+            data-outcome-text="Guest-ready space that felt intentional, not staged. Family felt prepared.">View
+            Outcome</button>
+        </div>
+      </article>
+
+      <article class="portfolio-card" data-tags="custom-services">
+        <div class="portfolio-card__image"></div>
+        <div class="portfolio-card__content">
+          <p class="portfolio-card__category">Custom Services</p>
+          <h3>One-Week Project Sprint</h3>
+          <p class="portfolio-card__summary">Vendor wrangling, scheduling, and daily status updates for multiple
+            projects.</p>
+          <button class="portfolio-card__outcome-btn" data-outcome-title="One-Week Project Sprint"
+            data-outcome-text="Projects completed without adding mental load; all coordinated smoothly.">View
+            Outcome</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Our Process Section -->
+{% include "website/components/portfolio/process.html" %}
+
+<!-- Testimonial & CTA Card -->
+<section class="portfolio-testimonial-section">
+  <div class="portfolio-testimonial-card">
+    <div class="testimonial-content">
+      <blockquote class="testimonial-quote">
+        "Everything was handled so thoughtfully. We didn't have to think about a single detail—we just showed up and
+        enjoyed our guests."
+      </blockquote>
+      <p class="testimonial-attribution">— Client, Family Dinner Event</p>
+      <p class="testimonial-note">This kind of outcome is what we aim for every time.</p>
+    </div>
+    <div class="testimonial-cta">
+      <p class="testimonial-cta-label">Ready for something similar?</p>
+      <a href="{% url 'website:consultation' %}" class="portfolio-cta-button">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+<script src="{% static 'website/js/pages/portfolio.js' %}"></script>
 {% endblock %}
