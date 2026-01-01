@@ -7,19 +7,124 @@ document.addEventListener('DOMContentLoaded', function() {
   const carousel = document.getElementById('portfolioCarousel');
   const filterButtons = document.querySelectorAll('.filter-tag');
   const portfolioCards = document.querySelectorAll('.portfolio-card');
+  const portfolioSection = document.getElementById('portfolio');
+  const portfolioLinks = document.querySelectorAll('a[href="#portfolio"]');
   
   let activeFilter = 'all';
+
+  function smoothScrollToPortfolio() {
+    if (!portfolioSection) return;
+    const header = document.querySelector('.site-header');
+    const headerOffset = header ? header.getBoundingClientRect().height : 0;
+    const target = portfolioSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+    const start = window.pageYOffset;
+    const distance = target - start;
+    const duration = 700;
+    const startTime = performance.now();
+
+    function easeInOutQuad(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    function animateScroll(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutQuad(progress);
+      window.scrollTo(0, start + distance * eased);
+      if (progress < 1) requestAnimationFrame(animateScroll);
+    }
+
+    requestAnimationFrame(animateScroll);
+  }
+
+  portfolioLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      smoothScrollToPortfolio();
+    });
+  });
 
   /**
    * Enable mouse wheel scrolling on carousel for desktop
    */
-  if (carousel) {
-    carousel.addEventListener('wheel', function(e) {
-      // Only apply on non-touch devices (desktop)
-      if (e.deltaY !== 0) {
+  function initPortfolioCarousel() {
+    if (!carousel) return;
+
+    function canScrollHorizontally() {
+      return carousel.scrollWidth > carousel.clientWidth + 1;
+    }
+
+    function handleWheel(e) {
+      const delta = e.deltaX || e.deltaY || 0;
+      if (!canScrollHorizontally()) return;
+
+      const atStart = carousel.scrollLeft <= 0;
+      const atEnd = Math.ceil(carousel.scrollLeft + carousel.clientWidth) >= carousel.scrollWidth - 1;
+      const scrollingRight = delta > 0;
+      const scrollingLeft = delta < 0;
+
+      if ((scrollingRight && !atEnd) || (scrollingLeft && !atStart)) {
         e.preventDefault();
-        // Scroll horizontally based on wheel direction
-        container.scrollLeft += e.deltaY > 0 ? 100 : -100;
+        const target = Math.max(0, Math.min(carousel.scrollWidth - carousel.clientWidth, carousel.scrollLeft + delta * 2));
+        carousel.scrollTo({ left: target, behavior: 'smooth' });
+      }
+    }
+
+    carousel.addEventListener('wheel', handleWheel, { passive: false });
+    container?.addEventListener('wheel', handleWheel, { passive: false });
+
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+
+    carousel.addEventListener('mousedown', function(e) {
+      isDown = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollStart = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', function() {
+      isDown = false;
+    });
+
+    carousel.addEventListener('mouseup', function() {
+      isDown = false;
+    });
+
+    carousel.addEventListener('mousemove', function(e) {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 0.9;
+      carousel.scrollLeft = scrollStart - walk;
+    });
+  }
+
+  initPortfolioCarousel();
+
+  if (carousel) {
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    carousel.addEventListener('touchstart', function(e) {
+      const touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', function(e) {
+      const touch = e.touches[0];
+      const deltaX = touchStartX - touch.clientX;
+      const deltaY = touchStartY - touch.clientY;
+
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        e.preventDefault();
+        carousel.scrollLeft += deltaX;
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      } else {
+        e.preventDefault();
       }
     }, { passive: false });
   }
