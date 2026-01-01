@@ -1,15 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
   // ===========================
-  // Portfolio Filtering System
+  // Portfolio Carousel
   // ===========================
-  
+
+  const container = document.querySelector('.portfolio-carousel-container');
+  const carousel = document.getElementById('portfolioCarousel');
   const filterButtons = document.querySelectorAll('.filter-tag');
   const portfolioCards = document.querySelectorAll('.portfolio-card');
   
   let activeFilter = 'all';
 
   /**
-   * Apply filter to all cards with smooth fade and layout shift
+   * Enable mouse wheel scrolling on carousel for desktop
+   */
+  if (carousel) {
+    carousel.addEventListener('wheel', function(e) {
+      // Only apply on non-touch devices (desktop)
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        // Scroll horizontally based on wheel direction
+        container.scrollLeft += e.deltaY > 0 ? 100 : -100;
+      }
+    }, { passive: false });
+  }
+
+  /**
+   * Apply filter to all cards
+   * Completely removes non-matching cards from layout using display: none
+   * Resets carousel scroll position when filter changes
    * @param {string} selectedFilter - The filter value to apply
    */
   function applyFilter(selectedFilter) {
@@ -24,19 +42,21 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.classList.toggle('active', btn.getAttribute('data-filter') === selectedFilter);
     });
 
-    // Apply filter to cards
+    // Filter cards: completely remove non-matching from layout
     portfolioCards.forEach(card => {
       const cardTags = card.getAttribute('data-tags').split(' ');
       const shouldShow = selectedFilter === 'all' || cardTags.includes(selectedFilter);
       
       if (shouldShow) {
-        // Show card: remove display: none, allow opacity transition
         card.classList.remove('is-hidden');
       } else {
-        // Hide card: fade out first, then hide from layout
         card.classList.add('is-hidden');
       }
     });
+
+    // CRITICAL: Reset carousel scroll to 0 when filter changes
+    // This ensures the first matching card is at the far left with no gaps
+    container.scrollLeft = 0;
   }
 
   // Attach filter listeners
