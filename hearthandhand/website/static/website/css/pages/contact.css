@@ -521,15 +521,6 @@
   }
 }
 
-font-size: 1rem;
-color: var(--text-dark);
-background: var(--bg-light);
-border: 2px solid rgba(var(--primary-1-rgb), 0.12);
-border-radius: var(--radius-md);
-transition: all 0.3s ease;
-font-family: inherit;
-}
-
 /* Smooth focus animation */
 .form-group input:focus,
 .form-group textarea:focus,
