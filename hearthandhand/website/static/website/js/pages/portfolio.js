@@ -12,38 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   let activeFilter = 'all';
 
-  function smoothScrollToPortfolio() {
-    if (!portfolioSection) return;
-    const header = document.querySelector('.site-header');
-    const headerOffset = header ? header.getBoundingClientRect().height : 0;
-    const target = portfolioSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-
-    const start = window.pageYOffset;
-    const distance = target - start;
-    const duration = 700;
-    const startTime = performance.now();
-
-    function easeInOutQuad(t) {
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-    }
-
-    function animateScroll(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = easeInOutQuad(progress);
-      window.scrollTo(0, start + distance * eased);
-      if (progress < 1) requestAnimationFrame(animateScroll);
-    }
-
-    requestAnimationFrame(animateScroll);
-  }
-
-  portfolioLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      smoothScrollToPortfolio();
-    });
-  });
+  // Portfolio-specific scroll handler (logic in main.js as window.smoothScrollToSection)
+  // No need to redefine - it's already handled by main.js event listeners
 
   /**
    * Enable mouse wheel scrolling on carousel for desktop

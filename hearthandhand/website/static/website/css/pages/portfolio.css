@@ -307,13 +307,39 @@
   z-index: 1;
   align-items: flex-start;
 
-  /* Hide scrollbar completely */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  /* Polished scrollbar styling (shared with services carousel) */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(57, 68, 42, 0.3) rgba(235, 231, 219, 0.5);
 }
 
+/* Webkit scrollbar - Chrome, Safari, Edge */
 .portfolio-carousel::-webkit-scrollbar {
-  display: none;
+  height: 8px;
+}
+
+.portfolio-carousel::-webkit-scrollbar-track {
+  background: rgba(235, 231, 219, 0.5);
+  border-radius: 4px;
+}
+
+.portfolio-carousel::-webkit-scrollbar-thumb {
+  background: rgba(57, 68, 42, 0.3);
+  border-radius: 4px;
+  border: 2px solid rgba(235, 231, 219, 0.5);
+}
+
+.portfolio-carousel::-webkit-scrollbar-thumb:hover {
+  background: rgba(57, 68, 42, 0.5);
+}
+
+/* Progress scrollbar styling - visible gold accent */
+.portfolio-carousel::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, rgba(57, 68, 42, 0.4), var(--accent-gold), rgba(57, 68, 42, 0.4));
+  border: 2px solid rgba(235, 231, 219, 0.5);
+}
+
+.portfolio-carousel::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, rgba(57, 68, 42, 0.6), #d4a030, rgba(57, 68, 42, 0.6));
 }
 
 .portfolio-card {
