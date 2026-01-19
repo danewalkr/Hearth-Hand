@@ -783,21 +783,6 @@
     padding-right: 20px;
   }
 
-  .services-carousel-container::after {
-    content: '→ Swipe to explore →';
-    position: absolute;
-    bottom: 0;
-    right: 16px;
-    left: 16px;
-    text-align: center;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    opacity: 0.8;
-    animation: fadeHint 2s ease-in-out infinite;
-    letter-spacing: 0.5px;
-    margin-top: 12px;
-  }
-
   .services-hero {
     min-height: 320px;
     margin-top: calc(-1 * var(--header-height) + 60px);
@@ -877,6 +862,28 @@
   background: linear-gradient(to right, rgba(57, 68, 42, 0.6), #d4a030, rgba(57, 68, 42, 0.6));
 }
 
+.services-scroll-hint {
+  text-align: center;
+  margin-top: var(--space-2);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  animation: fadeHint 2s ease-in-out infinite;
+}
+
+@keyframes fadeHint {
+
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
 .service-card {
   flex: 0 0 340px;
   scroll-snap-align: center;
@@ -890,20 +897,22 @@
   flex-direction: column;
   overflow: hidden;
   background: white;
-  border: 1px solid rgba(57, 68, 42, 0.1);
+  border: 1px solid rgba(57, 68, 42, 0.08);
   box-shadow:
-    0 8px 24px rgba(32, 32, 32, 0.08),
-    0 0 16px rgba(32, 32, 32, 0.05);
+    0 12px 32px rgba(57, 68, 42, 0.12),
+    0 4px 12px rgba(32, 32, 32, 0.06),
+    0 0 20px rgba(32, 32, 32, 0.04);
   content-visibility: auto;
   contain-intrinsic-size: 440px 340px;
   contain: layout paint;
 }
 
 .service-card:hover {
-  border-color: rgba(57, 68, 42, 0.25);
+  border-color: rgba(57, 68, 42, 0.2);
   box-shadow:
-    0 20px 40px rgba(32, 32, 32, 0.16),
-    0 8px 20px rgba(57, 68, 42, 0.12);
+    0 24px 48px rgba(57, 68, 42, 0.16),
+    0 8px 24px rgba(32, 32, 32, 0.1),
+    0 0 24px rgba(32, 32, 32, 0.06);
   transform: translateY(-8px) scale(1.01);
 }
 
