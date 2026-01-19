@@ -1,0 +1,137 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Contact & Consultation — Hearth&Hand{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'website/css/pages/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Contact Hero Section — Matches Home/Portfolio structure with gradient overlay -->
+<section class="contact-hero">
+  <div class="contact-hero-content anim-fade-in-slow">
+    <h1 class="contact-hero-headline">Let's figure this out together</h1>
+    <p class="contact-hero-lede">Tell us what's on your plate. We'll listen, ask thoughtful questions, and shape a plan
+      that fits your space, your standards, and your life.</p>
+    <div class="contact-hero-cta-wrapper">
+      <a class="contact-hero-button" href="#contact-form">Start the Conversation</a>
+    </div>
+  </div>
+
+  <!-- Hero Bridge -->
+  <div class="contact-hero-bridge">
+    <div class="contact-bridge-values">
+      <div class="contact-bridge-value">
+        <strong>Clear Process</strong>
+        <span>We reply within 1 business day.</span>
+      </div>
+      <div class="contact-bridge-value">
+        <strong>Real Consultation</strong>
+        <span>Questions, not a generic intake.</span>
+      </div>
+      <div class="contact-bridge-value">
+        <strong>No Pressure</strong>
+        <span>If it feels right, we go forward.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form Section — Full-width with layered background -->
+<section id="contact-form" class="contact-form-section">
+  <div class="contact-form-wrapper">
+    <div class="form-introduction anim-fade-up">
+      <h2>Your Information</h2>
+      <p>Share a bit about what you're managing and what might help. The more we understand, the better we can serve.
+      </p>
+    </div>
+
+    <div class="contact-form-container anim-fade-up anim-delay-1">
+      <form class="inquiry-form" action="#" method="post">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Your name *</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(843) 555-0000">
+          </div>
+
+          <div class="form-group">
+            <label for="location">Primary location *</label>
+            <input id="location" name="location" type="text" placeholder="Charleston, Sullivan's Island, Mt Pleasant…"
+              required>
+          </div>
+        </div>
+
+        <div class="form-group form-full">
+          <label for="need">What do you need help with? *</label>
+          <textarea id="need" name="need" rows="6"
+            placeholder="Household management, event prep, ongoing errands, seasonal support, delegation help, vendor coordination—or something else entirely…"
+            required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="timing">When would you like to start? *</label>
+          <select id="timing" name="timing" required>
+            <option value="">Select a timeline</option>
+            <option value="asap">As soon as possible</option>
+            <option value="1-2-weeks">Within 1–2 weeks</option>
+            <option value="1-month">Within a month</option>
+            <option value="planning">Planning ahead (3+ months)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="contact-submit-btn">Send Inquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section — What happens next (right side context) -->
+<section class="process-section">
+  <div class="process-container">
+    <h2 class="process-title anim-fade-up">What Happens Next</h2>
+
+    <div class="process-steps">
+      <div class="process-step anim-fade-up anim-delay-1">
+        <div class="step-number">1</div>
+        <h3>We Reply Quickly</h3>
+        <p>You'll hear from Judy or a senior lead within one business day—never a general inbox auto-reply.</p>
+      </div>
+
+      <div class="process-step anim-fade-up anim-delay-2">
+        <div class="step-number">2</div>
+        <h3>We Ask Real Questions</h3>
+        <p>What's your cadence? Who has access to your home? What vendor relationships matter? Are there routines we
+          need to understand?</p>
+      </div>
+
+      <div class="process-step anim-fade-up anim-delay-3">
+        <div class="step-number">3</div>
+        <h3>We Send a Proposal</h3>
+        <p>Clear scope, pricing, and team intro. If it feels right, we move forward together. If not, no hard
+          feelings—we'll know.</p>
+      </div>
+    </div>
+
+    <div class="direct-contact-section anim-fade-up anim-delay-4">
+      <h3 class="direct-contact-title">Prefer to Call?</h3>
+      <div class="direct-contact-info">
+        <a href="tel:+18435550111" class="direct-phone">(843) 555-0111</a>
+        <p class="direct-hours">Monday – Friday, 8am – 6pm ET</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

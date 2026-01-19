@@ -1,15 +1,122 @@
 {% extends "website/base.html" %}
 {% load static %}
 
-{% block title %}Shop — Heart&Hand{% endblock %}
+{% block title %}About — Hearth&Hand{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'website/css/pages/about.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="about-content">
-  <h2>Coming Soon</h2>
-  <p>We're preparing something special for you. Check back soon.</p>
+
+<!-- About Hero Section — Matches Home/Portfolio structure with layered gradient -->
+<section class="about-hero">
+  <div class="about-hero-content anim-fade-in-slow">
+    <h1 class="about-hero-headline">Built on 35 years of care, shaped by trust</h1>
+    <p class="about-hero-lede">We handle the details so you can focus on what matters. A concierge service designed by
+      people who understand that home isn't just a place—it's peace of mind.</p>
+    <div class="about-hero-cta-wrapper">
+      <a class="about-cta-button" href="#about-story">Learn Our Story</a>
+    </div>
+  </div>
+
+  <!-- Hero Bridge: Core values bridge into story -->
+  <div class="about-hero-bridge">
+    <div class="about-bridge-values">
+      <div class="about-bridge-value">
+        <strong>Trusted Discretion</strong>
+        <span>NDAs standard. Same faces always.</span>
+      </div>
+      <div class="about-bridge-value">
+        <strong>Organized Excellence</strong>
+        <span>Systems that work every time.</span>
+      </div>
+      <div class="about-bridge-value">
+        <strong>Personal Attention</strong>
+        <span>One point of contact. Clear updates.</span>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- Story Section — Alternating gradient backgrounds for visual rhythm -->
+<section id="about-story" class="story-section">
+  <div class="story-container">
+    <div class="story-intro anim-fade-up">
+      <h2 class="story-title">The Foundation</h2>
+      <p class="story-lead">Judy founded Hearth & Hand after 35 years of managing spaces that mattered—restaurants,
+        medical offices, family homes, community hubs. She learned that great service isn't transactional. It's
+        relational.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Background-layered section with depth -->
+<section class="story-detail-section">
+  <div class="story-detail-wrapper">
+    <div class="story-detail-block anim-fade-up anim-delay-1">
+      <h3 class="story-detail-title">A Different Kind of Leadership</h3>
+      <p>As an ADHD Latina who's run teams, navigated bureaucracy, and juggled multiple cities, she knows what it's like
+        to need systems that just work. No extra noise. No wasted steps. Just calm, competent execution.</p>
+      <p>That philosophy shaped everything: how we hire, how we train, how we show up for clients.</p>
+    </div>
+
+    <div class="story-detail-block anim-fade-up anim-delay-2">
+      <h3 class="story-detail-title">From Hospitality to Home</h3>
+      <p>After years of running Mason's Famous Lobster Rolls in downtown Charleston—managing daily service, building
+        teams, and learning what consistency actually means—she decided to build something more intimate and
+        intentional.</p>
+      <p>Hearth & Hand was born from one idea: if you treat someone's home with the same care you'd give a thriving
+        restaurant, everything changes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Principles Section — Full-width with gradient overlay -->
+<section class="principles-section">
+  <div class="principles-container">
+    <div class="principles-header anim-fade-up">
+      <h2>What We Stand For</h2>
+    </div>
+
+    <div class="principles-grid">
+      <div class="principle-card anim-fade-up anim-delay-1">
+        <h3>We stay invisible until you need us</h3>
+        <p>Unbranded arrivals. NDAs standard. The same trusted faces, never rotating teams. Your home's business stays
+          private.</p>
+      </div>
+
+      <div class="principle-card anim-fade-up anim-delay-2">
+        <h3>We document everything</h3>
+        <p>Your preferences, vendor contacts, seasonal routines, emergency protocols—all tracked so nothing ever falls
+          through the cracks.</p>
+      </div>
+
+      <div class="principle-card anim-fade-up anim-delay-3">
+        <h3>We speak plainly</h3>
+        <p>One point of contact. Clear updates. No jargon, no runaround, no surprises. Straightforward communication,
+          always.</p>
+      </div>
+
+      <div class="principle-card anim-fade-up anim-delay-4">
+        <h3>We adapt as you do</h3>
+        <p>Seasons change. Guests arrive. Plans shift. We adjust without needing constant instruction or approval
+          chains.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section — Visually distinct destination -->
+<section class="about-cta-section">
+  <div class="about-cta-container">
+    <h2 class="about-cta-heading anim-fade-up">Ready to feel the difference?</h2>
+    <p class="about-cta-text anim-fade-up anim-delay-1">Let's talk about what's on your plate and how we might help calm
+      things down.</p>
+    <div class="about-cta-button-wrapper anim-fade-up anim-delay-2">
+      <a class="cta-primary-button" href="/contact/">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

@@ -25,10 +25,10 @@ def about(request):
 
 
 def contact(request):
-    # Contact page view - redirects to consultation for now
-    return render(request, 'website/consultation.html')
+    # Contact page view
+    return render(request, 'website/contact.html')
 
 
 def consultation(request):
-    # Consultation page view
-    return render(request, 'website/consultation.html')
+    # Consultation page view — same as contact
+    return render(request, 'website/contact.html')
