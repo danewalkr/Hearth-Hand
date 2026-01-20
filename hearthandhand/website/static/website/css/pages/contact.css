@@ -451,12 +451,70 @@
 
 /* Responsive Design */
 @media (max-width: 968px) {
+
+  /* Hero mobile flow */
   .contact-hero {
     min-height: 50vh;
+    padding: var(--space-5) 16px var(--space-4);
+    background-attachment: scroll;
+  }
+
+  .contact-hero-content {
+    gap: var(--space-3);
+    margin: 2vh auto;
+  }
+
+  .contact-hero-cta-wrapper {
+    margin-top: var(--space-3);
+  }
+
+  .contact-hero-button {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+  }
+
+  .contact-bridge {
+    padding: var(--space-4) 16px var(--space-5);
+  }
+
+  .contact-bridge-values {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .contact-bridge-value {
+    gap: var(--space-2);
+  }
+
+  /* Form section breathing room */
+  .contact-form-section {
+    padding: var(--space-6) 16px;
+  }
+
+  .form-introduction {
+    margin-bottom: var(--space-4);
   }
 
   .form-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-3);
+  }
+
+  .contact-form-container {
+    padding: var(--space-5);
+  }
+
+  /* Process section clarity */
+  .process-section {
+    padding: var(--space-6) 16px;
+  }
+
+  .process-header {
+    margin-bottom: var(--space-5);
   }
 
   .process-steps {
@@ -464,36 +522,54 @@
     gap: var(--space-4);
   }
 
-  .contact-form-container {
-    padding: var(--space-5);
+  /* Direct contact */
+  .direct-contact-section {
+    padding: var(--space-5) 16px var(--space-6);
   }
 }
 
 @media (max-width: 640px) {
+
+  /* Typography refinements */
   .contact-hero-headline {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    margin-bottom: var(--space-1);
+    letter-spacing: -0.3px;
   }
 
   .contact-hero-lede {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 
   .contact-bridge-values {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
+    gap: var(--space-4);
   }
 
+  /* Form field spacing */
   .form-introduction h2 {
     font-size: 1.6rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .form-introduction p {
+    margin-bottom: var(--space-3);
+  }
+
+  .form-label {
+    margin-bottom: var(--space-1);
   }
 
   .contact-submit-btn {
     padding: 16px var(--space-4);
     font-size: 1rem;
+    margin-top: var(--space-2);
   }
 
+  /* Process steps rhythm */
   .process-title {
     font-size: 1.6rem;
+    margin-bottom: var(--space-4);
   }
 
   .process-step {
@@ -504,12 +580,19 @@
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
+    margin-bottom: var(--space-2);
   }
 
   .process-step h3 {
     font-size: 1.1rem;
+    margin-bottom: var(--space-2);
   }
 
+  .process-step p {
+    line-height: 1.6;
+  }
+
+  /* Direct contact clarity */
   .direct-contact-section {
     padding: var(--space-4);
   }

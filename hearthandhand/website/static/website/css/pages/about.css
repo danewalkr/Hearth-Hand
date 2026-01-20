@@ -410,6 +410,43 @@
 @media (max-width: 968px) {
   .about-hero {
     min-height: 50vh;
+    padding: var(--space-5) 16px var(--space-4);
+    background-attachment: scroll;
+  }
+
+  .about-hero-content {
+    gap: var(--space-3);
+    margin: 2vh auto;
+  }
+
+  .about-hero-cta-wrapper {
+    margin-top: var(--space-3);
+  }
+
+  .about-hero-bridge {
+    padding: var(--space-4) 16px var(--space-5);
+  }
+
+  .about-bridge-values {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .about-bridge-value {
+    gap: var(--space-2);
+  }
+
+  /* Section spacing refinement */
+  .story-section {
+    padding: var(--space-6) 16px var(--space-5);
+  }
+
+  .story-intro {
+    margin-bottom: var(--space-5);
+  }
+
+  .story-detail-section {
+    padding: var(--space-6) 16px;
   }
 
   .story-detail-wrapper {
@@ -417,32 +454,52 @@
     gap: var(--space-5);
   }
 
+  .principles-section {
+    padding: var(--space-6) 16px;
+  }
+
+  .principles-header {
+    margin-bottom: var(--space-5);
+  }
+
   .principles-grid {
     grid-template-columns: 1fr;
     gap: var(--space-5);
   }
 
-  .about-bridge-values {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
+  .about-cta-section {
+    padding: var(--space-6) 16px calc(var(--space-6) + var(--space-7));
   }
 }
 
 @media (max-width: 640px) {
+
+  /* Typography adjustments */
   .about-hero-headline {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    margin: 0 0 var(--space-1) 0;
+    letter-spacing: -0.3px;
   }
 
   .about-hero-lede {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .about-cta-button {
+    padding: 14px 32px;
     font-size: 0.95rem;
   }
 
+  /* Story section rhythm */
   .story-title {
     font-size: 1.8rem;
+    margin-bottom: var(--space-3);
   }
 
   .story-lead {
     font-size: 1rem;
+    line-height: 1.6;
   }
 
   .story-detail-block {
@@ -451,22 +508,32 @@
 
   .story-detail-title {
     font-size: 1.2rem;
+    margin-bottom: var(--space-2);
   }
 
+  .story-detail-block p {
+    margin-bottom: var(--space-2);
+  }
+
+  /* Principles breathing room */
   .principle-card {
     padding: var(--space-4);
   }
 
   .principle-card h3 {
     font-size: 1.2rem;
+    margin-bottom: var(--space-2);
   }
 
+  /* CTA section clarity */
   .about-cta-heading {
     font-size: 1.8rem;
+    margin-bottom: var(--space-2);
   }
 
   .about-cta-text {
     font-size: 1rem;
+    margin-bottom: var(--space-3);
   }
 
   .cta-primary-button {

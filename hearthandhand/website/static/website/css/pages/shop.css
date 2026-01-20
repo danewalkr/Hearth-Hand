@@ -76,3 +76,78 @@
 .shop-hero .bridge-value strong {
   color: var(--accent-gold);
 }
+
+/* ===========================
+   MOBILE SPACING & FLOW
+   =========================== */
+
+@media (max-width: 908px) {
+
+  /* Hero section spacing */
+  .shop-hero {
+    padding: var(--space-5) 16px var(--space-4);
+    min-height: auto;
+    margin-top: calc(-1 * var(--header-height) + 16px);
+    background-attachment: scroll;
+  }
+
+  /* Hero content breathing room */
+  .shop-hero .hero-content {
+    gap: var(--space-3);
+    margin: 2vh auto;
+  }
+
+  /* Headline spacing */
+  .shop-hero h1 {
+    font-size: 1.8rem;
+    margin: 0 0 var(--space-1) 0;
+    letter-spacing: -0.3px;
+  }
+
+  /* Body text rhythm */
+  .shop-hero p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* CTA wrapper spacing - intentional pause before button */
+  .shop-hero .hero-cta-wrapper {
+    margin-top: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  /* Button touch-friendly size */
+  .shop-hero-cta {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+  }
+
+  /* Hero subtext if present */
+  .shop-hero .hero-subtext {
+    font-size: 0.8rem;
+  }
+
+  /* Bridge section flow */
+  .shop-hero .hero-bridge {
+    padding: var(--space-4) 16px var(--space-5);
+  }
+
+  /* Bridge values stack naturally */
+  .shop-hero .bridge-values {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .shop-hero .bridge-value {
+    gap: var(--space-2);
+  }
+
+  .shop-hero .bridge-value strong {
+    font-size: 0.95rem;
+  }
+
+  .shop-hero .bridge-value span {
+    font-size: 0.85rem;
+  }
+}

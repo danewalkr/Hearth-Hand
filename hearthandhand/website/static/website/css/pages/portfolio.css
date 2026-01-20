@@ -727,13 +727,58 @@
    =========================== */
 
 @media (max-width: 900px) {
+
+  /* Hero section mobile refinement */
   .portfolio-hero {
     min-height: 45vh;
-    padding: var(--space-4) var(--space-3);
+    padding: var(--space-5) 16px var(--space-4);
+    background-attachment: scroll;
+  }
+
+  .portfolio-hero-content {
+    gap: var(--space-3);
+    margin: 2vh auto;
   }
 
   .portfolio-hero h1 {
     font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    margin-bottom: var(--space-1);
+  }
+
+  .portfolio-hero-lede {
+    line-height: 1.6;
+  }
+
+  .portfolio-hero-cta-wrapper {
+    margin-top: var(--space-3);
+  }
+
+  .portfolio-cta-button {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+  }
+
+  .portfolio-hero-bridge {
+    padding: var(--space-4) 16px var(--space-5);
+  }
+
+  .portfolio-bridge-values {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .portfolio-bridge-value {
+    gap: var(--space-2);
+  }
+
+  /* Framing section flow */
+  .portfolio-framing {
+    padding: var(--space-5) 16px var(--space-4);
+  }
+
+  /* Filters section - touch friendly */
+  .portfolio-filters-section {
+    padding: var(--space-5) 16px var(--space-5);
   }
 
   .portfolio-filters {
@@ -744,6 +789,7 @@
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     padding-bottom: var(--space-2);
+    margin-bottom: var(--space-1);
   }
 
   .portfolio-filters::-webkit-scrollbar {
@@ -761,9 +807,14 @@
   }
 
   .filter-tag {
-    padding: 9px 14px;
+    padding: 10px 16px;
     font-size: 0.85rem;
     flex-shrink: 0;
+  }
+
+  /* Cards section breathing room */
+  .portfolio-cards-section {
+    padding: var(--space-5) 16px var(--space-6);
   }
 
   .portfolio-grid {
@@ -771,33 +822,29 @@
     gap: var(--space-4);
   }
 
-  .portfolio-testimonial-card {
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
+  /* Process section clarity */
+  .portfolio-process {
+    padding: var(--space-6) 16px;
+  }
+
+  .process-heading {
+    margin-bottom: var(--space-5);
   }
 
   .process-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
   }
 
-  .portfolio-framing {
-    padding: var(--space-6) var(--space-3);
-  }
-
-  .portfolio-filters-section {
-    padding: var(--space-6) var(--space-3);
-  }
-
-  .portfolio-cards-section {
-    padding: var(--space-6) var(--space-3);
-  }
-
-  .portfolio-process {
-    padding: var(--space-6) var(--space-3);
-  }
-
+  /* Testimonial section */
   .portfolio-testimonial-section {
-    padding: var(--space-6) var(--space-3);
+    padding: var(--space-6) 16px;
+  }
+
+  .portfolio-testimonial-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding: var(--space-5);
   }
 }
 
