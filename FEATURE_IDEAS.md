@@ -1,1 +1,0 @@
-Blog page / Recent updates on the home page

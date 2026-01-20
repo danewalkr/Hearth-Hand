@@ -116,13 +116,20 @@
   letter-spacing: -0.5px;
 }
 
+.hero h1:not(.animate-fade-in-down) {
+  opacity: 1;
+}
+
 .hero p {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   margin: 0;
-  opacity: 0.95;
   max-width: 650px;
   line-height: 1.7;
   letter-spacing: 0.3px;
+}
+
+.hero p:not(.animate-fade-in-up) {
+  opacity: 0.95;
 }
 
 /* Primary CTA — enhanced visual presence */
