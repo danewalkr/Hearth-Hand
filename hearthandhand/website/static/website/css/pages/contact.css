@@ -327,6 +327,8 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  margin-bottom: calc(-1 * var(--space-7) - var(--space-3));
+  padding: var(--space-7) var(--space-4) calc(var(--space-7) + var(--space-7) + var(--space-3));
   padding: var(--space-7) var(--space-4);
   position: relative;
   border-top: 2px solid rgba(57, 68, 42, 0.08);
