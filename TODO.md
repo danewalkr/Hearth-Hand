@@ -1,9 +1,6 @@
-== HOME PAGE ==
-- Re-adjust wording
-  - Ensure mobile spacing
+Brief 1 sentence explanitory
+3 or 4 exact points for each service card
 
-- Sit down with denise to verify: wording, photos, coloring
-  - Update footer content with her
+Real Testimonials or just fake them
 
-== Portfolio Page ==
-
+Portfolio cards what do i do

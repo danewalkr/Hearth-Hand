@@ -3,13 +3,13 @@
    Full visual rebuild with hero, layered sections, and depth
    =========================== */
 
-/* Contact Hero — Matches Home/Portfolio structure with gradient overlay */
+/* Contact Hero — EXACT CLONE of Portfolio hero with secondary-1 red theme */
 .contact-hero {
   background:
     linear-gradient(180deg, transparent, transparent),
-    radial-gradient(ellipse 700px 300px at 50% 20%, rgba(139, 59, 41, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse 600px 400px at 15% 10%, rgba(188, 156, 34, 0.14) 0%, transparent 40%),
-    radial-gradient(ellipse 800px 500px at 85% 95%, rgba(57, 68, 42, 0.16) 0%, transparent 45%),
+    radial-gradient(ellipse 700px 300px at 50% 20%, rgba(var(--secondary-1-rgb), 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 600px 400px at 15% 10%, rgba(188, 156, 34, 0.12) 0%, transparent 40%),
+    radial-gradient(ellipse 800px 500px at 85% 95%, var(--secondary-1) 0%, transparent 45%),
     linear-gradient(135deg, #5a2b1f 0%, #703520 50%, #4a2318 100%);
 
   background-attachment: fixed;
@@ -42,7 +42,7 @@
   background: radial-gradient(ellipse 180px 120px at 30% 40%, var(--secondary-1) 0%, transparent 70%);
   border-radius: 50% 40% 60% 50% / 60% 50% 40% 50%;
   filter: blur(40px);
-  opacity: 0.06;
+  opacity: 0.05;
   transform: rotate(-15deg);
   pointer-events: none;
   z-index: 0;
@@ -102,25 +102,23 @@
 
 .contact-hero-button {
   display: inline-block;
-  background: var(--accent-3);
-  color: var(--text-dark);
+  background: var(--secondary-red-dark);
+  color: white;
   padding: 16px 40px;
   border-radius: 9999px;
   font-weight: 700;
   font-size: 1.05rem;
-  border: 2px solid var(--accent-3);
+  border: 2px solid var(--secondary-1);
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(188, 156, 34, 0.2);
-  letter-spacing: 0.5px;
 }
 
 .contact-hero-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(188, 156, 34, 0.3);
-  background: #d4b230;
+  background: #6a2818;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 59, 41, 0.3);
 }
 
 .contact-hero-button:active {

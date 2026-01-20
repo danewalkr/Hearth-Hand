@@ -2,39 +2,77 @@
    SHOP PAGE STYLESHEET
    =========================== */
 
-/* Shop Content Section */
-.shop-content {
-  max-width: var(--content-max-width);
-  margin: 0 auto;
-  padding: var(--space-6) var(--space-4);
-  text-align: center;
+/* Import home.css for hero styling base */
+@import url('home.css');
+
+/* Override hero section for shop with accent-gold theme */
+.shop-hero {
+  background:
+    /* Transition gradient at bottom to ease into light section */
+    linear-gradient(180deg, transparent, transparent),
+    /* Radial glow from top-center (light bloom for focus) */
+    radial-gradient(ellipse 700px 300px at 50% 20%, rgba(188, 156, 34, 0.15) 0%, transparent 50%),
+    /* Radial glow from top-left (warm gold accent) */
+    radial-gradient(ellipse 600px 400px at 15% 10%, rgba(188, 156, 34, 0.25) 0%, transparent 40%),
+    /* Radial glow from bottom-right (warm gold accent) */
+    radial-gradient(ellipse 800px 500px at 85% 95%, rgba(188, 156, 34, 0.2) 0%, transparent 45%),
+    /* Primary gradient: gold-based deep to mid-tone */
+    linear-gradient(135deg, #3d3a1f 0%, #4a4727 50%, #2a2819 100%);
+
+  background-attachment: fixed;
 }
 
-.shop-content h2 {
-  font-size: 2rem;
-  color: var(--accent-1);
-  margin-top: 0;
-  margin-bottom: var(--space-4);
-  letter-spacing: -0.5px;
+/* Shop hero transition shape — gold theme */
+.shop-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 10%;
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(ellipse 180px 120px at 30% 40%, var(--accent-gold) 0%, transparent 70%);
+  border-radius: 50% 40% 60% 50% / 60% 50% 40% 50%;
+  filter: blur(40px);
+  opacity: 0.08;
+  transform: rotate(-15deg);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.shop-content p {
-  font-size: 1.1rem;
-  color: var(--text);
-  line-height: 1.8;
+/* Shop hero texture overlay — subtle gold tint */
+.shop-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    /* Subtle diagonal pattern of gold light */
+    linear-gradient(45deg, rgba(245, 244, 239, 0.03) 0%, transparent 50%, rgba(188, 156, 34, 0.04) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .shop-content {
-    padding: var(--space-4) var(--space-2);
-  }
+/* Shop hero CTA button — accent-gold theme */
+.shop-hero-cta {
+  background: var(--accent-gold);
+  color: #2a2a2a;
+  box-shadow: 0 8px 24px rgba(188, 156, 34, 0.25);
+  border-color: var(--accent-gold);
+}
 
-  .shop-content h2 {
-    font-size: 1.5rem;
-  }
+.shop-hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(188, 156, 34, 0.35);
+  background: #d4b230;
+}
 
-  .shop-content p {
-    font-size: 1rem;
-  }
+/* Hero bridge values for shop — using inherited home.css styles */
+.shop-hero .hero-bridge {
+  background: linear-gradient(180deg, rgba(188, 156, 34, 0.08) 0%, rgba(188, 156, 34, 0.04) 50%, var(--bg-light) 100%);
+}
+
+.shop-hero .bridge-value strong {
+  color: var(--accent-gold);
 }

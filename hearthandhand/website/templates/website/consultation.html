@@ -1,110 +1,143 @@
 {% extends "website/base.html" %}
 {% load static %}
 
-{% block title %}Book a Consultation - Heart&Hand{% endblock %}
+{% block title %}Get in Touch — Hearth&Hand{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'website/css/pages/consultation.css' %}">
+<link rel="stylesheet" href="{% static 'website/css/pages/contact.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="consultation-header">
-  <h1>Book a Consultation</h1>
-  <p>Tell us about your needs and we'll be in touch shortly to discuss how we can help you.</p>
+
+<!-- Contact Hero Section -->
+<section class="contact-hero">
+  <div class="contact-hero-content anim-fade-in-slow">
+    <h1 class="contact-hero-headline">Let's talk about what you need</h1>
+    <p class="contact-hero-lede">Tell us what's on your plate. We'll listen, ask the right questions, and shape a plan
+      that fits your life, your home, and your standards.</p>
+    <div class="contact-hero-cta-wrapper">
+      <a class="contact-hero-button" href="#contact-form">Start the Conversation</a>
+    </div>
+  </div>
+
+  <!-- Hero Bridge -->
+  <div class="contact-hero-bridge">
+    <div class="contact-bridge-values">
+      <div class="contact-bridge-value">
+        <strong>Clear Process</strong>
+        <span>We reply within 1 business day.</span>
+      </div>
+      <div class="contact-bridge-value">
+        <strong>Real Consultation</strong>
+        <span>Questions, not a generic intake.</span>
+      </div>
+      <div class="contact-bridge-value">
+        <strong>No Pressure</strong>
+        <span>If it feels right, we go forward.</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<form method="post" class="consultation-form">
-  {% csrf_token %}
-
-  <div class="form-row">
-    <div class="form-group">
-      <label for="first-name">First Name <span class="required">*</span></label>
-      <input type="text" id="first-name" name="first_name" required>
+<!-- Contact Form Section -->
+<section id="contact-form" class="contact-form-section">
+  <div class="contact-form-wrapper">
+    <div class="form-introduction anim-fade-up">
+      <h2>Let's Start Here</h2>
+      <p>Tell us a bit about what you're managing and what would help most. The more we understand your situation, the
+        better we can support you.
+      </p>
     </div>
 
-    <div class="form-group">
-      <label for="last-name">Last Name <span class="required">*</span></label>
-      <input type="text" id="last-name" name="last_name" required>
+    <div class="contact-form-container anim-fade-up anim-delay-1">
+      <form class="inquiry-form" action="#" method="post">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="first-name">First Name *</label>
+            <input id="first-name" name="first_name" type="text" autocomplete="given-name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="last-name">Last Name *</label>
+            <input id="last-name" name="last_name" type="text" autocomplete="family-name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone number *</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(843) 555-0000" required>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Primary location *</label>
+            <input id="location" name="location" type="text" placeholder="Charleston, Sullivan's Island, Mt Pleasant…"
+              required>
+          </div>
+        </div>
+
+        <div class="form-group form-full">
+          <label for="need">What do you need help with? *</label>
+          <textarea id="need" name="need" rows="6"
+            placeholder="Household management, event prep, ongoing errands, seasonal support, delegation help, vendor coordination—or something else entirely…"
+            required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="timing">When would you like to start? *</label>
+          <select id="timing" name="timing" required>
+            <option value="">Select a timeline</option>
+            <option value="asap">As soon as possible</option>
+            <option value="1-2-weeks">Within 1–2 weeks</option>
+            <option value="1-month">Within a month</option>
+            <option value="planning">Planning ahead (3+ months)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="contact-submit-btn">Send Inquiry</button>
+      </form>
     </div>
   </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label for="email">Email <span class="required">*</span></label>
-      <input type="email" id="email" name="email" required>
-    </div>
-
-    <div class="form-group">
-      <label for="phone">Phone Number <span class="required">*</span></label>
-      <input type="tel" id="phone" name="phone" required>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="service">Service of Interest <span class="required">*</span></label>
-    <select id="service" name="service" required>
-      <option value="">Select a service...</option>
-      <option value="household">Household Management</option>
-      <option value="culinary">Personal Chef Services</option>
-      <option value="events">Event Planning</option>
-      <option value="travel">Travel Coordination</option>
-      <option value="shopping">Shopping & Errands</option>
-      <option value="other">Other/Custom</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label>Services of Interest</label>
-    <div class="checkbox-group">
-      <label class="checkbox-label">
-        <input type="checkbox" name="interests" value="household">
-        Household Management
-      </label>
-      <label class="checkbox-label">
-        <input type="checkbox" name="interests" value="culinary">
-        Personal Chef Services
-      </label>
-      <label class="checkbox-label">
-        <input type="checkbox" name="interests" value="events">
-        Event Planning
-      </label>
-      <label class="checkbox-label">
-        <input type="checkbox" name="interests" value="travel">
-        Travel Coordination
-      </label>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="budget">Budget Range</label>
-    <select id="budget" name="budget">
-      <option value="">No preference</option>
-      <option value="5k">Under $5,000</option>
-      <option value="5k-10k">$5,000 - $10,000</option>
-      <option value="10k-25k">$10,000 - $25,000</option>
-      <option value="25k+">$25,000+</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="message">Tell us more about your needs <span class="required">*</span></label>
-    <textarea id="message" name="message" required></textarea>
-    <div class="form-help">Please provide details about what you're looking for and your timeline.</div>
-  </div>
-
-  <div class="form-group">
-    <label class="checkbox-label">
-      <input type="checkbox" name="preferences" value="email">
-      I prefer to be contacted via email
-    </label>
-  </div>
-
-  <button type="submit" class="form-submit">Request Consultation</button>
-</form>
-
-<section class="consultation-info">
-  <h3>Can't wait for a form submission?</h3>
-  <p><strong>Call or text us directly:</strong> (843) 555-0123</p>
-  <p>We're available Monday through Friday, 9am - 6pm EST, and weekends by appointment.</p>
 </section>
+
+<!-- Process Section -->
+<section class="process-section">
+  <div class="process-container">
+    <h2 class="process-title anim-fade-up">What Happens Next</h2>
+
+    <div class="process-steps">
+      <div class="process-step anim-fade-up anim-delay-1">
+        <div class="step-number">1</div>
+        <h3>You'll Hear From Us Fast</h3>
+        <p>Within one business day, someone will reach out. A real person, not an auto-reply. We're ready to listen.</p>
+      </div>
+
+      <div class="process-step anim-fade-up anim-delay-2">
+        <div class="step-number">2</div>
+        <h3>We Have a Real Conversation</h3>
+        <p>We ask real questions. What's your rhythm? Who else is involved? Which vendor relationships matter to you?
+          What do we need to know about your home and how you live?</p>
+      </div>
+
+      <div class="process-step anim-fade-up anim-delay-3">
+        <div class="step-number">3</div>
+        <h3>We Send a Clear Proposal</h3>
+        <p>Exact scope. Honest pricing. Team introductions. If it feels right, we move forward together. If it doesn't,
+          we'll both know. No pressure either way.</p>
+      </div>
+    </div>
+
+    <div class="direct-contact-section anim-fade-up anim-delay-4">
+      <h3 class="direct-contact-title">Want to talk by phone first?</h3>
+      <div class="direct-contact-info">
+        <a href="tel:+18435550111" class="direct-phone">(843) 555-0111</a>
+        <p class="direct-hours">Monday through Friday, 8am to 6pm</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
