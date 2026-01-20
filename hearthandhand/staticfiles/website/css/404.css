@@ -1,0 +1,270 @@
+/* ===========================
+   404 ERROR PAGE STYLESHEET
+   
+   Custom error page matching site aesthetic.
+   Uses CSS variables for consistency.
+   =========================== */
+
+@import 'variables.css';
+
+/* Full-screen container */
+.error-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse 800px 600px at 50% 30%, rgba(188, 156, 34, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 600px 500px at 80% 70%, rgba(139, 59, 41, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-light) 0%, #d4cbbe 50%, #c0b59f 100%);
+
+  padding: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background shapes */
+.error-container::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(57, 68, 42, 0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: floatGentle 20s ease-in-out infinite;
+  z-index: 0;
+}
+
+.error-container::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(188, 156, 34, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(100px);
+  animation: floatGentle 25s ease-in-out infinite reverse;
+  z-index: 0;
+}
+
+@keyframes floatGentle {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(30px, -30px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .error-container::before,
+  .error-container::after {
+    animation: none;
+  }
+}
+
+/* Content wrapper */
+.error-content {
+  position: relative;
+  z-index: 10;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(253, 252, 249, 0.95) 0%, rgba(235, 231, 219, 0.92) 100%);
+  backdrop-filter: blur(10px);
+  padding: clamp(3rem, 10vh, 5rem);
+  border-radius: 20px;
+  border: 1px solid rgba(57, 68, 42, 0.08);
+  box-shadow:
+    0 20px 60px rgba(57, 68, 42, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* 404 code display */
+.error-code {
+  font-size: clamp(6rem, 15vw, 12rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, var(--accent-3) 0%, #a88820 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 var(--space-3) 0;
+  text-shadow: 0 10px 30px rgba(188, 156, 34, 0.15);
+}
+
+/* Heading */
+.error-heading {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  margin: 0 0 var(--space-2) 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+}
+
+/* Message text */
+.error-message {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0 0 var(--space-5) 0;
+  letter-spacing: 0.3px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Action buttons */
+.error-actions {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vh, 1.5rem);
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  .error-actions {
+    flex-direction: row;
+    gap: var(--space-3);
+  }
+}
+
+/* Primary button */
+.error-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent-3) 0%, #a88820 100%);
+  color: var(--text-dark);
+  padding: clamp(14px, 2vh, 18px) clamp(36px, 5vw, 48px);
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  border: none;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow:
+    0 10px 30px rgba(188, 156, 34, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.error-button-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.error-button-primary:hover::before {
+  left: 100%;
+}
+
+.error-button-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 14px 40px rgba(188, 156, 34, 0.4),
+    0 6px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.error-button-primary:active {
+  transform: translateY(0) scale(1);
+  box-shadow:
+    0 8px 24px rgba(188, 156, 34, 0.35),
+    0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.error-button-primary:focus {
+  outline: 2px solid var(--accent-3);
+  outline-offset: 2px;
+}
+
+/* Secondary button */
+.error-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-dark);
+  padding: clamp(14px, 2vh, 18px) clamp(36px, 5vw, 48px);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  border: 2px solid var(--text-muted);
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  min-width: 200px;
+}
+
+.error-button-secondary:hover {
+  border-color: var(--accent-3);
+  color: var(--accent-3);
+  transform: translateY(-2px);
+}
+
+.error-button-secondary:active {
+  transform: translateY(0);
+}
+
+.error-button-secondary:focus {
+  outline: 2px solid var(--accent-3);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .error-content {
+    padding: clamp(2rem, 8vh, 3rem);
+  }
+
+  .error-button-primary,
+  .error-button-secondary {
+    width: 100%;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .error-code,
+  .error-heading,
+  .error-message,
+  .error-actions {
+    animation: none;
+  }
+
+  .error-button-primary::before {
+    display: none;
+  }
+
+  .error-button-primary:hover,
+  .error-button-secondary:hover {
+    transform: none;
+  }
+}

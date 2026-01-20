@@ -1,0 +1,153 @@
+:root {
+  /* === TYPOGRAPHY === */
+  --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-accent: "Alex Brush", cursive;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  --line-tight: 1.2;
+  --line-normal: 1.4;
+  --line-relaxed: 1.6;
+
+  /* === BRAND CORE (LOCKED) === */
+  --primary-1: #39442a;
+  /* deep forest green */
+  --primary-2: #465732;
+  /* secondary green */
+
+  --secondary-1: #8b3b29;
+  /* warm brown (accent only) */
+  --secondary-2: #463029;
+  /* deep brown (rare use) */
+
+  /* === NEW: DARK NEUTRALS (CRITICAL) === */
+  --dark-base: #141812;
+  /* near-black, warm green tint */
+  --dark-surface: #1e241b;
+  /* cards/nav/hero overlays */
+  --dark-border: rgba(255, 255, 255, 0.08);
+
+  /* === LIGHT SURFACES (DE-EMPHASIZED) === */
+  --bg-light: #ebe7db;
+
+  /* slightly darker, less bright */
+  --bg-white: #fdfcf9;
+  /* softened white for cards */
+
+  /* === TEXT === */
+  --text-dark: #2a2a2a;
+  --text-muted: #6f6f6f;
+  --text-on-dark: #f5f4ef;
+  --text-muted-on-dark: rgba(245, 244, 239, 0.65);
+
+  /* === ACCENTS (RESTRAINED) === */
+  --accent-gold: #bc9c22;
+  /* optional micro-accent */
+  --accent-warm: var(--secondary-1);
+
+  /* === UI === */
+  --border-color: rgba(0, 0, 0, 0.06);
+  --transition: all 0.2s ease-in-out;
+
+  /* === ALIASES (SAFE) === */
+  --accent-1: var(--primary-1);
+  --accent-2: var(--secondary-1);
+  --accent-3: var(--accent-gold);
+  --text: var(--text-dark);
+  --muted: var(--text-muted);
+  --bg: var(--bg-light);
+
+  /* === SPACING / LAYOUT TOKENS === */
+  /* Use a small, consistent spacing system for vertical rhythm */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 20px;
+  --space-4: 28px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 96px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 6px 14px rgba(20, 24, 18, 0.08);
+  --shadow-md: 0 10px 28px rgba(20, 24, 18, 0.11);
+  --shadow-lg: 0 16px 42px rgba(20, 24, 18, 0.14);
+  --shadow-xl: 0 22px 60px rgba(20, 24, 18, 0.16);
+
+  /* Content max width used across hero and sections for horizontal alignment */
+  --content-max-width: 1100px;
+
+  /* === RGBs === */
+  --primary-1-rgb: 57, 68, 42;
+  --primary-2-rgb: 70, 87, 50;
+  --secondary-1-rgb: 139, 59, 41;
+  --accent-gold-rgb: 188, 156, 34;
+  --bg-light-rgb: 235, 231, 219;
+  --bg-white-rgb: 253, 252, 249;
+
+  /* === HERO GRADIENT LAYERS === */
+  /* Deep layered background for dimensional feel */
+  --hero-base: #1a2015;
+  /* slightly warmer than dark-base for coziness */
+  --hero-depth: #0f1410;
+  /* ultra-deep accent for layering */
+  --hero-warm-accent: rgba(139, 59, 41, 0.15);
+  /* subtle warm brown overlay */
+  --hero-gold-glow: rgba(188, 156, 34, 0.08);
+  /* ultra-subtle gold highlight */
+  --hero-light-bloom: rgba(255, 255, 255, 0.03);
+  /* soft white bloom for depth */
+  --hero-transition-overlay: linear-gradient(180deg, transparent 0%, transparent 70%, rgba(235, 231, 219, 0.4) 95%, rgba(235, 231, 219, 1) 100%);
+  /* gradient to ease into light section */
+
+  /* slightly taller header to feel more grounded */
+  --header-height: 6vh;
+
+  /* === NEW: Services / CTA palettes === */
+  /* Deep, grounded forest greens matching hero vibe */
+  --services-green-light: #3d5239;
+  /* deep olive-green */
+  --services-green-mid: #2d3d27;
+  /* darker forest green */
+  --services-green-dark: #1a2415;
+  /* ultra-deep forest (near-black) */
+  --services-gradient: linear-gradient(180deg, var(--services-green-dark) 0%, var(--services-green-mid) 50%, var(--services-green-light) 100%);
+
+  /* Richer, warmer terracotta with deeper clay tones */
+  --cta-terra-light: #a0512d;
+  /* warm terracotta */
+  --cta-terra-mid: #8b3b29;
+  /* deeper warm terracotta */
+  --cta-terra-dark: #6b2817;
+  /* deep clay/oxide tone */
+  --cta-terra-gradient: linear-gradient(135deg, var(--cta-terra-light) 0%, var(--cta-terra-mid) 55%, var(--cta-terra-dark) 100%);
+  --text-on-cta: var(--bg-white);
+
+  /* Provide red-tone variables referenced elsewhere for consistency */
+  --secondary-red-light: #f1d9d4;
+  --secondary-red-mid: #d9a691;
+  --secondary-red-dark: #b56a4f;
+
+  /* === NEW: Neutral clay accents (less holiday, more cozy) === */
+  --accent-clay-light: #ceb897;
+  --accent-clay-mid: #a67c52;
+  --accent-clay-deep: #6b4a38;
+
+  /* === FOOTER === */
+  --footer-bg: #2b2f25;
+  /* warm olive-charcoal */
+  --footer-border: rgba(255, 255, 255, 0.08);
+  --footer-text: var(--text-on-dark);
+  --footer-muted: var(--text-muted-on-dark);
+  --footer-link-hover: var(--accent-gold);
+
+}

@@ -1,0 +1,153 @@
+/* ===========================
+   SHOP PAGE STYLESHEET
+   =========================== */
+
+/* Import home.css for hero styling base */
+@import url('home.css');
+
+/* Override hero section for shop with accent-gold theme */
+.shop-hero {
+  background:
+    /* Transition gradient at bottom to ease into light section */
+    linear-gradient(180deg, transparent, transparent),
+    /* Radial glow from top-center (light bloom for focus) */
+    radial-gradient(ellipse 700px 300px at 50% 20%, rgba(188, 156, 34, 0.15) 0%, transparent 50%),
+    /* Radial glow from top-left (warm gold accent) */
+    radial-gradient(ellipse 600px 400px at 15% 10%, rgba(188, 156, 34, 0.25) 0%, transparent 40%),
+    /* Radial glow from bottom-right (warm gold accent) */
+    radial-gradient(ellipse 800px 500px at 85% 95%, rgba(188, 156, 34, 0.2) 0%, transparent 45%),
+    /* Primary gradient: gold-based deep to mid-tone */
+    linear-gradient(135deg, #3d3a1f 0%, #4a4727 50%, #2a2819 100%);
+
+  background-attachment: fixed;
+}
+
+/* Shop hero transition shape — gold theme */
+.shop-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 10%;
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(ellipse 180px 120px at 30% 40%, var(--accent-gold) 0%, transparent 70%);
+  border-radius: 50% 40% 60% 50% / 60% 50% 40% 50%;
+  filter: blur(40px);
+  opacity: 0.08;
+  transform: rotate(-15deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Shop hero texture overlay — subtle gold tint */
+.shop-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    /* Subtle diagonal pattern of gold light */
+    linear-gradient(45deg, rgba(245, 244, 239, 0.03) 0%, transparent 50%, rgba(188, 156, 34, 0.04) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Shop hero CTA button — accent-gold theme */
+.shop-hero-cta {
+  background: var(--accent-gold);
+  color: #2a2a2a;
+  box-shadow: 0 8px 24px rgba(188, 156, 34, 0.25);
+  border-color: var(--accent-gold);
+}
+
+.shop-hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(188, 156, 34, 0.35);
+  background: #d4b230;
+}
+
+/* Hero bridge values for shop — using inherited home.css styles */
+.shop-hero .hero-bridge {
+  background: linear-gradient(180deg, rgba(188, 156, 34, 0.08) 0%, rgba(188, 156, 34, 0.04) 50%, var(--bg-light) 100%);
+}
+
+.shop-hero .bridge-value strong {
+  color: var(--accent-gold);
+}
+
+/* ===========================
+   MOBILE SPACING & FLOW
+   =========================== */
+
+@media (max-width: 908px) {
+
+  /* Hero section spacing */
+  .shop-hero {
+    padding: var(--space-5) 16px var(--space-4);
+    min-height: auto;
+    margin-top: calc(-1 * var(--header-height) + 16px);
+    background-attachment: scroll;
+  }
+
+  /* Hero content breathing room */
+  .shop-hero .hero-content {
+    gap: var(--space-3);
+    margin: 2vh auto;
+  }
+
+  /* Headline spacing */
+  .shop-hero h1 {
+    font-size: 1.8rem;
+    margin: 0 0 var(--space-1) 0;
+    letter-spacing: -0.3px;
+  }
+
+  /* Body text rhythm */
+  .shop-hero p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* CTA wrapper spacing - intentional pause before button */
+  .shop-hero .hero-cta-wrapper {
+    margin-top: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  /* Button touch-friendly size */
+  .shop-hero-cta {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+  }
+
+  /* Hero subtext if present */
+  .shop-hero .hero-subtext {
+    font-size: 0.8rem;
+  }
+
+  /* Bridge section flow */
+  .shop-hero .hero-bridge {
+    padding: var(--space-4) 16px var(--space-5);
+  }
+
+  /* Bridge values stack naturally */
+  .shop-hero .bridge-values {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .shop-hero .bridge-value {
+    gap: var(--space-2);
+  }
+
+  .shop-hero .bridge-value strong {
+    font-size: 0.95rem;
+  }
+
+  .shop-hero .bridge-value span {
+    font-size: 0.85rem;
+  }
+}

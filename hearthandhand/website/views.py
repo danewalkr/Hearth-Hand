@@ -27,3 +27,13 @@ def about(request):
 def contact(request):
     # Contact page view
     return render(request, 'website/contact.html')
+
+
+def custom_404(request):
+    # Custom 404 error page for testing and catch-all
+    return render(request, 'website/404.html', status=404)
+
+
+def handler404(request, exception=None):
+    # Custom 404 error page
+    return render(request, 'website/404.html', status=404)

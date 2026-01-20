@@ -1,0 +1,35 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Page Not Found — Hearth&Hand{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'website/css/404.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+  <div class="error-content animate-fade-in-scale animate-delay-100">
+    <div class="error-code" aria-hidden="true">404</div>
+
+    <h1 class="error-heading animate-fade-in-down animate-delay-200">
+      This page isn't here
+    </h1>
+
+    <p class="error-message animate-fade-in-up animate-delay-300">
+      We handle details carefully—but sometimes a page slips away.
+      Let's get you back on track.
+    </p>
+
+    <div class="error-actions animate-fade-in-up animate-delay-400">
+      <a href="/" class="error-button error-button-primary">
+        Go Home
+      </a>
+      <button class="error-button error-button-secondary" onclick="history.back()"
+        aria-label="Return to the previous page">
+        Go Back
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,137 @@
+/* ===========================
+   PAGE LOAD ANIMATIONS
+   
+   CSS-only entrance animations for initial page load.
+   Applies staggered fade and movement effects.
+   Respects prefers-reduced-motion.
+   =========================== */
+
+/* Keyframe Definitions */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation Classes - Initial state hidden to prevent flash */
+
+.animate-fade-in,
+.animate-fade-in-down,
+.animate-fade-in-up,
+.animate-fade-in-scale {
+  opacity: 0;
+}
+
+/* Apply animations on page load */
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards !important;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.7s ease-out forwards !important;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards !important;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.8s ease-out forwards !important;
+}
+
+/* Staggered Delays */
+
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animate-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animate-delay-700 {
+  animation-delay: 0.7s;
+}
+
+.animate-delay-800 {
+  animation-delay: 0.8s;
+}
+
+.animate-delay-900 {
+  animation-delay: 0.9s;
+}
+
+.animate-delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-fade-in,
+  .animate-fade-in-down,
+  .animate-fade-in-up,
+  .animate-fade-in-scale {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

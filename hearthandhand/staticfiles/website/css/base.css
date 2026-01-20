@@ -1,0 +1,29 @@
+@import 'variables.css';
+
+/* simple reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: linear-gradient(180deg,
+      var(--bg) 0%,
+      var(--bg) 70%,
+      #d4cbbe 85%,
+      #c0b59f 100%);
+  margin: 0;
+}
+
+/* Prevent horizontal scroll caused by full-bleed elements */
+html,
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
